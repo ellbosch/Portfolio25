@@ -1,0 +1,15 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "wait-for-dev-server",
+      "type": "shell",
+      "command": "until curl -s http://localhost:5173 > /dev/null 2>&1; do sleep 0.5; done",
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
