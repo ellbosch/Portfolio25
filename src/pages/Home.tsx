@@ -9,6 +9,21 @@ const Home = () => {
       <main>
         <Hero />
 
+        {/* About Me Section */}
+        <section id="about" className="py-20 px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl font-bold mb-8 text-center">About Me</h2>
+            <div className="prose prose-lg mx-auto text-center">
+              <p className="text-lg text-gray-700 leading-relaxed">
+                I'm an iOS and AI engineer passionate about building innovative mobile experiences
+                and intelligent solutions. With a background at Microsoft and expertise in modern
+                development practices, I create applications that combine cutting-edge technology
+                with user-centered design.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* iOS Projects Section */}
         <section id="ios-projects" className="py-20 px-4 bg-gray-50">
           <div className="max-w-6xl mx-auto">
@@ -66,7 +81,7 @@ const Home = () => {
             <h2 className="text-4xl font-bold mb-8">Get In Touch</h2>
             <div className="flex justify-center gap-6 flex-wrap">
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/ellbosch"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-700 transition-colors"
@@ -74,7 +89,7 @@ const Home = () => {
                 GitHub
               </a>
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://www.linkedin.com/in/elliotboschwitz/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
