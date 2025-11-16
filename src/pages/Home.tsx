@@ -2,6 +2,7 @@ import Header from '../components/Header';
 import Hero from '../components/Hero';
 import ProjectCard from '../components/ProjectCard';
 import VideoPlayer from '../components/VideoPlayer';
+import DeviceFrame from '../components/DeviceFrame';
 
 const Home = () => {
   return (
@@ -22,13 +23,15 @@ const Home = () => {
                 with user-centered design.
               </p>
             </div>
-            <div className="mt-12 max-w-3xl mx-auto">
-              <VideoPlayer
-                videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/stitch-demo.mp4"
-                autoplay={true}
-                loop={true}
-                muted={true}
-              />
+            <div className="mt-12">
+              <DeviceFrame>
+                <VideoPlayer
+                  videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/stitch-demo.mp4"
+                  autoplay={true}
+                  loop={true}
+                  muted={true}
+                />
+              </DeviceFrame>
             </div>
           </div>
         </section>
