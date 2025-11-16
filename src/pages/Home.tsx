@@ -33,6 +33,14 @@ const Home = () => {
                 />
               </DeviceFrame>
             </div>
+            <div className="mt-12 max-w-3xl mx-auto">
+              <VideoPlayer
+                videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/stitch_ai_rects.mp4"
+                autoplay={true}
+                loop={true}
+                muted={true}
+              />
+            </div>
           </div>
         </section>
 
