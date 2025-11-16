@@ -3,7 +3,6 @@ import Hero from '../components/Hero';
 import ProjectCard from '../components/ProjectCard';
 import VideoPlayer from '../components/VideoPlayer';
 import DeviceFrame from '../components/DeviceFrame';
-import meImage from '../assets/me.png';
 
 const Home = () => {
   return (
@@ -12,25 +11,9 @@ const Home = () => {
       <main>
         <Hero />
 
-        {/* About Me Section */}
-        <section id="about" className="py-20 px-4">
+        {/* Projects Demo Section */}
+        <section id="about" className="py-20 px-4 bg-white">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold mb-8 text-center">About Me</h2>
-            <div className="flex flex-col md:flex-row items-center gap-8 mb-8">
-              <img
-                src={meImage}
-                alt="Profile"
-                className="w-48 h-48 rounded-full object-cover shadow-lg"
-              />
-              <div className="prose prose-lg flex-1">
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  I'm an iOS and AI engineer passionate about building innovative mobile experiences
-                  and intelligent solutions. With a background at Microsoft and expertise in modern
-                  development practices, I create applications that combine cutting-edge technology
-                  with user-centered design.
-                </p>
-              </div>
-            </div>
             <div className="mt-12">
               <DeviceFrame>
                 <VideoPlayer
