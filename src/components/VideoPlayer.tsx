@@ -23,7 +23,7 @@ const VideoPlayer = ({ videoUrl, poster, autoplay = false, loop = false, muted =
 
       playerRef.current = videojs(videoElement, {
         autoplay: autoplay,
-        controls: true,
+        controls: false,
         responsive: true,
         fluid: true,
         preload: 'metadata',
