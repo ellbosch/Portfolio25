@@ -7,7 +7,7 @@ interface PaddingParallaxProps {
   reverse?: boolean; // If true, starts with bottom padding instead of top
 }
 
-const PaddingParallax = ({ children, totalPadding = 450, minPadding = 0, reverse = false }: PaddingParallaxProps) => {
+const PaddingParallax = ({ children, totalPadding = 400, minPadding = 0, reverse = false }: PaddingParallaxProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [paddingTop, setPaddingTop] = useState(reverse ? minPadding : totalPadding);
   const [paddingBottom, setPaddingBottom] = useState(reverse ? totalPadding : minPadding);

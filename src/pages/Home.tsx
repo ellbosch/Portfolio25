@@ -73,7 +73,7 @@ const Home = () => {
         {/* Vellum Section */}
         <section id="vellum" className="bg-gray-50 dark:bg-gray-800 py-20 px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-20">
+            <div className="text-center">
               <ScrollFade delay={200}>
                 <div className="flex items-center justify-center gap-6 mb-6">
                   <img
