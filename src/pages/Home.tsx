@@ -6,6 +6,7 @@ import DeviceFrame from '../components/DeviceFrame';
 import IPhoneFrame from '../components/iPhoneFrame';
 import ScrollRotatingFrame from '../components/ScrollRotatingFrame';
 import ScrollFade from '../components/ScrollFade';
+import ScrollPinnedVideos from '../components/ScrollPinnedVideos';
 import stitchIcon from '../assets/stitch-icon.png';
 
 const Home = () => {
@@ -69,45 +70,32 @@ const Home = () => {
         </section>
 
         {/* Vellum Section */}
-        <section id="vellum" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
-          <div className="max-w-4xl mx-auto">
-            <div className="mt-8 max-w-3xl mx-auto">
-              <ScrollFade delay={200}>
-                <h2 className="text-6xl md:text-7xl font-bold text-gray-900 dark:text-white text-center mb-6">Vellum</h2>
-              </ScrollFade>
-              <ScrollFade delay={400}>
-                <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center mb-12">
-                  A video generation app that transforms your creative ideas into stunning visual content.
-                </p>
-              </ScrollFade>
-            </div>
-
-            <div className="mt-24 max-w-3xl mx-auto">
-              <ScrollFade delay={600}>
-                <IPhoneFrame>
-                  <VideoPlayer
-                    videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-feed-downscaled.mov"
-                    autoplay={true}
-                    loop={true}
-                    muted={true}
-                  />
-                </IPhoneFrame>
-              </ScrollFade>
-            </div>
-
-            <div className="mt-36 max-w-3xl mx-auto">
-              <ScrollFade delay={800}>
-                <IPhoneFrame>
-                  <VideoPlayer
-                    videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-edit-downscaled.mov"
-                    autoplay={true}
-                    loop={true}
-                    muted={true}
-                  />
-                </IPhoneFrame>
-              </ScrollFade>
-            </div>
+        <section id="vellum" className="bg-gray-50 dark:bg-gray-800">
+          <div className="py-20 px-4 text-center">
+            <ScrollFade delay={200}>
+              <h2 className="text-6xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6">Vellum</h2>
+            </ScrollFade>
+            <ScrollFade delay={400}>
+              <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed max-w-3xl mx-auto">
+                A video generation app that transforms your creative ideas into stunning visual content.
+              </p>
+            </ScrollFade>
           </div>
+
+          <ScrollPinnedVideos
+            sections={[
+              {
+                videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-feed-downscaled.mov",
+                title: "Discover & Inspire",
+                description: "Browse an endless feed of AI-generated videos. Swipe through stunning visuals created by our community and find inspiration for your next creation."
+              },
+              {
+                videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-edit-downscaled.mov",
+                title: "Create & Customize",
+                description: "Transform your ideas into reality with our intuitive editing tools. Adjust parameters, tweak styles, and perfect your vision with real-time AI generation."
+              }
+            ]}
+          />
         </section>
 
         {/* iOS Projects Section */}
