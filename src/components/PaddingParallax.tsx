@@ -53,7 +53,6 @@ const PaddingParallax = ({ children, totalPadding = 400, minPadding = 0, reverse
         style={{
           paddingTop: `${paddingTop}px`,
           paddingBottom: `${paddingBottom}px`,
-          transition: 'padding 0.1s ease-out',
         }}
       >
         {children}
