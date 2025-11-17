@@ -111,6 +111,16 @@ const Home = () => {
             {/* Second Video - Create & Customize */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div>
+                <ScrollFade delay={400}>
+                  <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                    Create & Customize
+                  </h3>
+                  <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed">
+                    Transform your ideas into reality with our intuitive editing tools. Adjust parameters, tweak styles, and perfect your vision with real-time AI generation.
+                  </p>
+                </ScrollFade>
+              </div>
+              <div>
                 <ScrollFade delay={200}>
                   <IPhoneFrame>
                     <VideoPlayer
@@ -120,16 +130,6 @@ const Home = () => {
                       muted={true}
                     />
                   </IPhoneFrame>
-                </ScrollFade>
-              </div>
-              <div>
-                <ScrollFade delay={400}>
-                  <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-                    Create & Customize
-                  </h3>
-                  <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed">
-                    Transform your ideas into reality with our intuitive editing tools. Adjust parameters, tweak styles, and perfect your vision with real-time AI generation.
-                  </p>
                 </ScrollFade>
               </div>
             </div>
