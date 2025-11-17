@@ -5,7 +5,7 @@ interface ScrollRotatingFrameProps {
 }
 
 const ScrollRotatingFrame = ({ children }: ScrollRotatingFrameProps) => {
-  const ang = 50;
+  const ang = 40;
   const containerRef = useRef<HTMLDivElement>(null);
   const [rotation, setRotation] = useState(ang); // Start tilted back (positive = top tilted back)
 
