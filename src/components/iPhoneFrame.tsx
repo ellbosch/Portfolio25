@@ -12,7 +12,7 @@ const IPhoneFrame = ({ children }: IPhoneFrameProps) => {
       <div className="relative w-full" style={{ paddingBottom: '216%' }}>
         {/* Video content layer */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-full h-full px-[5%] py-[11%]">
+          <div className="w-full h-full px-[5%] py-[10.5%]">
             <div className="w-full h-full rounded-[6%] overflow-hidden">
               {children}
             </div>
