@@ -7,17 +7,17 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-200">
+    <header className="sticky top-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700">
       <nav className="max-w-6xl mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
-          <a href="/" className="text-xl font-bold text-gray-900">
+          <a href="/" className="text-xl font-bold text-gray-900 dark:text-white">
             Elliot Boschwitz
           </a>
           <ul className="flex gap-6 items-center">
             <li>
               <button
                 onClick={() => scrollToSection('about')}
-                className="text-gray-700 hover:text-gray-900 transition-colors"
+                className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors"
               >
                 About
               </button>
@@ -25,7 +25,7 @@ const Header = () => {
             <li>
               <button
                 onClick={() => scrollToSection('ios-projects')}
-                className="text-gray-700 hover:text-gray-900 transition-colors"
+                className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors"
               >
                 iOS
               </button>
@@ -33,7 +33,7 @@ const Header = () => {
             <li>
               <button
                 onClick={() => scrollToSection('ai-projects')}
-                className="text-gray-700 hover:text-gray-900 transition-colors"
+                className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors"
               >
                 AI
               </button>
@@ -41,17 +41,17 @@ const Header = () => {
             <li>
               <button
                 onClick={() => scrollToSection('microsoft')}
-                className="text-gray-700 hover:text-gray-900 transition-colors"
+                className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors"
               >
                 Microsoft
               </button>
             </li>
-            <li className="border-l border-gray-300 pl-6 flex gap-4">
+            <li className="border-l border-gray-300 dark:border-gray-600 pl-6 flex gap-4">
               <a
                 href="https://github.com/ellbosch"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-700 hover:text-gray-900 transition-colors"
+                className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors"
                 aria-label="GitHub"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -62,7 +62,7 @@ const Header = () => {
                 href="https://www.linkedin.com/in/elliotboschwitz/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-700 hover:text-gray-900 transition-colors"
+                className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors"
                 aria-label="LinkedIn"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
