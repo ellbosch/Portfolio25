@@ -20,9 +20,10 @@ const PaddingParallax = ({ children, totalPadding = 400, minPadding = 0, reverse
       const windowHeight = window.innerHeight;
 
       // Calculate how far the element has scrolled through the viewport
-      // 0 = just entering from bottom, 1 = just leaving from top
+      // 0 = just entering from bottom, 1 = converged
+      // Using a multiplier to make it converge faster (2x means converges at 50% through viewport)
       const scrollProgress = Math.max(0, Math.min(1,
-        (windowHeight - rect.top) / (windowHeight + rect.height)
+        ((windowHeight - rect.top) / (windowHeight + rect.height)) * 1.2
       ));
 
       if (reverse) {
