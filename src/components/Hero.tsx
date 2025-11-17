@@ -2,12 +2,12 @@ import meImage from '../assets/me.png';
 
 const Hero = () => {
   return (
-    <section className="py-32 px-4 bg-gradient-to-b from-white to-gray-50">
-      <div className="max-w-4xl mx-auto">
+    <section className="h-[75vh] px-4 bg-gradient-to-b from-white to-gray-50 flex items-center">
+      <div className="max-w-4xl mx-auto w-full">
         <h1 className="text-6xl md:text-7xl font-bold mb-12 text-gray-900 text-center">
           Elliot Boschwitz
         </h1>
-        <div className="flex flex-col md:flex-row items-center gap-12 mb-8">
+        <div className="flex flex-col md:flex-row items-center gap-12">
           <img
             src={meImage}
             alt="Profile"
