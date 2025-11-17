@@ -4,6 +4,7 @@ import ProjectCard from '../components/ProjectCard';
 import VideoPlayer from '../components/VideoPlayer';
 import DeviceFrame from '../components/DeviceFrame';
 import ScrollRotatingFrame from '../components/ScrollRotatingFrame';
+import ScrollFade from '../components/ScrollFade';
 import stitchIcon from '../assets/stitch-icon.png';
 
 const Home = () => {
@@ -28,18 +29,25 @@ const Home = () => {
                 </DeviceFrame>
               </ScrollRotatingFrame>
             </div>
-            <div className="mt-8 flex items-center justify-center gap-6 max-w-3xl mx-auto">
-              <img
-                src={stitchIcon}
-                alt="Stitch Icon"
-                className="w-24 h-24 rounded-[22%] shadow-lg"
-                style={{
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
-                }}
-              />
-              <p className="text-2xl text-gray-700 leading-relaxed text-left flex-1">
-                Meet Stitch, an AI-powered design prototyping, unapologetically made for designers, harnessing the first-ever visual programming language powered by an LLM.
-              </p>
+            <div className="mt-8 max-w-3xl mx-auto">
+              <ScrollFade delay={200}>
+                <div className="flex items-center justify-center gap-6 mb-6">
+                  <img
+                    src={stitchIcon}
+                    alt="Stitch Icon"
+                    className="w-32 h-32 rounded-[22%] shadow-lg"
+                    style={{
+                      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
+                    }}
+                  />
+                  <h2 className="text-6xl md:text-7xl font-bold text-gray-900">Stitch</h2>
+                </div>
+              </ScrollFade>
+              <ScrollFade delay={400}>
+                <p className="text-2xl text-gray-700 leading-relaxed text-center">
+                  Meet Stitch, an AI-powered design prototyping, unapologetically made for designers, harnessing the first-ever visual programming language powered by an LLM.
+                </p>
+              </ScrollFade>
             </div>
             <div className="mt-12 max-w-3xl mx-auto">
               <VideoPlayer
