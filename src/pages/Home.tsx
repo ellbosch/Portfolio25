@@ -96,44 +96,52 @@ const Home = () => {
             {/* First Video - Discover & Inspire */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
               <div className="order-2 md:order-1">
-                <IPhoneFrame>
-                  <VideoPlayer
-                    videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-feed-downscaled.mov"
-                    autoplay={true}
-                    loop={true}
-                    muted={true}
-                  />
-                </IPhoneFrame>
+                <ScrollFade delay={200}>
+                  <IPhoneFrame>
+                    <VideoPlayer
+                      videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-feed-downscaled.mov"
+                      autoplay={true}
+                      loop={true}
+                      muted={true}
+                    />
+                  </IPhoneFrame>
+                </ScrollFade>
               </div>
               <div className="order-1 md:order-2">
-                <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-                  Discover & Inspire
-                </h3>
-                <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed">
-                  Browse an endless feed of AI-generated videos. Swipe through stunning visuals created by our community and find inspiration for your next creation.
-                </p>
+                <ScrollFade delay={400}>
+                  <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                    Discover & Inspire
+                  </h3>
+                  <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed">
+                    Browse an endless feed of AI-generated videos. Swipe through stunning visuals created by our community and find inspiration for your next creation.
+                  </p>
+                </ScrollFade>
               </div>
             </div>
 
             {/* Second Video - Create & Customize */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div>
-                <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-                  Create & Customize
-                </h3>
-                <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed">
-                  Transform your ideas into reality with our intuitive editing tools. Adjust parameters, tweak styles, and perfect your vision with real-time AI generation.
-                </p>
+                <ScrollFade delay={400}>
+                  <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                    Create & Customize
+                  </h3>
+                  <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed">
+                    Transform your ideas into reality with our intuitive editing tools. Adjust parameters, tweak styles, and perfect your vision with real-time AI generation.
+                  </p>
+                </ScrollFade>
               </div>
               <div>
-                <IPhoneFrame>
-                  <VideoPlayer
-                    videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-edit-downscaled.mov"
-                    autoplay={true}
-                    loop={true}
-                    muted={true}
-                  />
-                </IPhoneFrame>
+                <ScrollFade delay={200}>
+                  <IPhoneFrame>
+                    <VideoPlayer
+                      videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-edit-downscaled.mov"
+                      autoplay={true}
+                      loop={true}
+                      muted={true}
+                    />
+                  </IPhoneFrame>
+                </ScrollFade>
               </div>
             </div>
           </div>
