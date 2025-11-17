@@ -7,6 +7,7 @@ import IPhoneFrame from '../components/iPhoneFrame';
 import ScrollRotatingFrame from '../components/ScrollRotatingFrame';
 import ScrollFade from '../components/ScrollFade';
 import stitchIcon from '../assets/stitch-icon.png';
+import vellumIcon from '../assets/vellum-icon.png';
 
 const Home = () => {
   return (
@@ -73,7 +74,17 @@ const Home = () => {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-20">
               <ScrollFade delay={200}>
-                <h2 className="text-6xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6">Vellum</h2>
+                <div className="flex items-center justify-center gap-6 mb-6">
+                  <img
+                    src={vellumIcon}
+                    alt="Vellum Icon"
+                    className="w-32 h-32 rounded-[22%] shadow-lg"
+                    style={{
+                      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
+                    }}
+                  />
+                  <h2 className="text-6xl md:text-7xl font-bold text-gray-900 dark:text-white">Vellum</h2>
+                </div>
               </ScrollFade>
               <ScrollFade delay={400}>
                 <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed max-w-3xl mx-auto">
