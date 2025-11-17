@@ -5,8 +5,9 @@ interface ScrollRotatingFrameProps {
 }
 
 const ScrollRotatingFrame = ({ children }: ScrollRotatingFrameProps) => {
+  const ang = 50;
   const containerRef = useRef<HTMLDivElement>(null);
-  const [rotation, setRotation] = useState(60); // Start tilted back (positive = top tilted back)
+  const [rotation, setRotation] = useState(ang); // Start tilted back (positive = top tilted back)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,8 +29,8 @@ const ScrollRotatingFrame = ({ children }: ScrollRotatingFrameProps) => {
       const scrollProgress = (startPoint - elementTop) / (startPoint - endPoint);
       const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
 
-      // Map progress from 60deg (top tilted back) to 0deg (flat)
-      const newRotation = 60 - (clampedProgress * 60);
+      // Map progress from 50deg (top tilted back) to 0deg (flat)
+      const newRotation = ang - (clampedProgress * ang);
       setRotation(newRotation);
     };
 
