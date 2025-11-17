@@ -18,10 +18,10 @@ const ScrollParallax = ({ children, speed = 0.5, mode = 'transform' }: ScrollPar
       const scrolled = window.scrollY;
 
       if (mode === 'padding') {
-        // For padding mode: adjust padding to create slower scroll effect
-        // Negative offset creates the "slower" scroll appearance
-        const paddingOffset = scrolled * (speed - 1);
-        setOffset(paddingOffset);
+        // For padding mode: Use negative margin to create slower scroll effect
+        // Elements appear to scroll slower than the page
+        const marginOffset = scrolled * (speed - 1);
+        setOffset(marginOffset);
       } else {
         // For transform mode: calculate how much to offset based on scroll position
         // The element moves slower (or faster) than the normal scroll
@@ -41,8 +41,8 @@ const ScrollParallax = ({ children, speed = 0.5, mode = 'transform' }: ScrollPar
       <div ref={ref}>
         <div
           style={{
-            paddingTop: `${Math.max(0, offset)}px`,
-            transition: 'padding 0.1s ease-out',
+            marginTop: `${offset}px`,
+            transition: 'margin 0.1s ease-out',
           }}
         >
           {children}
