@@ -3,6 +3,7 @@ import Hero from '../components/Hero';
 import ProjectCard from '../components/ProjectCard';
 import VideoPlayer from '../components/VideoPlayer';
 import DeviceFrame from '../components/DeviceFrame';
+import IPhoneFrame from '../components/iPhoneFrame';
 import ScrollRotatingFrame from '../components/ScrollRotatingFrame';
 import ScrollFade from '../components/ScrollFade';
 import stitchIcon from '../assets/stitch-icon.png';
@@ -83,27 +84,27 @@ const Home = () => {
 
             <div className="mt-24 max-w-3xl mx-auto">
               <ScrollFade delay={600}>
-                <div className="rounded-[20px] overflow-hidden">
+                <IPhoneFrame>
                   <VideoPlayer
                     videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-feed-downscaled.mov"
                     autoplay={true}
                     loop={true}
                     muted={true}
                   />
-                </div>
+                </IPhoneFrame>
               </ScrollFade>
             </div>
 
             <div className="mt-36 max-w-3xl mx-auto">
               <ScrollFade delay={800}>
-                <div className="rounded-[20px] overflow-hidden">
+                <IPhoneFrame>
                   <VideoPlayer
                     videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-edit-downscaled.mov"
                     autoplay={true}
                     loop={true}
                     muted={true}
                   />
-                </div>
+                </IPhoneFrame>
               </ScrollFade>
             </div>
           </div>
