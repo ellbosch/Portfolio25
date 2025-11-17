@@ -6,6 +6,7 @@ import DeviceFrame from '../components/DeviceFrame';
 import IPhoneFrame from '../components/iPhoneFrame';
 import ScrollRotatingFrame from '../components/ScrollRotatingFrame';
 import ScrollFade from '../components/ScrollFade';
+import PaddingParallax from '../components/PaddingParallax';
 import stitchIcon from '../assets/stitch-icon.png';
 import vellumIcon from '../assets/vellum-icon.png';
 
@@ -97,14 +98,16 @@ const Home = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               {/* Left column */}
               <div className="flex flex-col gap-12">
-                <IPhoneFrame>
-                  <VideoPlayer
-                    videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-feed-downscaled.mov"
-                    autoplay={true}
-                    loop={true}
-                    muted={true}
-                  />
-                </IPhoneFrame>
+                <PaddingParallax reverse={true}>
+                  <IPhoneFrame>
+                    <VideoPlayer
+                      videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-feed-downscaled.mov"
+                      autoplay={true}
+                      loop={true}
+                      muted={true}
+                    />
+                  </IPhoneFrame>
+                </PaddingParallax>
 
                 <div>
                   <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
@@ -117,7 +120,7 @@ const Home = () => {
               </div>
 
               {/* Right column */}
-              <div className="flex flex-col gap-12">
+              <div className="flex flex-col gap-12 mt-120">
                 <div>
                   <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
                     Discover & Inspire
@@ -127,14 +130,16 @@ const Home = () => {
                   </p>
                 </div>
 
-                <IPhoneFrame>
-                  <VideoPlayer
-                    videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-edit-downscaled.mov"
-                    autoplay={true}
-                    loop={true}
-                    muted={true}
-                  />
-                </IPhoneFrame>
+                <PaddingParallax>
+                  <IPhoneFrame>
+                    <VideoPlayer
+                      videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-edit-downscaled.mov"
+                      autoplay={true}
+                      loop={true}
+                      muted={true}
+                    />
+                  </IPhoneFrame>
+                </PaddingParallax>
               </div>
             </div>
           </div>
