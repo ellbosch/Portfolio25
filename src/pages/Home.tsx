@@ -9,6 +9,9 @@ import ScrollFade from '../components/ScrollFade';
 import PaddingParallax from '../components/PaddingParallax';
 import stitchIcon from '../assets/stitch-icon.png';
 import vellumIcon from '../assets/vellum-icon.png';
+import lobeIcon from '../assets/lobe-icon.png';
+import lobeHeader from '../assets/lobe-header.jpg';
+import lobeDesktop from '../assets/lobe-desktop.jpg';
 
 const Home = () => {
   return (
@@ -141,6 +144,68 @@ const Home = () => {
                   </IPhoneFrame>
                 </PaddingParallax>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Lobe Section */}
+        <section id="lobe" className="bg-white dark:bg-gray-900 py-20 px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-20">
+              <ScrollFade delay={200}>
+                <div className="flex items-center justify-center gap-6 mb-6">
+                  <img
+                    src={lobeIcon}
+                    alt="Lobe Icon"
+                    className="w-32 h-32 rounded-[22%] shadow-lg"
+                    style={{
+                      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
+                    }}
+                  />
+                  <h2 className="text-6xl md:text-7xl font-bold text-gray-900 dark:text-white">Lobe</h2>
+                </div>
+              </ScrollFade>
+              <ScrollFade delay={400}>
+                <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed max-w-3xl mx-auto">
+                  Machine learning made easy. Train custom models without writing code.
+                </p>
+              </ScrollFade>
+            </div>
+
+            {/* Lobe Header Image */}
+            <div className="mb-20">
+              <ScrollFade delay={200}>
+                <div className="rounded-[20px] overflow-hidden shadow-2xl">
+                  <img
+                    src={lobeHeader}
+                    alt="Lobe Header"
+                    className="w-full h-auto"
+                  />
+                </div>
+              </ScrollFade>
+              <ScrollFade delay={400}>
+                <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center mt-12">
+                  Lobe is a free, easy-to-use desktop application that empowers anyone to train custom machine learning models without writing a single line of code.
+                </p>
+              </ScrollFade>
+            </div>
+
+            {/* Lobe Desktop Image */}
+            <div className="mb-20">
+              <ScrollFade delay={200}>
+                <div className="rounded-[20px] overflow-hidden shadow-2xl">
+                  <img
+                    src={lobeDesktop}
+                    alt="Lobe Desktop"
+                    className="w-full h-auto"
+                  />
+                </div>
+              </ScrollFade>
+              <ScrollFade delay={400}>
+                <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center mt-12">
+                  With an intuitive interface and powerful automation, Lobe makes it simple to collect examples, train your model, and export it for use in your app.
+                </p>
+              </ScrollFade>
             </div>
           </div>
         </section>
