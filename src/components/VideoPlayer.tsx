@@ -5,9 +5,12 @@ import 'video.js/dist/video-js.css';
 interface VideoPlayerProps {
   videoUrl: string;
   poster?: string;
+  autoplay?: boolean;
+  loop?: boolean;
+  muted?: boolean;
 }
 
-const VideoPlayer = ({ videoUrl, poster }: VideoPlayerProps) => {
+const VideoPlayer = ({ videoUrl, poster, autoplay = false, loop = false, muted = false }: VideoPlayerProps) => {
   const videoRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<any>(null);
 
@@ -19,11 +22,13 @@ const VideoPlayer = ({ videoUrl, poster }: VideoPlayerProps) => {
       videoRef.current.appendChild(videoElement);
 
       playerRef.current = videojs(videoElement, {
-        autoplay: false,
-        controls: true,
+        autoplay: autoplay,
+        controls: false,
         responsive: true,
         fluid: true,
         preload: 'metadata',
+        loop: loop,
+        muted: muted,
         sources: [
           {
             src: videoUrl,
@@ -34,13 +39,15 @@ const VideoPlayer = ({ videoUrl, poster }: VideoPlayerProps) => {
       });
     } else if (playerRef.current) {
       const player = playerRef.current;
-      player.autoplay(false);
+      player.autoplay(autoplay);
+      player.loop(loop);
+      player.muted(muted);
       player.src({ src: videoUrl, type: 'video/mp4' });
       if (poster) {
         player.poster(poster);
       }
     }
-  }, [videoUrl, poster]);
+  }, [videoUrl, poster, autoplay, loop, muted]);
 
   // Dispose the Video.js player when the component unmounts
   useEffect(() => {
