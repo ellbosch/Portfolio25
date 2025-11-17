@@ -67,6 +67,48 @@ const Home = () => {
           </div>
         </section>
 
+        {/* Vellum Section */}
+        <section id="vellum" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
+          <div className="max-w-4xl mx-auto">
+            <div className="mt-8 max-w-3xl mx-auto">
+              <ScrollFade delay={200}>
+                <h2 className="text-6xl md:text-7xl font-bold text-gray-900 dark:text-white text-center mb-6">Vellum</h2>
+              </ScrollFade>
+              <ScrollFade delay={400}>
+                <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center mb-12">
+                  A video generation app that transforms your creative ideas into stunning visual content.
+                </p>
+              </ScrollFade>
+            </div>
+
+            <div className="mt-24 max-w-3xl mx-auto">
+              <ScrollFade delay={600}>
+                <div className="rounded-[20px] overflow-hidden">
+                  <VideoPlayer
+                    videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-feed-downscaled.mov"
+                    autoplay={true}
+                    loop={true}
+                    muted={true}
+                  />
+                </div>
+              </ScrollFade>
+            </div>
+
+            <div className="mt-36 max-w-3xl mx-auto">
+              <ScrollFade delay={800}>
+                <div className="rounded-[20px] overflow-hidden">
+                  <VideoPlayer
+                    videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-edit-downscaled.mov"
+                    autoplay={true}
+                    loop={true}
+                    muted={true}
+                  />
+                </div>
+              </ScrollFade>
+            </div>
+          </div>
+        </section>
+
         {/* iOS Projects Section */}
         <section id="ios-projects" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
           <div className="max-w-6xl mx-auto">
