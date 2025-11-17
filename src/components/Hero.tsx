@@ -7,12 +7,12 @@ const Hero = () => {
     {
       icon: <img src={stitchIcon} alt="Stitch" className="w-6 h-6 grayscale rounded-lg" />,
       text: 'Lead iOS Engineering Architect at Stitch',
-      delay: '200ms'
+      delay: '1000ms'
     },
     {
       icon: <img src={msftIcon} alt="Microsoft" className="w-6 h-6 grayscale" />,
       text: 'Software Engineer & Program Manager at Microsoft',
-      delay: '400ms'
+      delay: '1200ms'
     },
     {
       icon: (
@@ -21,14 +21,21 @@ const Hero = () => {
         </svg>
       ),
       text: 'University of Pennsylvania, Majoring in Computer Science & Cognitive Science',
-      delay: '600ms'
+      delay: '1400ms'
     }
   ];
 
   return (
     <section className="h-[75vh] px-4 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 flex items-center">
       <div className="max-w-4xl mx-auto w-full">
-        <h1 className="text-6xl md:text-7xl font-bold mb-12 text-gray-900 dark:text-white text-center">
+        <h1
+          className="text-6xl md:text-7xl font-bold mb-12 text-gray-900 dark:text-white text-center animate-fade-in"
+          style={{
+            opacity: 0,
+            animationFillMode: 'forwards',
+            animationDelay: '0ms'
+          }}
+        >
           Hi 👋, I'm Elliot
         </h1>
         <div className="flex flex-col md:flex-row items-center gap-12">
@@ -41,7 +48,7 @@ const Hero = () => {
             <h2
               className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white mb-6 animate-fade-in"
               style={{
-                animationDelay: '0ms',
+                animationDelay: '800ms',
                 opacity: 0,
                 animationFillMode: 'forwards'
               }}
