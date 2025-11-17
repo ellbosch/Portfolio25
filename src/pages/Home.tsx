@@ -51,12 +51,14 @@ const Home = () => {
             </div>
             <div className="mt-36 max-w-3xl mx-auto">
               <ScrollFade delay={600}>
-                <VideoPlayer
-                  videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/stitch_ai_rects.mp4"
-                  autoplay={true}
-                  loop={true}
-                  muted={true}
-                />
+                <div className="rounded-[20px] overflow-hidden">
+                  <VideoPlayer
+                    videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/stitch_ai_rects.mp4"
+                    autoplay={true}
+                    loop={true}
+                    muted={true}
+                  />
+                </div>
               </ScrollFade>
               <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center mt-12 mb-8">
                 Today's AI tools are inadequate for interaction designers. Unlike other vibe coding tools which only expose code, Stitch leverages vibe coding and a familiar node-based visual programming language.
