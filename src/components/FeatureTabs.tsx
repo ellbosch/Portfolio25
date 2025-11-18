@@ -70,7 +70,7 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
                   </DeviceFrame>
                 </div>
                 {/* Header and Description below video */}
-                <div className="mt-8 w-[45vw] max-w-[712px]">
+                <div className="mt-8 w-[45vw] max-w-[712px] text-center px-4">
                   <h3 className="text-3xl md:text-4xl font-bold mb-3 text-gray-900 dark:text-white">
                     {tab.title}
                   </h3>
@@ -83,7 +83,7 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
           </div>
 
           {/* Navigation Buttons */}
-          <div className="flex justify-end gap-3 mt-4">
+          <div className="flex justify-end gap-3">
             <button
               onClick={scrollLeft}
               className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
