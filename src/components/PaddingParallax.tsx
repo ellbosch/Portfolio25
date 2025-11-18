@@ -43,7 +43,6 @@ const PaddingParallax = ({ children, distance = 600, reverse = false }: PaddingP
       <div
         style={{
           transform: `translateY(${translateY}px)`,
-          transition: 'transform 0.1s ease-out',
         }}
       >
         {children}
