@@ -18,17 +18,17 @@ const PaddingParallax = ({ children, distance = 600, reverse = false }: PaddingP
       const windowHeight = window.innerHeight;
 
       // Calculate how far the element has scrolled through the viewport
-      // 0 = just entering from bottom, 1 = fully scrolled through
-      const scrollProgress = (windowHeight - rect.top) / (windowHeight + rect.height);
+      // 0 = just entering from bottom, converges earlier with multiplier
+      const scrollProgress = ((windowHeight - rect.top) / (windowHeight + rect.height)) * 2;
 
       if (reverse) {
-        // Reverse: start with positive translateY (lower), converge to 0
+        // Reverse: start with positive translateY (lower), move up continuously
         const newTranslateY = distance - (scrollProgress * distance);
-        setTranslateY(Math.max(0, newTranslateY));
+        setTranslateY(newTranslateY);
       } else {
-        // Normal: start with negative translateY (higher), converge to 0
+        // Normal: start with negative translateY (higher), move down continuously
         const newTranslateY = -distance + (scrollProgress * distance);
-        setTranslateY(Math.min(0, newTranslateY));
+        setTranslateY(newTranslateY);
       }
     };
 
