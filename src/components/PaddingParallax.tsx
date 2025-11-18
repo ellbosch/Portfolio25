@@ -4,13 +4,20 @@ interface PaddingParallaxProps {
   children: ReactNode;
   distance?: number; // Total distance to move in pixels (default: 200px)
   reverse?: boolean; // If true, starts lower and moves up; otherwise starts higher and moves down
+  disabled?: boolean; // If true, disables the parallax effect
+  className?: string; // Optional className for the container
 }
 
-const PaddingParallax = ({ children, distance = 200, reverse = false }: PaddingParallaxProps) => {
+const PaddingParallax = ({ children, distance = 200, reverse = false, disabled = false, className = '' }: PaddingParallaxProps) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [translateY, setTranslateY] = useState(reverse ? distance : -distance);
+  const [translateY, setTranslateY] = useState(disabled ? 0 : (reverse ? distance : -distance));
 
   useEffect(() => {
+    if (disabled) {
+      setTranslateY(0);
+      return;
+    }
+
     const handleScroll = () => {
       if (!ref.current) return;
 
@@ -38,10 +45,10 @@ const PaddingParallax = ({ children, distance = 200, reverse = false }: PaddingP
     handleScroll(); // Initial calculation
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [distance, reverse]);
+  }, [distance, reverse, disabled]);
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className={className}>
       <div
         style={{
           transform: `translateY(${translateY}px)`,
