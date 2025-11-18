@@ -73,7 +73,7 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
             {tabs.map((tab, index) => (
               <div
                 key={index}
-                className="min-w-full flex-shrink-0 h-full flex items-center justify-start"
+                className="flex-shrink-0 h-full flex"
               >
                 {/* Two Side-by-Side iPad Videos */}
                 <div className="flex gap-4 pr-4">
