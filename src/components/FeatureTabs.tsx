@@ -77,7 +77,7 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
               >
                 {/* Two Side-by-Side iPad Videos */}
                 <div className="flex gap-4 pr-4">
-                  <div className="flex items-center w-[60vw]">
+                  <div className="flex items-center w-[45vw] max-w-[712px]">
                     <DeviceFrame>
                       <VideoPlayer
                         videoUrl={tab.leftVideoUrl}
@@ -87,7 +87,7 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
                       />
                     </DeviceFrame>
                   </div>
-                  <div className="flex items-center w-[60vw]">
+                  <div className="flex items-center w-[45vw] max-w-[712px]">
                     <DeviceFrame>
                       <VideoPlayer
                         videoUrl={tab.rightVideoUrl}
