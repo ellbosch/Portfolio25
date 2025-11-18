@@ -62,7 +62,7 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
           {/* Carousel Container - Continuous scroll */}
           <div
             ref={carouselRef}
-            className="overflow-x-scroll overflow-y-hidden scroll-smooth flex h-[600px] md:h-[500px] -mx-4 md:-mx-18 pl-4 pr-4 md:pl-18 md:pr-18"
+            className="overflow-x-scroll overflow-y-hidden scroll-smooth flex h-[600px] md:h-[500px] -mx-4 lg:-mx-20 pl-4 pr-4 md:pl-18 md:pr-18"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             <style>{`
