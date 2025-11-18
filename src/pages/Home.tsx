@@ -24,7 +24,7 @@ const Home = () => {
         {/* Projects Demo Section */}
         <section id="about" className="py-20 px-4 bg-white dark:bg-gray-900 overflow-x-hidden">
           <div className="max-w-7xl mx-auto">
-            <div className="mt-12 flex justify-center">
+            <div className="mt-12 text-center">
               <ScrollRotatingFrame>
                 <DeviceFrame>
                   <VideoPlayer
