@@ -37,9 +37,9 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
       const containerWidth = carouselRef.current.clientWidth;
       const itemWidth = carouselRef.current.scrollWidth / tabs.length;
 
-      // Calculate which item is most centered in the viewport
-      const centerPosition = scrollLeft + containerWidth / 2;
-      const newIndex = Math.floor(centerPosition / itemWidth);
+      // Calculate which item is most visible (using 60% threshold past left edge)
+      const thresholdPosition = scrollLeft + containerWidth * 0.6;
+      const newIndex = Math.floor(thresholdPosition / itemWidth);
 
       // Clamp to valid range
       const clampedIndex = Math.max(0, Math.min(tabs.length - 1, newIndex));
