@@ -24,7 +24,7 @@ const Home = () => {
         {/* Projects Demo Section */}
         <section id="about" className="py-20 px-4 bg-white dark:bg-gray-900 overflow-x-hidden">
           <div className="max-w-7xl mx-auto">
-            <div className="mt-12">
+            <div className="mt-12 flex justify-center">
               <ScrollRotatingFrame>
                 <DeviceFrame>
                   <VideoPlayer
@@ -102,7 +102,7 @@ const Home = () => {
         </section>
 
         {/* Vellum Section */}
-        <section id="vellum" className="bg-gray-50 dark:bg-gray-800 py-20 px-4">
+        <section id="vellum" className="bg-gray-50 dark:bg-gray-800 pt-20 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center">
               <ScrollFade delay={200}>
@@ -128,7 +128,7 @@ const Home = () => {
             {/* Two column layout with vertical content flow */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               {/* Left column */}
-              <div className="flex flex-col gap-12">
+              <div className="flex flex-col mb-100 gap-12">
                 <PaddingParallax reverse={true}>
                   <IPhoneFrame>
                     <VideoPlayer
@@ -140,7 +140,7 @@ const Home = () => {
                   </IPhoneFrame>
                 </PaddingParallax>
 
-                <div>
+                <div className="w-full mt-60 text-center">
                   <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
                     Create & Customize
                   </h3>
@@ -151,8 +151,8 @@ const Home = () => {
               </div>
 
               {/* Right column */}
-              <div className="flex flex-col gap-12 mt-120">
-                <div>
+              <div className="flex flex-col gap-12">
+                <div className="w-full mt-20 mb-60 text-center">
                   <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
                     Discover & Inspire
                   </h3>

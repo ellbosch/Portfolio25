@@ -7,7 +7,7 @@ interface IPhoneFrameProps {
 
 const IPhoneFrame = ({ children }: IPhoneFrameProps) => {
   return (
-    <div className="relative inline-block w-full max-w-md mx-auto">
+    <div className="relative w-full max-w-md mx-auto">
       {/* Container maintains aspect ratio for iPhone (approx 19.5:9) */}
       <div className="relative w-full" style={{ paddingBottom: '216%' }}>
         {/* Video content layer */}

@@ -43,7 +43,7 @@ const ScrollRotatingFrame = ({ children }: ScrollRotatingFrameProps) => {
   return (
     <div
       ref={containerRef}
-      className="relative w-full"
+      className="relative"
       style={{
         perspective: '1200px',
         transformStyle: 'preserve-3d',
