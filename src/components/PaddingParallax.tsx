@@ -2,17 +2,22 @@ import { ReactNode, useEffect, useRef, useState } from 'react';
 
 interface PaddingParallaxProps {
   children: ReactNode;
-  totalPadding?: number; // Total padding to redistribute (default: 100px)
-  minPadding?: number;
-  reverse?: boolean; // If true, starts with bottom padding instead of top
+  distance?: number; // Total distance to move in pixels (default: 200px)
+  reverse?: boolean; // If true, starts lower and moves up; otherwise starts higher and moves down
+  disabled?: boolean; // If true, disables the parallax effect
+  className?: string; // Optional className for the container
 }
 
-const PaddingParallax = ({ children, totalPadding = 400, minPadding = 0, reverse = false }: PaddingParallaxProps) => {
+const PaddingParallax = ({ children, distance = 200, reverse = false, disabled = false, className = '' }: PaddingParallaxProps) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [paddingTop, setPaddingTop] = useState(reverse ? minPadding : totalPadding);
-  const [paddingBottom, setPaddingBottom] = useState(reverse ? totalPadding : minPadding);
+  const [translateY, setTranslateY] = useState(disabled ? 0 : (reverse ? distance : -distance));
 
   useEffect(() => {
+    if (disabled) {
+      setTranslateY(0);
+      return;
+    }
+
     const handleScroll = () => {
       if (!ref.current) return;
 
@@ -20,24 +25,19 @@ const PaddingParallax = ({ children, totalPadding = 400, minPadding = 0, reverse
       const windowHeight = window.innerHeight;
 
       // Calculate how far the element has scrolled through the viewport
-      // 0 = just entering from bottom, 1 = converged
-      // Using a multiplier to make it converge faster (2x means converges at 50% through viewport)
-      const scrollProgress = Math.max(0, Math.min(1,
-        ((windowHeight - rect.top) / (windowHeight + rect.height)) * 1.2
-      ));
+      // 0 = just entering from bottom, converges earlier with multiplier
+      const scrollProgress = ((windowHeight - rect.top) / (windowHeight + rect.height)) * 2;
 
       if (reverse) {
-        // Reverse: start with bottom padding, shift to top as you scroll
-        const newPaddingTop = scrollProgress * totalPadding;
-        const newPaddingBottom = totalPadding - newPaddingTop;
-        setPaddingTop(newPaddingTop);
-        setPaddingBottom(newPaddingBottom);
+        // Reverse: start with positive translateY (lower), move up continuously
+        const newTranslateY = distance - (scrollProgress * distance);
+        setTranslateY(newTranslateY);
       } else {
-        // Normal: start with top padding, shift to bottom as you scroll
-        const newPaddingBottom = scrollProgress * totalPadding;
-        const newPaddingTop = totalPadding - newPaddingBottom;
-        setPaddingTop(newPaddingTop);
-        setPaddingBottom(newPaddingBottom);
+        // Normal: start with negative translateY (higher), move down continuously
+        const newTranslateY = -distance + (scrollProgress * distance);
+
+        // Cap how far the second video moves
+        setTranslateY(Math.min(-24, newTranslateY));
       }
     };
 
@@ -45,14 +45,13 @@ const PaddingParallax = ({ children, totalPadding = 400, minPadding = 0, reverse
     handleScroll(); // Initial calculation
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [totalPadding, reverse]);
+  }, [distance, reverse, disabled]);
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className={className}>
       <div
         style={{
-          paddingTop: `${paddingTop}px`,
-          paddingBottom: `${paddingBottom}px`,
+          transform: `translateY(${translateY}px)`,
         }}
       >
         {children}

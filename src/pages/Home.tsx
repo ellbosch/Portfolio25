@@ -8,6 +8,7 @@ import ScrollRotatingFrame from '../components/ScrollRotatingFrame';
 import ScrollFade from '../components/ScrollFade';
 import PaddingParallax from '../components/PaddingParallax';
 import FeatureTabs from '../components/FeatureTabs';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 import stitchIcon from '../assets/stitch-icon.png';
 import vellumIcon from '../assets/vellum-icon.png';
 import lobeIcon from '../assets/lobe-icon.png';
@@ -15,6 +16,7 @@ import lobeHeader from '../assets/lobe-header.jpg';
 import lobeDesktop from '../assets/lobe-desktop.jpg';
 
 const Home = () => {
+  const isMobile = useMediaQuery('(max-width: 768px)');
   return (
     <div className="min-h-screen">
       <Header />
@@ -24,7 +26,7 @@ const Home = () => {
         {/* Projects Demo Section */}
         <section id="about" className="py-20 px-4 bg-white dark:bg-gray-900 overflow-x-hidden">
           <div className="max-w-7xl mx-auto">
-            <div className="mt-12">
+            <div className="mt-12 text-center">
               <ScrollRotatingFrame>
                 <DeviceFrame>
                   <VideoPlayer
@@ -79,7 +81,7 @@ const Home = () => {
                   {
                     title: "AR/3D",
                     description: "First VPL built for rapid AR and 3D prototyping",
-                    leftVideoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/ARiPad.mp4",
+                    leftVideoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/AR.mp4",
                     rightVideoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/earth.mp4",
                   },
                   {
@@ -102,7 +104,7 @@ const Home = () => {
         </section>
 
         {/* Vellum Section */}
-        <section id="vellum" className="bg-gray-50 dark:bg-gray-800 py-20 px-4">
+        <section id="vellum" className="bg-gray-50 dark:bg-gray-800 pt-20 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center">
               <ScrollFade delay={200}>
@@ -126,10 +128,10 @@ const Home = () => {
             </div>
 
             {/* Two column layout with vertical content flow */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pb-20">
               {/* Left column */}
-              <div className="flex flex-col gap-12">
-                <PaddingParallax reverse={true}>
+              <div className="flex flex-col md:mb-100 md:gap-12">
+                <PaddingParallax reverse={true} disabled={isMobile}>
                   <IPhoneFrame>
                     <VideoPlayer
                       videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-feed-downscaled.mov"
@@ -140,7 +142,7 @@ const Home = () => {
                   </IPhoneFrame>
                 </PaddingParallax>
 
-                <div>
+                <div className="w-full text-center md:mt-20">
                   <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
                     Create & Customize
                   </h3>
@@ -151,8 +153,8 @@ const Home = () => {
               </div>
 
               {/* Right column */}
-              <div className="flex flex-col gap-12 mt-120">
-                <div>
+              <div className="flex flex-col gap-12 mt-0 md:mt-60">
+                <div className="w-full text-center md:mb-60 order-2 md:order-1">
                   <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
                     Discover & Inspire
                   </h3>
@@ -161,7 +163,7 @@ const Home = () => {
                   </p>
                 </div>
 
-                <PaddingParallax>
+                <PaddingParallax disabled={isMobile} className="order-1 md:order-2">
                   <IPhoneFrame>
                     <VideoPlayer
                       videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-edit-downscaled.mov"
