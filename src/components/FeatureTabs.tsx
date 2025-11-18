@@ -22,16 +22,16 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
   return (
     <ScrollFade delay={delay}>
       <div className="w-full">
-        {/* Desktop: Row layout, Mobile: Column layout (content first) */}
-        <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-12">
-          {/* Navigation Links - Horizontal scroll on mobile, Vertical stack on desktop */}
-          <nav className="flex md:flex-col gap-4 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0 md:min-w-[200px]">
+        {/* Links always on bottom on mobile, left side on desktop */}
+        <div className="flex flex-col-reverse gap-8 md:gap-12">
+          {/* Navigation Links - Horizontal stack */}
+          <nav className="flex gap-4 overflow-x-auto pb-2 justify-center">
             {tabs.map((tab, index) => (
               <button
                 key={index}
                 onClick={() => setActiveTab(index)}
                 className={`
-                  px-6 py-3 text-left whitespace-nowrap md:whitespace-normal
+                  px-6 py-3 text-center whitespace-nowrap
                   transition-colors duration-300 rounded-lg
                   ${
                     index === activeTab
@@ -70,7 +70,7 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
                 </div>
 
                 {/* Two Side-by-Side iPad Videos */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                   <div className="w-full">
                     <DeviceFrame>
                       <VideoPlayer

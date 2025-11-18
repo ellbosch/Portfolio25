@@ -23,7 +23,7 @@ const Home = () => {
 
         {/* Projects Demo Section */}
         <section id="about" className="py-20 px-4 bg-white dark:bg-gray-900 overflow-x-hidden">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-7xl mx-auto">
             <div className="mt-12">
               <ScrollRotatingFrame>
                 <DeviceFrame>
@@ -73,7 +73,7 @@ const Home = () => {
             </div>
 
             {/* Feature Tabs */}
-            <div className="mt-32 max-w-7xl mx-auto">
+            <div className="mt-32">
               <FeatureTabs
                 tabs={[
                   {
