@@ -62,7 +62,7 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
           {/* Carousel Container - Continuous scroll */}
           <div
             ref={carouselRef}
-            className="overflow-x-scroll overflow-y-hidden scroll-smooth flex h-[600px] md:h-[500px] -mx-4 md:-mx-18"
+            className="overflow-x-scroll overflow-y-hidden scroll-smooth flex h-[600px] md:h-[500px] -mx-4 md:-mx-18 pl-4 pr-4 md:pl-18 md:pr-18"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             <style>{`
@@ -73,11 +73,11 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
             {tabs.map((tab, index) => (
               <div
                 key={index}
-                className="min-w-full flex-shrink-0 h-full flex items-center"
+                className="min-w-full flex-shrink-0 h-full flex items-center justify-start"
               >
                 {/* Two Side-by-Side iPad Videos */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-4 w-full px-8 md:px-2">
-                  <div className="w-full flex items-center justify-center">
+                <div className="flex gap-4 pr-4">
+                  <div className="flex items-center w-[60vw]">
                     <DeviceFrame>
                       <VideoPlayer
                         videoUrl={tab.leftVideoUrl}
@@ -87,7 +87,7 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
                       />
                     </DeviceFrame>
                   </div>
-                  <div className="w-full flex items-center justify-center">
+                  <div className="flex items-center w-[60vw]">
                     <DeviceFrame>
                       <VideoPlayer
                         videoUrl={tab.rightVideoUrl}
