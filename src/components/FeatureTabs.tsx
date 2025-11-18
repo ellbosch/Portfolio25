@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import type { FC } from 'react';
 import DeviceFrame from './DeviceFrame';
 import VideoPlayer from './VideoPlayer';
@@ -18,18 +18,106 @@ interface FeatureTabsProps {
 
 const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
   const [activeTab, setActiveTab] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const scrollToTab = (index: number) => {
+    if (carouselRef.current) {
+      const scrollWidth = carouselRef.current.scrollWidth;
+      const targetScroll = (scrollWidth / tabs.length) * index;
+      carouselRef.current.scrollTo({
+        left: targetScroll,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  const handleScroll = () => {
+    if (carouselRef.current) {
+      const scrollLeft = carouselRef.current.scrollLeft;
+      const containerWidth = carouselRef.current.clientWidth;
+      const itemWidth = carouselRef.current.scrollWidth / tabs.length;
+
+      // Calculate which item is most centered in the viewport
+      const centerPosition = scrollLeft + containerWidth / 2;
+      const newIndex = Math.floor(centerPosition / itemWidth);
+
+      // Clamp to valid range
+      const clampedIndex = Math.max(0, Math.min(tabs.length - 1, newIndex));
+      setActiveTab(clampedIndex);
+    }
+  };
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (carousel) {
+      carousel.addEventListener('scroll', handleScroll);
+      return () => carousel.removeEventListener('scroll', handleScroll);
+    }
+  }, []);
 
   return (
     <ScrollFade delay={delay}>
       <div className="w-full">
-        {/* Links always on bottom on mobile, left side on desktop */}
-        <div className="flex flex-col-reverse gap-8 md:gap-12">
+        <div className="flex flex-col gap-8 md:gap-12">
+          {/* Carousel Container - Continuous scroll */}
+          <div
+            ref={carouselRef}
+            className="overflow-x-scroll scroll-smooth flex h-[600px] md:h-[500px]"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            <style>{`
+              div::-webkit-scrollbar {
+                display: none;
+              }
+            `}</style>
+            {tabs.map((tab, index) => (
+              <div
+                key={index}
+                className="min-w-full flex-shrink-0 h-full"
+              >
+                {/* Two Side-by-Side iPad Videos */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 px-4 h-full">
+                  <div className="w-full h-full flex items-center">
+                    <DeviceFrame>
+                      <VideoPlayer
+                        videoUrl={tab.leftVideoUrl}
+                        autoplay={true}
+                        loop={true}
+                        muted={true}
+                      />
+                    </DeviceFrame>
+                  </div>
+                  <div className="w-full h-full flex items-center">
+                    <DeviceFrame>
+                      <VideoPlayer
+                        videoUrl={tab.rightVideoUrl}
+                        autoplay={true}
+                        loop={true}
+                        muted={true}
+                      />
+                    </DeviceFrame>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Title and Description - Fixed height */}
+          <div className="text-center h-32 flex flex-col justify-center">
+            <h3 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
+              {tabs[activeTab].title}
+            </h3>
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              {tabs[activeTab].description}
+            </p>
+          </div>
+
           {/* Navigation Links - Horizontal stack */}
           <nav className="flex gap-4 overflow-x-auto pb-2 justify-center">
             {tabs.map((tab, index) => (
               <button
                 key={index}
-                onClick={() => setActiveTab(index)}
+                onClick={() => scrollToTab(index)}
                 className={`
                   px-6 py-3 text-center whitespace-nowrap
                   transition-colors duration-300 rounded-lg
@@ -44,57 +132,6 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
               </button>
             ))}
           </nav>
-
-          {/* Content Area */}
-          <div className="flex-1 relative min-h-[600px] md:min-h-[500px]">
-            {tabs.map((tab, index) => (
-              <div
-                key={index}
-                className={`
-                  transition-all duration-500
-                  ${
-                    index === activeTab
-                      ? 'opacity-100 translate-y-0 relative'
-                      : 'opacity-0 translate-y-4 absolute inset-0 pointer-events-none'
-                  }
-                `}
-              >
-                {/* Title and Description */}
-                <div className="text-center mb-12">
-                  <h3 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
-                    {tab.title}
-                  </h3>
-                  <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                    {tab.description}
-                  </p>
-                </div>
-
-                {/* Two Side-by-Side iPad Videos */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-                  <div className="w-full">
-                    <DeviceFrame>
-                      <VideoPlayer
-                        videoUrl={tab.leftVideoUrl}
-                        autoplay={true}
-                        loop={true}
-                        muted={true}
-                      />
-                    </DeviceFrame>
-                  </div>
-                  <div className="w-full">
-                    <DeviceFrame>
-                      <VideoPlayer
-                        videoUrl={tab.rightVideoUrl}
-                        autoplay={true}
-                        loop={true}
-                        muted={true}
-                      />
-                    </DeviceFrame>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </ScrollFade>
