@@ -6,7 +6,7 @@ interface PaddingParallaxProps {
   reverse?: boolean; // If true, starts lower and moves up; otherwise starts higher and moves down
 }
 
-const PaddingParallax = ({ children, distance = 600, reverse = false }: PaddingParallaxProps) => {
+const PaddingParallax = ({ children, distance = 200, reverse = false }: PaddingParallaxProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [translateY, setTranslateY] = useState(reverse ? distance : -distance);
 

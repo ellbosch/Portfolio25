@@ -140,7 +140,7 @@ const Home = () => {
                   </IPhoneFrame>
                 </PaddingParallax>
 
-                <div className="w-full text-center">
+                <div className="w-full text-center mt-20">
                   <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
                     Create & Customize
                   </h3>
@@ -151,8 +151,8 @@ const Home = () => {
               </div>
 
               {/* Right column */}
-              <div className="flex flex-col gap-12">
-                <div className="w-full mt-20 text-center">
+              <div className="flex flex-col gap-12 mt-60">
+                <div className="w-full text-center mb-60">
                   <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
                     Discover & Inspire
                   </h3>
