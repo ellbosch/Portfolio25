@@ -36,7 +36,22 @@ const VideoPlayer = ({ videoUrl, poster, autoplay = false, loop = false, muted =
           },
         ],
         poster: poster,
+        html5: {
+          vhs: {
+            overrideNative: true
+          },
+          nativeVideoTracks: false,
+          nativeAudioTracks: false,
+          nativeTextTracks: false
+        }
       });
+
+      // Set playsinline attributes for iOS
+      const videoEl = playerRef.current.el().querySelector('video');
+      if (videoEl) {
+        videoEl.setAttribute('playsinline', '');
+        videoEl.setAttribute('webkit-playsinline', '');
+      }
     } else if (playerRef.current) {
       const player = playerRef.current;
       player.autoplay(autoplay);

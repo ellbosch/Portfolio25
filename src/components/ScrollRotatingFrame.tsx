@@ -53,7 +53,6 @@ const ScrollRotatingFrame = ({ children }: ScrollRotatingFrameProps) => {
         style={{
           transform: `rotateX(${rotation}deg)`,
           transformOrigin: 'top center',
-          transition: 'transform 0.1s ease-out',
         }}
       >
         {children}

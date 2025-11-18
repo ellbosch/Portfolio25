@@ -6,7 +6,13 @@ import DeviceFrame from '../components/DeviceFrame';
 import IPhoneFrame from '../components/iPhoneFrame';
 import ScrollRotatingFrame from '../components/ScrollRotatingFrame';
 import ScrollFade from '../components/ScrollFade';
+import PaddingParallax from '../components/PaddingParallax';
+import FeatureTabs from '../components/FeatureTabs';
 import stitchIcon from '../assets/stitch-icon.png';
+import vellumIcon from '../assets/vellum-icon.png';
+import lobeIcon from '../assets/lobe-icon.png';
+import lobeHeader from '../assets/lobe-header.jpg';
+import lobeDesktop from '../assets/lobe-desktop.jpg';
 
 const Home = () => {
   return (
@@ -16,8 +22,8 @@ const Home = () => {
         <Hero />
 
         {/* Projects Demo Section */}
-        <section id="about" className="py-20 px-4 bg-white dark:bg-gray-900">
-          <div className="max-w-4xl mx-auto">
+        <section id="about" className="py-20 px-4 bg-white dark:bg-gray-900 overflow-x-hidden">
+          <div className="max-w-7xl mx-auto">
             <div className="mt-12">
               <ScrollRotatingFrame>
                 <DeviceFrame>
@@ -65,46 +71,168 @@ const Home = () => {
                 Today's AI tools are inadequate for interaction designers. Unlike other vibe coding tools which only expose code, Stitch leverages vibe coding and a familiar node-based visual programming language.
               </p>
             </div>
+
+            {/* Feature Tabs */}
+            <div className="mt-32">
+              <FeatureTabs
+                tabs={[
+                  {
+                    title: "AR/3D",
+                    description: "First VPL built for rapid AR and 3D prototyping",
+                    leftVideoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/ARiPad.mp4",
+                    rightVideoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/earth.mp4",
+                  },
+                  {
+                    title: "120 fps",
+                    description: "Scalable performance ensures your prototype's UI always matches screen refresh rate",
+                    leftVideoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/humane.mp4",
+                    rightVideoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/monthly-stays.mp4",
+                  },
+                  {
+                    title: "ML",
+                    description: "Create immersive ML-powered prototypes in minutes",
+                    leftVideoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/object-detection.mp4",
+                    rightVideoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/redwoods.mp4",
+                  },
+                ]}
+                delay={200}
+              />
+            </div>
           </div>
         </section>
 
         {/* Vellum Section */}
-        <section id="vellum" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
-          <div className="max-w-4xl mx-auto">
-            <div className="mt-8 max-w-3xl mx-auto">
+        <section id="vellum" className="bg-gray-50 dark:bg-gray-800 py-20 px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center">
               <ScrollFade delay={200}>
-                <h2 className="text-6xl md:text-7xl font-bold text-gray-900 dark:text-white text-center mb-6">Vellum</h2>
+                <div className="flex items-center justify-center gap-6 mb-6">
+                  <img
+                    src={vellumIcon}
+                    alt="Vellum Icon"
+                    className="w-32 h-32 rounded-[22%] shadow-lg"
+                    style={{
+                      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
+                    }}
+                  />
+                  <h2 className="text-6xl md:text-7xl font-bold text-gray-900 dark:text-white">Vellum</h2>
+                </div>
               </ScrollFade>
               <ScrollFade delay={400}>
-                <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center mb-12">
+                <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed max-w-3xl mx-auto">
                   A video generation app that transforms your creative ideas into stunning visual content.
                 </p>
               </ScrollFade>
             </div>
 
-            <div className="mt-24 max-w-3xl mx-auto">
-              <ScrollFade delay={600}>
-                <IPhoneFrame>
-                  <VideoPlayer
-                    videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-feed-downscaled.mov"
-                    autoplay={true}
-                    loop={true}
-                    muted={true}
+            {/* Two column layout with vertical content flow */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              {/* Left column */}
+              <div className="flex flex-col gap-12">
+                <PaddingParallax reverse={true}>
+                  <IPhoneFrame>
+                    <VideoPlayer
+                      videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-feed-downscaled.mov"
+                      autoplay={true}
+                      loop={true}
+                      muted={true}
+                    />
+                  </IPhoneFrame>
+                </PaddingParallax>
+
+                <div>
+                  <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                    Create & Customize
+                  </h3>
+                  <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed">
+                    Transform your ideas into reality with our intuitive editing tools. Adjust parameters, tweak styles, and perfect your vision with real-time AI generation.
+                  </p>
+                </div>
+              </div>
+
+              {/* Right column */}
+              <div className="flex flex-col gap-12 mt-120">
+                <div>
+                  <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                    Discover & Inspire
+                  </h3>
+                  <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed">
+                    Browse an endless feed of AI-generated videos. Swipe through stunning visuals created by our community and find inspiration for your next creation.
+                  </p>
+                </div>
+
+                <PaddingParallax>
+                  <IPhoneFrame>
+                    <VideoPlayer
+                      videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-edit-downscaled.mov"
+                      autoplay={true}
+                      loop={true}
+                      muted={true}
+                    />
+                  </IPhoneFrame>
+                </PaddingParallax>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Lobe Section */}
+        <section id="lobe" className="bg-white dark:bg-gray-900 py-20 px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-20">
+              <ScrollFade delay={200}>
+                <div className="flex items-center justify-center gap-6 mb-6">
+                  <img
+                    src={lobeIcon}
+                    alt="Lobe Icon"
+                    className="w-32 h-32 rounded-[22%] shadow-lg"
+                    style={{
+                      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
+                    }}
                   />
-                </IPhoneFrame>
+                  <h2 className="text-6xl md:text-7xl font-bold text-gray-900 dark:text-white">Lobe</h2>
+                </div>
+              </ScrollFade>
+              <ScrollFade delay={400}>
+                <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed max-w-3xl mx-auto">
+                  Machine learning made easy. Train custom models without writing code.
+                </p>
               </ScrollFade>
             </div>
 
-            <div className="mt-36 max-w-3xl mx-auto">
-              <ScrollFade delay={800}>
-                <IPhoneFrame>
-                  <VideoPlayer
-                    videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-edit-downscaled.mov"
-                    autoplay={true}
-                    loop={true}
-                    muted={true}
+            {/* Lobe Header Image */}
+            <div className="mb-20">
+              <ScrollFade delay={200}>
+                <div className="rounded-[20px] overflow-hidden shadow-2xl">
+                  <img
+                    src={lobeHeader}
+                    alt="Lobe Header"
+                    className="w-full h-auto"
                   />
-                </IPhoneFrame>
+                </div>
+              </ScrollFade>
+              <ScrollFade delay={400}>
+                <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center mt-12">
+                  Lobe is a free, easy-to-use desktop application that empowers anyone to train custom machine learning models without writing a single line of code.
+                </p>
+              </ScrollFade>
+            </div>
+
+            {/* Lobe Desktop Image */}
+            <div className="mb-20">
+              <ScrollFade delay={200}>
+                <div className="rounded-[20px] overflow-hidden shadow-2xl">
+                  <img
+                    src={lobeDesktop}
+                    alt="Lobe Desktop"
+                    className="w-full h-auto"
+                  />
+                </div>
+              </ScrollFade>
+              <ScrollFade delay={400}>
+                <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center mt-12">
+                  With an intuitive interface and powerful automation, Lobe makes it simple to collect examples, train your model, and export it for use in your app.
+                </p>
               </ScrollFade>
             </div>
           </div>
