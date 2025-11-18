@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import type { FC } from 'react';
 import DeviceFrame from './DeviceFrame';
 import VideoPlayer from './VideoPlayer';
@@ -7,8 +7,7 @@ import ScrollFade from './ScrollFade';
 interface TabData {
   title: string;
   description: string;
-  leftVideoUrl: string;
-  rightVideoUrl: string;
+  videoUrl: string;
 }
 
 interface FeatureTabsProps {
@@ -17,43 +16,7 @@ interface FeatureTabsProps {
 }
 
 const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
-  const [activeTab, setActiveTab] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
-
-  const scrollToTab = (index: number) => {
-    if (carouselRef.current) {
-      const scrollWidth = carouselRef.current.scrollWidth;
-      const targetScroll = (scrollWidth / tabs.length) * index;
-      carouselRef.current.scrollTo({
-        left: targetScroll,
-        behavior: 'smooth',
-      });
-    }
-  };
-
-  const handleScroll = () => {
-    if (carouselRef.current) {
-      const scrollLeft = carouselRef.current.scrollLeft;
-      const containerWidth = carouselRef.current.clientWidth;
-      const itemWidth = carouselRef.current.scrollWidth / tabs.length;
-
-      // Calculate which item is most visible (using 60% threshold past left edge)
-      const thresholdPosition = scrollLeft + containerWidth * 0.6;
-      const newIndex = Math.floor(thresholdPosition / itemWidth);
-
-      // Clamp to valid range
-      const clampedIndex = Math.max(0, Math.min(tabs.length - 1, newIndex));
-      setActiveTab(clampedIndex);
-    }
-  };
-
-  useEffect(() => {
-    const carousel = carouselRef.current;
-    if (carousel) {
-      carousel.addEventListener('scroll', handleScroll);
-      return () => carousel.removeEventListener('scroll', handleScroll);
-    }
-  }, []);
 
   return (
     <ScrollFade delay={delay}>
@@ -73,65 +36,32 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
             {tabs.map((tab, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 h-full flex overflow-hidden"
+                className="flex-shrink-0 flex flex-col pr-8"
               >
-                {/* Two Side-by-Side iPad Videos */}
-                <div className="flex gap-4 pr-4 overflow-hidden">
-                  <div className="flex items-center w-[45vw] max-w-[712px]">
-                    <DeviceFrame>
-                      <VideoPlayer
-                        videoUrl={tab.leftVideoUrl}
-                        autoplay={true}
-                        loop={true}
-                        muted={true}
-                      />
-                    </DeviceFrame>
-                  </div>
-                  <div className="flex items-center w-[45vw] max-w-[712px]">
-                    <DeviceFrame>
-                      <VideoPlayer
-                        videoUrl={tab.rightVideoUrl}
-                        autoplay={true}
-                        loop={true}
-                        muted={true}
-                      />
-                    </DeviceFrame>
-                  </div>
+                {/* Single iPad Video */}
+                <div className="flex items-center w-[45vw] max-w-[712px]">
+                  <DeviceFrame>
+                    <VideoPlayer
+                      videoUrl={tab.videoUrl}
+                      autoplay={true}
+                      loop={true}
+                      muted={true}
+                    />
+                  </DeviceFrame>
+                </div>
+                {/* Header and Description below video */}
+                <div className="mt-8 w-[45vw] max-w-[712px]">
+                  <h3 className="text-3xl md:text-4xl font-bold mb-3 text-gray-900 dark:text-white">
+                    {tab.title}
+                  </h3>
+                  <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300">
+                    {tab.description}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Title and Description - Fixed height */}
-          <div className="text-center h-32 flex flex-col justify-center">
-            <h3 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
-              {tabs[activeTab].title}
-            </h3>
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              {tabs[activeTab].description}
-            </p>
-          </div>
-
-          {/* Navigation Links - Horizontal stack */}
-          <nav className="flex gap-4 overflow-x-auto pb-2 justify-center">
-            {tabs.map((tab, index) => (
-              <button
-                key={index}
-                onClick={() => scrollToTab(index)}
-                className={`
-                  px-6 py-3 text-center whitespace-nowrap
-                  transition-colors duration-300 rounded-lg
-                  ${
-                    index === activeTab
-                      ? 'text-gray-900 dark:text-white font-semibold bg-gray-100 dark:bg-gray-800'
-                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800/50'
-                  }
-                `}
-              >
-                <span className="text-xl md:text-2xl">{tab.title}</span>
-              </button>
-            ))}
-          </nav>
         </div>
       </div>
     </ScrollFade>

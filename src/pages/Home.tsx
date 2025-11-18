@@ -79,22 +79,34 @@ const Home = () => {
               <FeatureTabs
                 tabs={[
                   {
-                    title: "AR/3D",
-                    description: "First VPL built for rapid AR and 3D prototyping",
-                    leftVideoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/AR.mp4",
-                    rightVideoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/earth.mp4",
+                    title: "AR",
+                    description: "Stitch enables rapid AR prototyping, supporting complex 3D object manipulation built in minutes instead of hours.",
+                    videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/AR.mp4",
                   },
                   {
-                    title: "120 fps",
-                    description: "Scalable performance ensures your prototype's UI always matches screen refresh rate",
-                    leftVideoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/humane.mp4",
-                    rightVideoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/monthly-stays.mp4",
+                    title: "Object Detection",
+                    description: "Prototype sophisticated object-detection scenarios — all with no code.",
+                    videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/object-detection.mp4",
                   },
                   {
-                    title: "ML",
-                    description: "Create immersive ML-powered prototypes in minutes",
-                    leftVideoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/object-detection.mp4",
-                    rightVideoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/redwoods.mp4",
+                    title: "Powerful Rendering Engine",
+                    description: "Stitch maintains 120 FPS regardless of graph complexity, simulating the performance of a full-scale app.",
+                    videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/humane.mp4",
+                  },
+                  {
+                    title: "Zero-Tradeoff Prototyping",
+                    description: "Stitch empowered Airbnb's design team to prototype behavior-rich UI, including haptic interactions.",
+                    videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/monthly-stays.mp4",
+                  },
+                  {
+                    title: "Image Classification",
+                    description: "Machine-learning prototyping is always at your fingertips.",
+                    videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/redwoods.mp4",
+                  },
+                  {
+                    title: "3D",
+                    description: "Stitch's VPL natively supports 3D — a long-requested feature in the design community.",
+                    videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/earth.mp4",
                   },
                 ]}
                 delay={200}
