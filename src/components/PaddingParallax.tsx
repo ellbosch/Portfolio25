@@ -28,7 +28,9 @@ const PaddingParallax = ({ children, distance = 200, reverse = false }: PaddingP
       } else {
         // Normal: start with negative translateY (higher), move down continuously
         const newTranslateY = -distance + (scrollProgress * distance);
-        setTranslateY(newTranslateY);
+
+        // Cap how far the second video moves
+        setTranslateY(Math.min(-24, newTranslateY));
       }
     };
 
