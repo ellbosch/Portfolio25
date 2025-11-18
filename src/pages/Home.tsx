@@ -7,6 +7,7 @@ import IPhoneFrame from '../components/iPhoneFrame';
 import ScrollRotatingFrame from '../components/ScrollRotatingFrame';
 import ScrollFade from '../components/ScrollFade';
 import PaddingParallax from '../components/PaddingParallax';
+import FeatureSection from '../components/FeatureSection';
 import stitchIcon from '../assets/stitch-icon.png';
 import vellumIcon from '../assets/vellum-icon.png';
 import lobeIcon from '../assets/lobe-icon.png';
@@ -69,6 +70,33 @@ const Home = () => {
               <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center mt-12 mb-8">
                 Today's AI tools are inadequate for interaction designers. Unlike other vibe coding tools which only expose code, Stitch leverages vibe coding and a familiar node-based visual programming language.
               </p>
+            </div>
+
+            {/* Feature Sections */}
+            <div className="mt-32 space-y-24 max-w-7xl mx-auto">
+              <FeatureSection
+                title="AR/3D"
+                description="First VPL built for rapid AR and 3D prototyping"
+                leftVideoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/ARiPad.mp4"
+                rightVideoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/earth.mp4"
+                delay={200}
+              />
+
+              <FeatureSection
+                title="120 fps"
+                description="Scalable performance ensures your prototype's UI always matches screen refresh rate"
+                leftVideoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/humane.mp4"
+                rightVideoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/monthly-stays.mp4"
+                delay={400}
+              />
+
+              <FeatureSection
+                title="ML"
+                description="Create immersive ML-powered prototypes in minutes"
+                leftVideoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/object-detection.mp4"
+                rightVideoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/redwoods.mp4"
+                delay={600}
+              />
             </div>
           </div>
         </section>
