@@ -81,7 +81,7 @@ const Home = () => {
                   {
                     title: "AR/3D",
                     description: "First VPL built for rapid AR and 3D prototyping",
-                    leftVideoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/ARiPad.mp4",
+                    leftVideoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/AR.mp4",
                     rightVideoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/earth.mp4",
                   },
                   {
