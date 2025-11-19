@@ -275,12 +275,14 @@ const Home = () => {
                     className="w-full h-auto"
                   />
                   <div className="border-t-2 border-gray-200 dark:border-gray-700"></div>
+                  <div className="-mx-4 md:mx-0">
                     <VideoPlayer
                       videoUrl={lobeTrain}
                       autoplay={true}
                       loop={true}
                       muted={true}
                     />
+                  </div>
                   <div className="border-t-2 border-gray-200 dark:border-gray-700"></div>
                                     <img
                     src={lobeDesktop}
