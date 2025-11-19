@@ -195,38 +195,56 @@ const Home = () => {
                   </IPhoneFrame>
                 </PaddingParallax>
 
-                <div className="w-full text-center md:mt-20">
-                  <h3 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 gap-3">
-                    <SFIcon
-                      icon={sfSliderHorizontal3}
-                      size={48}
-                      className="text-gray-900 dark:text-white mb-2"
-                    />
-                    &nbsp;Robust Editing Tools
-                  </h3>
-                  <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed">
-                    Use the assistant to refine any element of your screenplay, from character descriptions and environments to camera angles and shot composition.
-                  </p>
-                </div>
+                {isMobile ? (
+                  <div className="w-full text-center md:mt-8">
+                    <h3 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 gap-3">
+                      <SFIcon
+                        icon={sfWandAndSparkles}
+                        size={48}
+                        className="text-gray-900 dark:text-white mb-3"
+                      />
+                      &nbsp;AI-Powered Screenwriting
+                    </h3>
+                    <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed">
+                      Director-level power in the palm of your hand. Start with a short prompt and generate a multi-shot, cinematic-style video with no time constraints.
+                    </p>
+                  </div>
+                ) : (
+                  <div className="w-full text-center md:mt-20">
+                    <h3 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 gap-3">
+                      <SFIcon
+                        icon={sfSliderHorizontal3}
+                        size={48}
+                        className="text-gray-900 dark:text-white mb-2"
+                      />
+                      &nbsp;Robust Editing Tools
+                    </h3>
+                    <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed">
+                      Use the assistant to refine any element of your screenplay, from character descriptions and environments to camera angles and shot composition.
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* Right column */}
-              <div className="flex flex-col gap-12 mt-0 md:mt-60">
-                <div className="w-full text-center md:mb-60 order-2 md:order-1">
-                  <h3 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 gap-3">
-                    <SFIcon
-                      icon={sfWandAndSparkles}
-                      size={48}
-                      className="text-gray-900 dark:text-white mb-3"
-                    />
-                    &nbsp;AI-Powered Screenwriting
-                  </h3>
-                  <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed">
-                    Director-level power in the palm of your hand. Start with a short prompt and generate a multi-shot, cinematic-style video with no time constraints.
-                  </p>
-                </div>
+              <div className="flex flex-col md:gap-12 mt-0 md:mt-60">
+                {!isMobile && (
+                  <div className="w-full text-center md:mb-60">
+                    <h3 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 gap-3">
+                      <SFIcon
+                        icon={sfWandAndSparkles}
+                        size={48}
+                        className="text-gray-900 dark:text-white mb-3"
+                      />
+                      &nbsp;AI-Powered Screenwriting
+                    </h3>
+                    <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed">
+                      Director-level power in the palm of your hand. Start with a short prompt and generate a multi-shot, cinematic-style video with no time constraints.
+                    </p>
+                  </div>
+                )}
 
-                <PaddingParallax disabled={isMobile} className="order-1 md:order-2">
+                <PaddingParallax disabled={isMobile}>
                   <IPhoneFrame>
                     <VideoPlayer
                       videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-edit-downscaled.mov"
@@ -236,6 +254,22 @@ const Home = () => {
                     />
                   </IPhoneFrame>
                 </PaddingParallax>
+
+                {isMobile && (
+                  <div className="w-full text-center mt-4">
+                    <h3 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 gap-3">
+                      <SFIcon
+                        icon={sfSliderHorizontal3}
+                        size={48}
+                        className="text-gray-900 dark:text-white mb-2"
+                      />
+                      &nbsp;Robust Editing Tools
+                    </h3>
+                    <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed">
+                      Use the assistant to refine any element of your screenplay, from character descriptions and environments to camera angles and shot composition.
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
