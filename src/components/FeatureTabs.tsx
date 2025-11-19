@@ -2,7 +2,6 @@ import { useRef } from 'react';
 import type { FC } from 'react';
 import DeviceFrame from './DeviceFrame';
 import VideoPlayer from './VideoPlayer';
-import ScrollFade from './ScrollFade';
 import { SFIcon } from '@bradleyhodges/sfsymbols-react';
 import {
   sfArkit,
@@ -66,8 +65,7 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
   };
 
   return (
-    <ScrollFade delay={delay}>
-      <div className="w-full">
+    <div className="w-full">
         <div className="flex flex-col gap-8 md:gap-12">
           {/* Carousel Container - Continuous scroll */}
           <div
@@ -144,7 +142,6 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
 
         </div>
       </div>
-    </ScrollFade>
   );
 };
 
