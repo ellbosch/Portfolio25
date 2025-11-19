@@ -39,7 +39,7 @@ const Hero = () => {
   ];
 
   return (
-    <section className="min-h-[75vh] pt-24 px-4 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 flex items-center">
+    <section className="min-h-[65vh] pt-24 px-4 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 flex items-center">
       <div className="max-w-4xl mx-auto w-full">
         <h1
           className="text-5xl md:text-7xl font-bold mb-12 text-gray-900 dark:text-white text-center animate-fade-in"
