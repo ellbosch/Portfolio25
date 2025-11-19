@@ -14,6 +14,8 @@ import vellumIcon from '../assets/vellum-icon.png';
 import lobeIcon from '../assets/lobe-icon.png';
 import lobeHeader from '../assets/lobe-header.jpg';
 import lobeDesktop from '../assets/lobe-desktop.jpg';
+import { SFIcon } from '@bradleyhodges/sfsymbols-react';
+import { sfGlobe, sfBrandGithub } from '@bradleyhodges/sfsymbols';
 
 const Home = () => {
   const isMobile = useMediaQuery('(max-width: 768px)');
@@ -56,6 +58,28 @@ const Home = () => {
                 <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center">
                   Meet Stitch, an AI-powered design prototyping, unapologetically made for designers, harnessing the first-ever visual programming language powered by an LLM.
                 </p>
+              </ScrollFade>
+              <ScrollFade delay={500}>
+                <div className="flex items-center justify-center gap-4 mt-6">
+                  <a
+                    href="https://stitchdesign.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium"
+                  >
+                    <SFIcon icon={sfGlobe} size={20} />
+                    Website
+                  </a>
+                  <a
+                    href="https://github.com/stitchDesign/Stitch/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium"
+                  >
+                    <SFIcon icon={sfBrandGithub} size={20} />
+                    GitHub
+                  </a>
+                </div>
               </ScrollFade>
             </div>
             <div className="mt-36 mx-auto">
