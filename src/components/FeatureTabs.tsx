@@ -3,17 +3,44 @@ import type { FC } from 'react';
 import DeviceFrame from './DeviceFrame';
 import VideoPlayer from './VideoPlayer';
 import ScrollFade from './ScrollFade';
+import { SFIcon } from '@bradleyhodges/sfsymbols-react';
+import {
+  sfArkit,
+  sfViewfinder,
+  sfBoltFill,
+  sfSliderHorizontal3,
+  sfPhotoBadgeCheckmark,
+  sfCubeFill,
+  sfChevronLeft,
+  sfChevronRight,
+} from '@bradleyhodges/sfsymbols';
 
 interface TabData {
   title: string;
   description: string;
   videoUrl: string;
+  symbol?: string;
 }
 
 interface FeatureTabsProps {
   tabs: TabData[];
   delay?: number;
 }
+
+// Symbol mapping helper
+const getSymbolIcon = (symbolName?: string) => {
+  const symbolMap: Record<string, any> = {
+    'arkit': sfArkit,
+    'viewfinder': sfViewfinder,
+    'bolt.fill': sfBoltFill,
+    'slider.horizontal.3': sfSliderHorizontal3,
+    'photo.badge.checkmark': sfPhotoBadgeCheckmark,
+    'cube.fill': sfCubeFill,
+    'chevron.left': sfChevronLeft,
+    'chevron.right': sfChevronRight,
+  };
+  return symbolName ? symbolMap[symbolName] : null;
+};
 
 const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -71,6 +98,15 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
                 </div>
                 {/* Header and Description below video */}
                 <div className="mt-8 w-[45vw] max-w-[712px] text-center px-4">
+                  {tab.symbol && getSymbolIcon(tab.symbol) && (
+                    <div className="flex justify-center mb-4">
+                      <SFIcon
+                        icon={getSymbolIcon(tab.symbol)!}
+                        size={48}
+                        className="text-gray-900 dark:text-white"
+                      />
+                    </div>
+                  )}
                   <h3 className="text-3xl md:text-4xl font-bold mb-3 text-gray-900 dark:text-white">
                     {tab.title}
                   </h3>
@@ -89,38 +125,22 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
               className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
               aria-label="Scroll left"
             >
-              <svg
-                className="w-6 h-6 text-gray-900 dark:text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
+              <SFIcon
+                icon={sfChevronLeft}
+                size={24}
+                className="text-gray-900 dark:text-white"
+              />
             </button>
             <button
               onClick={scrollRight}
               className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
               aria-label="Scroll right"
             >
-              <svg
-                className="w-6 h-6 text-gray-900 dark:text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
+              <SFIcon
+                icon={sfChevronRight}
+                size={24}
+                className="text-gray-900 dark:text-white"
+              />
             </button>
           </div>
 

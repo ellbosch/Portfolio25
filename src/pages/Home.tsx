@@ -82,31 +82,37 @@ const Home = () => {
                     title: "AR",
                     description: "Stitch enables rapid AR prototyping, supporting complex 3D object manipulation built in minutes instead of hours.",
                     videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/AR.mp4",
+                    symbol: "arkit",
                   },
                   {
                     title: "Object Detection",
                     description: "Prototype sophisticated object-detection scenarios — all with no code.",
                     videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/object-detection.mp4",
+                    symbol: "viewfinder",
                   },
                   {
                     title: "Powerful Rendering Engine",
                     description: "Stitch maintains 120 FPS regardless of graph complexity, simulating the performance of a full-scale app.",
                     videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/humane.mp4",
+                    symbol: "bolt.fill",
                   },
                   {
                     title: "Zero-Tradeoff Prototyping",
                     description: "Stitch empowered Airbnb's design team to prototype behavior-rich UI, including haptic interactions.",
                     videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/monthly-stays.mp4",
+                    symbol: "slider.horizontal.3",
                   },
                   {
                     title: "Image Classification",
                     description: "Machine-learning prototyping is always at your fingertips.",
                     videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/redwoods.mp4",
+                    symbol: "photo.badge.checkmark",
                   },
                   {
                     title: "3D",
                     description: "Stitch's VPL natively supports 3D — a long-requested feature in the design community.",
                     videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/earth.mp4",
+                    symbol: "cube.fill",
                   },
                 ]}
                 delay={200}
