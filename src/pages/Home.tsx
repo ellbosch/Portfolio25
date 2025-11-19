@@ -37,9 +37,9 @@ const Home = () => {
         <Hero />
 
         {/* Projects Demo Section */}
-        <section id="about" className="py-20 px-4 bg-gray-50 dark:bg-gray-800 overflow-x-hidden">
+        <section id="about" className="py-12 md:py-20 px-4 bg-gray-50 dark:bg-gray-800 overflow-x-hidden">
           <div className="max-w-7xl mx-auto">
-            <div className="mt-12 text-center">
+            <div className="mt-6 md:mt-12 text-center">
               <ScrollRotatingFrame>
                 <DeviceFrame>
                   <VideoPlayer
@@ -51,9 +51,9 @@ const Home = () => {
                 </DeviceFrame>
               </ScrollRotatingFrame>
             </div>
-            <div className="mt-8 max-w-3xl mx-auto">
+            <div className="mt-6 md:mt-8 max-w-3xl mx-auto">
               <ScrollFade delay={200}>
-                <div className="flex items-center justify-center gap-6 mb-6">
+                <div className="flex items-center justify-center gap-4 md:gap-6 mb-4 md:mb-6">
                   <img
                     src={stitchIcon}
                     alt="Stitch Icon"
@@ -93,7 +93,7 @@ const Home = () => {
                 </div>
               </ScrollFade>
             </div>
-            <div className="mt-36 mx-auto">
+            <div className="mt-16 md:mt-36 mx-auto">
               <ScrollFade delay={600}>
                 <div className="rounded-[20px] overflow-hidden">
                   <VideoPlayer
@@ -110,7 +110,7 @@ const Home = () => {
             </div>
 
             {/* Feature Tabs */}
-            <div className="mt-32">
+            <div className="mt-16 md:mt-32">
               <FeatureTabs
                 tabs={[
                   {
@@ -157,7 +157,7 @@ const Home = () => {
         </section>
 
         {/* Vellum Section */}
-        <section id="vellum" className="bg-white dark:bg-gray-900 pt-20 px-4">
+        <section id="vellum" className="bg-white dark:bg-gray-900 pt-12 md:pt-20 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center">
               <ScrollFade delay={200}>
@@ -242,9 +242,9 @@ const Home = () => {
         </section>
 
         {/* Lobe Section */}
-        <section id="lobe" className="bg-gray-50 dark:bg-gray-800 py-20 px-4">
+        <section id="lobe" className="bg-gray-50 dark:bg-gray-800 py-12 md:py-20 px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-20">
+            <div className="text-center mb-12 md:mb-20">
               <ScrollFade delay={200}>
                 <div className="flex items-center justify-center gap-6 mb-6">
                   <img
@@ -296,7 +296,7 @@ const Home = () => {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-20 px-4 bg-white dark:bg-gray-900">
+        <section id="contact" className="py-12 md:py-20 px-4 bg-white dark:bg-gray-900">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white">Get In Touch</h2>
             <div className="flex justify-center gap-4 flex-wrap">
