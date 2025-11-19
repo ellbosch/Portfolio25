@@ -1,3 +1,4 @@
+import React from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import ProjectCard from '../components/ProjectCard';
@@ -16,10 +17,19 @@ import lobeHeader from '../assets/lobe-header.jpg';
 import lobeDesktop from '../assets/lobe-desktop.jpg';
 import lobeTrain from '../assets/lobe-train.mp4';
 import { SFIcon } from '@bradleyhodges/sfsymbols-react';
-import { sfGlobe, sfBrandGithub, sfWandAndSparkles, sfSliderHorizontal3 } from '@bradleyhodges/sfsymbols';
+import { sfGlobe, sfBrandGithub, sfWandAndSparkles, sfSliderHorizontal3, sfBrandLinkedin, sfEnvelope } from '@bradleyhodges/sfsymbols';
 
 const Home = () => {
   const isMobile = useMediaQuery('(max-width: 768px)');
+
+  // Email obfuscation - split into parts to avoid scraping
+  const handleEmailClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const user = 'elliot.boschwitz';
+    const domain = 'gmail.com';
+    window.location.href = `mailto:${user}@${domain}`;
+  };
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -94,8 +104,8 @@ const Home = () => {
                   />
                 </div>
               </ScrollFade>
-              <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center mt-12 mb-8">
-                While most vibe-coding solutions focus solely on code, Stitch combines vibe coding with a familiar, node-based visual programming language—making advanced interactions fast, intuitive, and accessible.
+              <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center mt-4 mb-8 max-w-3xl mx-auto">
+                While most vibe-coding solutions focus solely on code, Stitch combines vibe coding with a familiar, node-based visual programming language. Making advanced interactions fast, intuitive, and accessible.
               </p>
             </div>
 
@@ -165,7 +175,7 @@ const Home = () => {
               </ScrollFade>
               <ScrollFade delay={400}>
                 <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed max-w-3xl mx-auto">
-                  A video generation app that transforms your creative ideas into stunning visual content.
+                  AI-powered storytelling for short-form TV series.
                 </p>
               </ScrollFade>
             </div>
@@ -256,7 +266,7 @@ const Home = () => {
             </div>
 
             {/* Lobe Images */}
-            <div className="mb-20">
+            <div>
               <ScrollFade delay={200}>
                 <div className="overflow-hidden shadow-2xl">
                   <img
@@ -285,82 +295,35 @@ const Home = () => {
           </div>
         </section>
 
-        {/* iOS Projects Section */}
-        <section id="ios-projects" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold mb-12 text-center text-gray-900 dark:text-white">iOS Projects</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Placeholder - will be populated with actual projects */}
-              <ProjectCard
-                title="Project Title"
-                description="Brief description of the iOS project"
-                videoUrl=""
-                links={[
-                  { label: "GitHub", url: "#" },
-                  { label: "App Store", url: "#" }
-                ]}
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* AI Projects Section */}
-        <section id="ai-projects" className="py-20 px-4 bg-white dark:bg-gray-900">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold mb-12 text-center text-gray-900 dark:text-white">AI Projects</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Placeholder - will be populated with actual projects */}
-              <ProjectCard
-                title="AI Project Title"
-                description="Brief description of the AI project"
-                videoUrl=""
-                links={[
-                  { label: "GitHub", url: "#" },
-                  { label: "Demo", url: "#" }
-                ]}
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* Microsoft Experience Section */}
-        <section id="microsoft" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold mb-8 text-center text-gray-900 dark:text-white">Microsoft Experience</h2>
-            <div className="prose prose-lg mx-auto">
-              <p className="text-lg text-gray-700 dark:text-gray-200">
-                {/* Add your Microsoft experience highlights here */}
-                Brief highlights of your work at Microsoft...
-              </p>
-            </div>
-          </div>
-        </section>
-
         {/* Contact Section */}
-        <section id="contact" className="py-20 px-4 bg-white dark:bg-gray-900">
+        <section id="contact" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold mb-8 text-gray-900 dark:text-white">Get In Touch</h2>
-            <div className="flex justify-center gap-6 flex-wrap">
-              <a
-                href="https://github.com/ellbosch"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-300 transition-colors"
-              >
-                GitHub
-              </a>
+            <div className="flex justify-center gap-4 flex-wrap">
               <a
                 href="https://www.linkedin.com/in/elliotboschwitz/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                className="flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium"
               >
+                <SFIcon icon={sfBrandLinkedin} size={20} />
                 LinkedIn
               </a>
               <a
-                href="mailto:your.email@example.com"
-                className="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                href="https://github.com/ellbosch"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium"
               >
+                <SFIcon icon={sfBrandGithub} size={20} />
+                GitHub
+              </a>
+              <a
+                href="#"
+                onClick={handleEmailClick}
+                className="flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium"
+              >
+                <SFIcon icon={sfEnvelope} size={20} />
                 Email
               </a>
             </div>
