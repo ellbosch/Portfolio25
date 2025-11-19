@@ -275,18 +275,18 @@ const Home = () => {
                     className="w-full h-auto"
                   />
                   <div className="border-t-2 border-gray-200 dark:border-gray-700"></div>
-                  <img
-                    src={lobeDesktop}
-                    alt="Lobe Desktop"
-                    className="w-full h-auto"
-                  />
-                  <div className="border-t-2 border-gray-200 dark:border-gray-700"></div>
                     <VideoPlayer
                       videoUrl={lobeTrain}
                       autoplay={true}
                       loop={true}
                       muted={true}
                     />
+                  <div className="border-t-2 border-gray-200 dark:border-gray-700"></div>
+                                    <img
+                    src={lobeDesktop}
+                    alt="Lobe Desktop"
+                    className="w-full h-auto"
+                  />
                 </div>
               </ScrollFade>
             </div>
