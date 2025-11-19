@@ -17,7 +17,7 @@ import lobeHeader from '../assets/lobe-header.jpg';
 import lobeDesktop from '../assets/lobe-desktop.jpg';
 import lobeTrain from '../assets/lobe-train.mp4';
 import { SFIcon } from '@bradleyhodges/sfsymbols-react';
-import { sfGlobe, sfBrandGithub, sfWandAndSparkles, sfSliderHorizontal3, sfBrandLinkedin, sfEnvelope } from '@bradleyhodges/sfsymbols';
+import { sfGlobe, sfBrandGithub, sfWandAndSparkles, sfSliderHorizontal3, sfBrandLinkedin, sfEnvelope, sfPersonTextRectangleFill } from '@bradleyhodges/sfsymbols';
 
 const Home = () => {
   const isMobile = useMediaQuery('(max-width: 768px)');
@@ -57,7 +57,7 @@ const Home = () => {
                   <img
                     src={stitchIcon}
                     alt="Stitch Icon"
-                    className="w-32 h-32 rounded-[22%] shadow-lg"
+                    className="w-24 h-24 md:w-32 md:h-32 rounded-[22%] shadow-lg"
                     style={{
                       boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
                     }}
@@ -161,11 +161,11 @@ const Home = () => {
           <div className="max-w-6xl mx-auto">
             <div className="text-center">
               <ScrollFade delay={200}>
-                <div className="flex items-center justify-center gap-6 mb-6">
+                <div className="flex items-center justify-center gap-4 md:gap-6 mb-4 md:mb-6">
                   <img
                     src={vellumIcon}
                     alt="Vellum Icon"
-                    className="w-32 h-32 rounded-[22%] shadow-lg"
+                    className="w-24 h-24 md:w-32 md:h-32 rounded-[22%] shadow-lg"
                     style={{
                       boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
                     }}
@@ -181,7 +181,7 @@ const Home = () => {
             </div>
 
             {/* Two column layout with vertical content flow */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pb-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pb-12 md:pb-20">
               {/* Left column */}
               <div className="flex flex-col md:mb-100 md:gap-12">
                 <PaddingParallax reverse={true} disabled={isMobile}>
@@ -246,11 +246,11 @@ const Home = () => {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12 md:mb-20">
               <ScrollFade delay={200}>
-                <div className="flex items-center justify-center gap-6 mb-6">
+                <div className="flex items-center justify-center gap-4 md:gap-6 mb-4 md:mb-6">
                   <img
                     src={lobeIcon}
                     alt="Lobe Icon"
-                    className="w-32 h-32 rounded-[22%] shadow-lg"
+                    className="w-24 h-24 md:w-32 md:h-32 rounded-[22%] shadow-lg"
                     style={{
                       boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
                     }}
@@ -299,12 +299,12 @@ const Home = () => {
         <section id="contact" className="py-12 md:py-20 px-4 bg-white dark:bg-gray-900">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white">Get In Touch</h2>
-            <div className="flex justify-center gap-4 flex-wrap">
+            <div className="flex flex-col md:flex-row justify-center items-center gap-4 max-w-[200px] md:max-w-none mx-auto">
               <a
                 href="https://www.linkedin.com/in/elliotboschwitz/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium"
+                className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium w-full md:w-auto"
               >
                 <SFIcon icon={sfBrandLinkedin} size={20} />
                 LinkedIn
@@ -313,7 +313,7 @@ const Home = () => {
                 href="https://github.com/ellbosch"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium"
+                className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium w-full md:w-auto"
               >
                 <SFIcon icon={sfBrandGithub} size={20} />
                 GitHub
@@ -321,10 +321,17 @@ const Home = () => {
               <a
                 href="#"
                 onClick={handleEmailClick}
-                className="flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium"
+                className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium w-full md:w-auto"
               >
                 <SFIcon icon={sfEnvelope} size={20} />
                 Email
+              </a>
+              <a
+                href="/resume"
+                className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium w-full md:w-auto"
+              >
+                <SFIcon icon={sfPersonTextRectangleFill} size={20} />
+                Resume
               </a>
             </div>
           </div>
