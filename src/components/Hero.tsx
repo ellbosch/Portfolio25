@@ -1,8 +1,16 @@
 import meImage from '../assets/me.png';
 import stitchIcon from '../assets/stitch-icon.png';
 import msftIcon from '../assets/msft-icon.png';
+import { SFIcon } from '@bradleyhodges/sfsymbols-react';
+import { sfBriefcaseFill } from '@bradleyhodges/sfsymbols';
 
 const Hero = () => {
+  // Calculate years of work experience from August 1, 2015
+  const startDate = new Date('2015-08-01');
+  const today = new Date();
+  const yearsDiff = (today.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
+  const yearsOfExperience = Math.ceil(yearsDiff);
+
   const highlights = [
     {
       icon: <img src={stitchIcon} alt="Stitch" className="w-6 h-6 grayscale rounded-lg" />,
@@ -13,6 +21,11 @@ const Hero = () => {
       icon: <img src={msftIcon} alt="Microsoft" className="w-6 h-6 grayscale" />,
       text: 'Software Engineer & Program Manager at Microsoft',
       delay: '1200ms'
+    },
+    {
+      icon: <SFIcon icon={sfBriefcaseFill} size={24} className="text-gray-500 dark:text-gray-400" />,
+      text: `${yearsOfExperience} Years of Software Engineering & Program Manager Experience`,
+      delay: '1300ms'
     },
     {
       icon: (
