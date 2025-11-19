@@ -14,6 +14,7 @@ import vellumIcon from '../assets/vellum-icon.png';
 import lobeIcon from '../assets/lobe-icon.png';
 import lobeHeader from '../assets/lobe-header.jpg';
 import lobeDesktop from '../assets/lobe-desktop.jpg';
+import lobeTrain from '../assets/lobe-train.mp4';
 import { SFIcon } from '@bradleyhodges/sfsymbols-react';
 import { sfGlobe, sfBrandGithub, sfWandAndSparkles, sfSliderHorizontal3 } from '@bradleyhodges/sfsymbols';
 
@@ -254,38 +255,35 @@ const Home = () => {
               </ScrollFade>
             </div>
 
-            {/* Lobe Header Image */}
+            {/* Lobe Images */}
             <div className="mb-20">
               <ScrollFade delay={200}>
-                <div className="rounded-[20px] overflow-hidden shadow-2xl">
+                <div className="overflow-hidden shadow-2xl">
                   <img
                     src={lobeHeader}
                     alt="Lobe Header"
-                    className="w-full h-auto"
+                    className="w-full h-auto rounded-t-[20px]"
                   />
-                </div>
-              </ScrollFade>
-              <ScrollFade delay={400}>
-                <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center mt-12">
-                  Lobe is a free, easy-to-use desktop application that empowers anyone to train custom machine learning models without writing a single line of code.
-                </p>
-              </ScrollFade>
-            </div>
-
-            {/* Lobe Desktop Image */}
-            <div className="mb-20">
-              <ScrollFade delay={200}>
-                <div className="rounded-[20px] overflow-hidden shadow-2xl">
+                  <div className="border-t-2 border-gray-200 dark:border-gray-700"></div>
                   <img
                     src={lobeDesktop}
                     alt="Lobe Desktop"
                     className="w-full h-auto"
                   />
+                  <div className="border-t-2 border-gray-200 dark:border-gray-700"></div>
+                  <div className="rounded-b-[20px] overflow-hidden">
+                    <VideoPlayer
+                      videoUrl={lobeTrain}
+                      autoplay={true}
+                      loop={true}
+                      muted={true}
+                    />
+                  </div>
                 </div>
               </ScrollFade>
               <ScrollFade delay={400}>
                 <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center mt-12">
-                  With an intuitive interface and powerful automation, Lobe makes it simple to collect examples, train your model, and export it for use in your app.
+                  Lobe is a free, easy-to-use desktop application that empowers anyone to train custom machine learning models without writing a single line of code.
                 </p>
               </ScrollFade>
             </div>
