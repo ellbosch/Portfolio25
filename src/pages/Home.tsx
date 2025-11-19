@@ -104,8 +104,8 @@ const Home = () => {
                   />
                 </div>
               </ScrollFade>
-              <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center mt-12 mb-8">
-                While most vibe-coding solutions focus solely on code, Stitch combines vibe coding with a familiar, node-based visual programming language—making advanced interactions fast, intuitive, and accessible.
+              <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center mt-4 mb-8 max-w-3xl mx-auto">
+                While most vibe-coding solutions focus solely on code, Stitch combines vibe coding with a familiar, node-based visual programming language. Making advanced interactions fast, intuitive, and accessible.
               </p>
             </div>
 
