@@ -75,35 +75,50 @@ Portfolio25/
 
 ## Deployment to AWS
 
-### Option 1: AWS Amplify (Recommended)
+### Option 1: AWS Amplify (Recommended - FREE TIER)
 
-The simplest deployment option with automatic CI/CD:
+The simplest deployment option with automatic CI/CD from GitHub. **Stays free** for portfolios (1000 build mins/month, 15GB served/month).
 
-1. Install AWS Amplify CLI:
+#### Setup via AWS Console (Easiest):
+
+1. Push your code to GitHub
+
+2. Go to [AWS Amplify Console](https://console.aws.amazon.com/amplify/)
+
+3. Click "New app" > "Host web app"
+
+4. Connect your GitHub repository and select the branch (e.g., `main`)
+
+5. Amplify will auto-detect the build settings from [amplify.yml](amplify.yml)
+
+6. Review and click "Save and deploy"
+
+7. Connect custom domain (after first deployment):
+   - Go to App Settings > Domain Management
+   - Click "Add domain"
+   - Enter `elliotboschwitz.com`
+   - If domain is in Route 53, Amplify will auto-configure DNS
+   - If not, follow the DNS configuration instructions
+   - SSL certificate is automatically provisioned
+
+#### Auto-Deploy:
+Every push to your `main` branch will automatically trigger a new deployment.
+
+#### Manual Deploy (Alternative):
+If you prefer CLI deployment:
+
 ```bash
+# Install Amplify CLI
 npm install -g @aws-amplify/cli
-```
 
-2. Initialize Amplify in your project:
-```bash
+# Configure AWS credentials
+amplify configure
+
+# Initialize and publish
 amplify init
-```
-
-3. Add hosting:
-```bash
 amplify add hosting
-```
-Select "Hosting with Amplify Console"
-
-4. Publish:
-```bash
 amplify publish
 ```
-
-5. Connect custom domain in AWS Amplify Console:
-   - Go to App Settings > Domain Management
-   - Add `elliotboschwitz.com`
-   - Follow DNS configuration instructions
 
 ### Option 2: S3 + CloudFront
 
