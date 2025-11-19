@@ -39,10 +39,10 @@ const Hero = () => {
   ];
 
   return (
-    <section className="h-[75vh] px-4 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 flex items-center">
+    <section className="min-h-[65vh] pt-24 px-4 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 flex items-center">
       <div className="max-w-4xl mx-auto w-full">
         <h1
-          className="text-6xl md:text-7xl font-bold mb-12 text-gray-900 dark:text-white text-center animate-fade-in"
+          className="text-5xl md:text-7xl font-bold mb-12 text-gray-900 dark:text-white text-center animate-fade-in"
           style={{
             opacity: 0,
             animationFillMode: 'forwards',
@@ -59,7 +59,7 @@ const Hero = () => {
           />
           <div className="flex-1 space-y-4">
             <h2
-              className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white mb-6 animate-fade-in"
+              className="text-xl md:text-3xl font-semibold text-gray-900 dark:text-white mb-6 animate-fade-in"
               style={{
                 animationDelay: '800ms',
                 opacity: 0,

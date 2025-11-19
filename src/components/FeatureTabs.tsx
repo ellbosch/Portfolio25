@@ -46,7 +46,8 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
 
   const scrollLeft = () => {
     if (carouselRef.current) {
-      const scrollAmount = carouselRef.current.clientWidth * 0.4;
+      const isMobile = window.innerWidth < 768;
+      const scrollAmount = carouselRef.current.clientWidth * (isMobile ? 0.75 : 0.4);
       carouselRef.current.scrollBy({
         left: -scrollAmount,
         behavior: 'smooth',
@@ -56,7 +57,8 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
 
   const scrollRight = () => {
     if (carouselRef.current) {
-      const scrollAmount = carouselRef.current.clientWidth * 0.4;
+      const isMobile = window.innerWidth < 768;
+      const scrollAmount = carouselRef.current.clientWidth * (isMobile ? 0.75 : 0.4);
       carouselRef.current.scrollBy({
         left: scrollAmount,
         behavior: 'smooth',
@@ -66,7 +68,7 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
 
   return (
     <div className="w-full">
-        <div className="flex flex-col gap-8 md:gap-12">
+        <div className="flex flex-col gap-4">
           {/* Carousel Container - Continuous scroll */}
           <div
             ref={carouselRef}
@@ -81,10 +83,10 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
             {tabs.map((tab, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 flex flex-col pr-8"
+                className="flex-shrink-0 flex flex-col pr-4"
               >
                 {/* Single iPad Video */}
-                <div className="flex items-center w-[45vw] max-w-[712px]">
+                <div className="flex items-center w-[75vw] md:w-[55vw] max-w-[712px]">
                   <DeviceFrame>
                     <VideoPlayer
                       videoUrl={tab.videoUrl}
@@ -95,18 +97,25 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
                   </DeviceFrame>
                 </div>
                 {/* Header and Description below video */}
-                <div className="mt-8 w-[45vw] max-w-[712px] text-center px-4">
-                  <h3 className="text-3xl md:text-4xl font-bold mb-3 text-gray-900 dark:text-white flex items-center justify-center gap-3">
+                <div className="mt-2 md:mt-4 w-[75vw] md:w-[55vw] max-w-[712px] text-center px-2 md:px-4">
+                  <h3 className="text-base md:text-3xl font-bold mb-3 text-gray-900 dark:text-white flex items-start justify-center gap-2 md:gap-3">
                     {tab.symbol && getSymbolIcon(tab.symbol) && (
-                      <SFIcon
-                        icon={getSymbolIcon(tab.symbol)!}
-                        size={40}
-                        className="text-gray-900 dark:text-white"
-                      />
+                      <>
+                        <SFIcon
+                          icon={getSymbolIcon(tab.symbol)!}
+                          size={20}
+                          className="text-gray-900 dark:text-white flex-shrink-0 mt-0.5 md:hidden"
+                        />
+                        <SFIcon
+                          icon={getSymbolIcon(tab.symbol)!}
+                          size={32}
+                          className="text-gray-900 dark:text-white flex-shrink-0 mt-1 hidden md:block"
+                        />
+                      </>
                     )}
-                    {tab.title}
+                    <span>{tab.title}</span>
                   </h3>
-                  <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300">
+                  <p className="text-base md:text-xl text-gray-600 dark:text-gray-300">
                     {tab.description}
                   </p>
                 </div>
@@ -115,7 +124,7 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
           </div>
 
           {/* Navigation Buttons */}
-          <div className="flex justify-end gap-3">
+          <div className="flex justify-center md:justify-end gap-3">
             <button
               onClick={scrollLeft}
               className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"

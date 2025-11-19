@@ -21,7 +21,7 @@ const ProjectCard = ({ title, description, videoUrl, links }: ProjectCardProps) 
         </div>
       )}
       <div className="p-6">
-        <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">{title}</h3>
+        <h3 className="text-xl md:text-2xl font-bold mb-3 text-gray-900 dark:text-white">{title}</h3>
         <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
         <div className="flex gap-3 flex-wrap">
           {links.map((link, index) => (
