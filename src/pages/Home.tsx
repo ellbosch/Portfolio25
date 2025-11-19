@@ -15,7 +15,7 @@ import lobeIcon from '../assets/lobe-icon.png';
 import lobeHeader from '../assets/lobe-header.jpg';
 import lobeDesktop from '../assets/lobe-desktop.jpg';
 import { SFIcon } from '@bradleyhodges/sfsymbols-react';
-import { sfGlobe, sfBrandGithub } from '@bradleyhodges/sfsymbols';
+import { sfGlobe, sfBrandGithub, sfWandAndSparkles, sfSliderHorizontal3 } from '@bradleyhodges/sfsymbols';
 
 const Home = () => {
   const isMobile = useMediaQuery('(max-width: 768px)');
@@ -185,11 +185,16 @@ const Home = () => {
                 </PaddingParallax>
 
                 <div className="w-full text-center md:mt-20">
-                  <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-                    Create & Customize
+                  <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 gap-3">
+                    <SFIcon
+                      icon={sfSliderHorizontal3}
+                      size={48}
+                      className="text-gray-900 dark:text-white mb-2"
+                    />
+                    &nbsp;Robust Editing Tools
                   </h3>
                   <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed">
-                    Transform your ideas into reality with our intuitive editing tools. Adjust parameters, tweak styles, and perfect your vision with real-time AI generation.
+                    Use the assistant to refine any element of your screenplay—from character descriptions and environments to camera angles and shot composition.
                   </p>
                 </div>
               </div>
@@ -197,11 +202,16 @@ const Home = () => {
               {/* Right column */}
               <div className="flex flex-col gap-12 mt-0 md:mt-60">
                 <div className="w-full text-center md:mb-60 order-2 md:order-1">
-                  <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-                    Discover & Inspire
+                  <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 gap-3">
+                    <SFIcon
+                      icon={sfWandAndSparkles}
+                      size={48}
+                      className="text-gray-900 dark:text-white mb-3"
+                    />
+                    &nbsp;AI-Powered Screenwriting
                   </h3>
                   <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed">
-                    Browse an endless feed of AI-generated videos. Swipe through stunning visuals created by our community and find inspiration for your next creation.
+                    Director-level power in the palm of your hand. Start with a short prompt and generate a multi-shot, cinematic-style video with no time constraints.
                   </p>
                 </div>
 
