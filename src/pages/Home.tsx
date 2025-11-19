@@ -58,7 +58,7 @@ const Home = () => {
                 </p>
               </ScrollFade>
             </div>
-            <div className="mt-36 max-w-3xl mx-auto">
+            <div className="mt-36 mx-auto">
               <ScrollFade delay={600}>
                 <div className="rounded-[20px] overflow-hidden">
                   <VideoPlayer
@@ -70,7 +70,7 @@ const Home = () => {
                 </div>
               </ScrollFade>
               <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center mt-12 mb-8">
-                Today's AI tools are inadequate for interaction designers. Unlike other vibe coding tools which only expose code, Stitch leverages vibe coding and a familiar node-based visual programming language.
+                While most vibe-coding solutions focus solely on code, Stitch combines vibe coding with a familiar, node-based visual programming language—making advanced interactions fast, intuitive, and accessible.
               </p>
             </div>
 
