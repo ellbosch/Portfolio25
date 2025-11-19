@@ -1,3 +1,4 @@
+import React from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import ProjectCard from '../components/ProjectCard';
@@ -20,6 +21,15 @@ import { sfGlobe, sfBrandGithub, sfWandAndSparkles, sfSliderHorizontal3, sfBrand
 
 const Home = () => {
   const isMobile = useMediaQuery('(max-width: 768px)');
+
+  // Email obfuscation - split into parts to avoid scraping
+  const handleEmailClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const user = 'elliot.boschwitz';
+    const domain = 'gmail.com';
+    window.location.href = `mailto:${user}@${domain}`;
+  };
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -165,7 +175,7 @@ const Home = () => {
               </ScrollFade>
               <ScrollFade delay={400}>
                 <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed max-w-3xl mx-auto">
-                  A video generation app that transforms your creative ideas into stunning visual content.
+                  AI-powered storytelling for short-form TV series.
                 </p>
               </ScrollFade>
             </div>
@@ -309,7 +319,8 @@ const Home = () => {
                 GitHub
               </a>
               <a
-                href="mailto:your.email@example.com"
+                href="#"
+                onClick={handleEmailClick}
                 className="flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium"
               >
                 <SFIcon icon={sfEnvelope} size={20} />
