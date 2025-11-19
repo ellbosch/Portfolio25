@@ -115,7 +115,7 @@ const Home = () => {
                 tabs={[
                   {
                     title: "AR",
-                    description: "Stitch enables rapid AR prototyping, supporting complex 3D object manipulation built in minutes instead of hours.",
+                    description: "Rapid AR prototyping in minutes instead of hours.",
                     videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/AR.mp4",
                     symbol: "arkit",
                   },
@@ -127,7 +127,7 @@ const Home = () => {
                   },
                   {
                     title: "Powerful Rendering Engine",
-                    description: "Stitch maintains 120 FPS regardless of graph complexity, simulating the performance of a full-scale app.",
+                    description: "120 FPS regardless of graph complexity, simulating full-scale app performance.",
                     videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/humane.mp4",
                     symbol: "tachometer",
                   },
