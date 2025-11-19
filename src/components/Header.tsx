@@ -15,7 +15,7 @@ const Header = () => {
     <header className="sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 shadow-sm">
       <nav className="max-w-6xl mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
-          <a href="/" className="text-xl font-bold text-gray-900 dark:text-white">
+          <a href="/" className="text-lg md:text-xl font-bold text-gray-900 dark:text-white">
             Elliot Boschwitz
           </a>
           <div className="flex items-center gap-4">

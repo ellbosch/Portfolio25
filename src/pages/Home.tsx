@@ -62,11 +62,11 @@ const Home = () => {
                       boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
                     }}
                   />
-                  <h2 className="text-6xl md:text-7xl font-bold text-gray-900 dark:text-white">Stitch</h2>
+                  <h2 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white">Stitch</h2>
                 </div>
               </ScrollFade>
               <ScrollFade delay={400}>
-                <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center">
+                <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center">
                   Meet Stitch, an AI-powered design prototyping, unapologetically made for designers, harnessing the first-ever visual programming language powered by an LLM.
                 </p>
               </ScrollFade>
@@ -104,7 +104,7 @@ const Home = () => {
                   />
                 </div>
               </ScrollFade>
-              <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center mt-4 mb-8 max-w-3xl mx-auto">
+              <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center mt-4 mb-8 max-w-3xl mx-auto">
                 While most vibe-coding solutions focus solely on code, Stitch combines vibe coding with a familiar, node-based visual programming language. Making advanced interactions fast, intuitive, and accessible.
               </p>
             </div>
@@ -170,11 +170,11 @@ const Home = () => {
                       boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
                     }}
                   />
-                  <h2 className="text-6xl md:text-7xl font-bold text-gray-900 dark:text-white">Vellum</h2>
+                  <h2 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white">Vellum</h2>
                 </div>
               </ScrollFade>
               <ScrollFade delay={400}>
-                <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed max-w-3xl mx-auto">
+                <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed max-w-3xl mx-auto">
                   AI-powered storytelling for short-form TV series.
                 </p>
               </ScrollFade>
@@ -196,7 +196,7 @@ const Home = () => {
                 </PaddingParallax>
 
                 <div className="w-full text-center md:mt-20">
-                  <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 gap-3">
+                  <h3 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 gap-3">
                     <SFIcon
                       icon={sfSliderHorizontal3}
                       size={48}
@@ -213,7 +213,7 @@ const Home = () => {
               {/* Right column */}
               <div className="flex flex-col gap-12 mt-0 md:mt-60">
                 <div className="w-full text-center md:mb-60 order-2 md:order-1">
-                  <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 gap-3">
+                  <h3 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 gap-3">
                     <SFIcon
                       icon={sfWandAndSparkles}
                       size={48}
@@ -255,11 +255,11 @@ const Home = () => {
                       boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
                     }}
                   />
-                  <h2 className="text-6xl md:text-7xl font-bold text-gray-900 dark:text-white">Lobe</h2>
+                  <h2 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white">Lobe</h2>
                 </div>
               </ScrollFade>
               <ScrollFade delay={400}>
-                <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed max-w-3xl mx-auto">
+                <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed max-w-3xl mx-auto">
                   Lobe is a free, easy-to-use desktop application that empowers anyone to train custom machine learning models without writing a single line of code.
                 </p>
               </ScrollFade>
@@ -296,7 +296,7 @@ const Home = () => {
         {/* Contact Section */}
         <section id="contact" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-8 text-gray-900 dark:text-white">Get In Touch</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white">Get In Touch</h2>
             <div className="flex justify-center gap-4 flex-wrap">
               <a
                 href="https://www.linkedin.com/in/elliotboschwitz/"
