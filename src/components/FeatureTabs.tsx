@@ -46,7 +46,8 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
 
   const scrollLeft = () => {
     if (carouselRef.current) {
-      const scrollAmount = carouselRef.current.clientWidth * 0.4;
+      const isMobile = window.innerWidth < 768;
+      const scrollAmount = carouselRef.current.clientWidth * (isMobile ? 0.75 : 0.4);
       carouselRef.current.scrollBy({
         left: -scrollAmount,
         behavior: 'smooth',
@@ -56,7 +57,8 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
 
   const scrollRight = () => {
     if (carouselRef.current) {
-      const scrollAmount = carouselRef.current.clientWidth * 0.4;
+      const isMobile = window.innerWidth < 768;
+      const scrollAmount = carouselRef.current.clientWidth * (isMobile ? 0.75 : 0.4);
       carouselRef.current.scrollBy({
         left: scrollAmount,
         behavior: 'smooth',
@@ -66,7 +68,7 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
 
   return (
     <div className="w-full">
-        <div className="flex flex-col gap-2 md:gap-4">
+        <div className="flex flex-col gap-4">
           {/* Carousel Container - Continuous scroll */}
           <div
             ref={carouselRef}
