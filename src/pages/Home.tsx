@@ -285,57 +285,6 @@ const Home = () => {
           </div>
         </section>
 
-        {/* iOS Projects Section */}
-        <section id="ios-projects" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold mb-12 text-center text-gray-900 dark:text-white">iOS Projects</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Placeholder - will be populated with actual projects */}
-              <ProjectCard
-                title="Project Title"
-                description="Brief description of the iOS project"
-                videoUrl=""
-                links={[
-                  { label: "GitHub", url: "#" },
-                  { label: "App Store", url: "#" }
-                ]}
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* AI Projects Section */}
-        <section id="ai-projects" className="py-20 px-4 bg-white dark:bg-gray-900">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-4xl font-bold mb-12 text-center text-gray-900 dark:text-white">AI Projects</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Placeholder - will be populated with actual projects */}
-              <ProjectCard
-                title="AI Project Title"
-                description="Brief description of the AI project"
-                videoUrl=""
-                links={[
-                  { label: "GitHub", url: "#" },
-                  { label: "Demo", url: "#" }
-                ]}
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* Microsoft Experience Section */}
-        <section id="microsoft" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold mb-8 text-center text-gray-900 dark:text-white">Microsoft Experience</h2>
-            <div className="prose prose-lg mx-auto">
-              <p className="text-lg text-gray-700 dark:text-gray-200">
-                {/* Add your Microsoft experience highlights here */}
-                Brief highlights of your work at Microsoft...
-              </p>
-            </div>
-          </div>
-        </section>
-
         {/* Contact Section */}
         <section id="contact" className="py-20 px-4 bg-white dark:bg-gray-900">
           <div className="max-w-4xl mx-auto text-center">
