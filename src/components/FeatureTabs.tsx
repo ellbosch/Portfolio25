@@ -98,16 +98,14 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
                 </div>
                 {/* Header and Description below video */}
                 <div className="mt-8 w-[45vw] max-w-[712px] text-center px-4">
-                  {tab.symbol && getSymbolIcon(tab.symbol) && (
-                    <div className="flex justify-center mb-4">
+                  <h3 className="text-3xl md:text-4xl font-bold mb-3 text-gray-900 dark:text-white flex items-center justify-center gap-3">
+                    {tab.symbol && getSymbolIcon(tab.symbol) && (
                       <SFIcon
                         icon={getSymbolIcon(tab.symbol)!}
-                        size={48}
+                        size={40}
                         className="text-gray-900 dark:text-white"
                       />
-                    </div>
-                  )}
-                  <h3 className="text-3xl md:text-4xl font-bold mb-3 text-gray-900 dark:text-white">
+                    )}
                     {tab.title}
                   </h3>
                   <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300">
