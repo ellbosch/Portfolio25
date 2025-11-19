@@ -66,7 +66,7 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
 
   return (
     <div className="w-full">
-        <div className="flex flex-col md:gap-4">
+        <div className="flex flex-col gap-2 md:gap-4">
           {/* Carousel Container - Continuous scroll */}
           <div
             ref={carouselRef}
@@ -115,7 +115,7 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
           </div>
 
           {/* Navigation Buttons */}
-          <div className="flex justify-end gap-3">
+          <div className="flex justify-center md:justify-end gap-3">
             <button
               onClick={scrollLeft}
               className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
