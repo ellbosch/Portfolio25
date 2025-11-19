@@ -24,7 +24,7 @@ const Hero = () => {
     },
     {
       icon: <SFIcon icon={sfBriefcaseFill} size={24} className="text-gray-500 dark:text-gray-400" />,
-      text: `${yearsOfExperience} Years of Software Engineering & Program Manager Experience`,
+      text: `${yearsOfExperience} Years of Software Engineering & Program Management Experience`,
       delay: '1300ms'
     },
     {
