@@ -1,7 +1,16 @@
+import React from 'react';
 import { SFIcon } from '@bradleyhodges/sfsymbols-react';
-import { sfBrandGithub, sfBrandLinkedin, sfPersonTextRectangleFill } from '@bradleyhodges/sfsymbols';
+import { sfBrandGithub, sfBrandLinkedin, sfPersonTextRectangleFill, sfEnvelope } from '@bradleyhodges/sfsymbols';
 
 const Header = () => {
+  // Email obfuscation - split into parts to avoid scraping
+  const handleEmailClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const user = 'elliot.boschwitz';
+    const domain = 'gmail.com';
+    window.location.href = `mailto:${user}@${domain}`;
+  };
+
   return (
     <header className="sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 shadow-sm">
       <nav className="max-w-6xl mx-auto px-4 py-4">
@@ -18,7 +27,7 @@ const Header = () => {
               aria-label="LinkedIn"
             >
               <SFIcon icon={sfBrandLinkedin} size={20} />
-              <span className="hidden sm:inline">LinkedIn</span>
+              <span className="hidden md:inline">LinkedIn</span>
             </a>
             <a
               href="https://github.com/ellbosch"
@@ -28,14 +37,23 @@ const Header = () => {
               aria-label="GitHub"
             >
               <SFIcon icon={sfBrandGithub} size={20} />
-              <span className="hidden sm:inline">GitHub</span>
+              <span className="hidden md:inline">GitHub</span>
+            </a>
+            <a
+              href="#"
+              onClick={handleEmailClick}
+              className="flex items-center gap-2 px-5 py-2.5 bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors font-medium"
+              aria-label="Email"
+            >
+              <SFIcon icon={sfEnvelope} size={20} />
+              <span className="hidden md:inline">Email</span>
             </a>
             <a
               href="/resume"
               className="flex items-center gap-2 px-5 py-2.5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium"
             >
               <SFIcon icon={sfPersonTextRectangleFill} size={20} />
-              <span className="hidden sm:inline">Resume</span>
+              <span className="hidden md:inline">Resume</span>
             </a>
           </div>
         </div>
