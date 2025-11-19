@@ -77,7 +77,7 @@ const VideoPlayer = ({ videoUrl, poster, autoplay = false, loop = false, muted =
   }, []);
 
   return (
-    <div data-vjs-player>
+    <div data-vjs-player className="max-h-full overflow-hidden">
       <div ref={videoRef} className="w-full h-full" />
     </div>
   );

@@ -7,11 +7,11 @@ interface DeviceFrameProps {
 
 const DeviceFrame = ({ children }: DeviceFrameProps) => {
   return (
-    <div className="relative inline-block w-full max-w-4xl mx-auto">
+    <div className="relative inline-block w-full max-w-4xl max-h-full mx-auto overflow-hidden">
       {/* Container maintains aspect ratio */}
-      <div className="relative w-full" style={{ paddingBottom: '75%' }}> {/* 4:3 aspect ratio */}
+      <div className="relative w-full overflow-hidden" style={{ paddingBottom: '75%' }}> {/* 4:3 aspect ratio */}
         {/* Video content layer */}
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
           <div className="w-full h-full px-[4%] py-[0%] translate-y-[8%]">
             {children}
           </div>

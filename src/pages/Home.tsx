@@ -14,6 +14,8 @@ import vellumIcon from '../assets/vellum-icon.png';
 import lobeIcon from '../assets/lobe-icon.png';
 import lobeHeader from '../assets/lobe-header.jpg';
 import lobeDesktop from '../assets/lobe-desktop.jpg';
+import { SFIcon } from '@bradleyhodges/sfsymbols-react';
+import { sfGlobe, sfBrandGithub } from '@bradleyhodges/sfsymbols';
 
 const Home = () => {
   const isMobile = useMediaQuery('(max-width: 768px)');
@@ -57,8 +59,30 @@ const Home = () => {
                   Meet Stitch, an AI-powered design prototyping, unapologetically made for designers, harnessing the first-ever visual programming language powered by an LLM.
                 </p>
               </ScrollFade>
+              <ScrollFade delay={500}>
+                <div className="flex items-center justify-center gap-4 mt-6">
+                  <a
+                    href="https://stitchdesign.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium"
+                  >
+                    <SFIcon icon={sfGlobe} size={20} />
+                    Website
+                  </a>
+                  <a
+                    href="https://github.com/stitchDesign/Stitch/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium"
+                  >
+                    <SFIcon icon={sfBrandGithub} size={20} />
+                    GitHub
+                  </a>
+                </div>
+              </ScrollFade>
             </div>
-            <div className="mt-36 max-w-3xl mx-auto">
+            <div className="mt-36 mx-auto">
               <ScrollFade delay={600}>
                 <div className="rounded-[20px] overflow-hidden">
                   <VideoPlayer
@@ -70,7 +94,7 @@ const Home = () => {
                 </div>
               </ScrollFade>
               <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center mt-12 mb-8">
-                Today's AI tools are inadequate for interaction designers. Unlike other vibe coding tools which only expose code, Stitch leverages vibe coding and a familiar node-based visual programming language.
+                While most vibe-coding solutions focus solely on code, Stitch combines vibe coding with a familiar, node-based visual programming language—making advanced interactions fast, intuitive, and accessible.
               </p>
             </div>
 
@@ -79,22 +103,40 @@ const Home = () => {
               <FeatureTabs
                 tabs={[
                   {
-                    title: "AR/3D",
-                    description: "First VPL built for rapid AR and 3D prototyping",
-                    leftVideoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/AR.mp4",
-                    rightVideoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/earth.mp4",
+                    title: "AR",
+                    description: "Stitch enables rapid AR prototyping, supporting complex 3D object manipulation built in minutes instead of hours.",
+                    videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/AR.mp4",
+                    symbol: "arkit",
                   },
                   {
-                    title: "120 fps",
-                    description: "Scalable performance ensures your prototype's UI always matches screen refresh rate",
-                    leftVideoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/humane.mp4",
-                    rightVideoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/monthly-stays.mp4",
+                    title: "Object Detection",
+                    description: "Prototype sophisticated object-detection scenarios — all with no code.",
+                    videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/object-detection.mp4",
+                    symbol: "viewfinder",
                   },
                   {
-                    title: "ML",
-                    description: "Create immersive ML-powered prototypes in minutes",
-                    leftVideoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/object-detection.mp4",
-                    rightVideoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/redwoods.mp4",
+                    title: "Powerful Rendering Engine",
+                    description: "Stitch maintains 120 FPS regardless of graph complexity, simulating the performance of a full-scale app.",
+                    videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/humane.mp4",
+                    symbol: "tachometer",
+                  },
+                  {
+                    title: "Zero-Tradeoff Prototyping",
+                    description: "Stitch empowered Airbnb's design team to prototype behavior-rich UI, including haptic interactions.",
+                    videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/monthly-stays.mp4",
+                    symbol: "slider.horizontal.3",
+                  },
+                  {
+                    title: "Image Classification",
+                    description: "Machine-learning prototyping is always at your fingertips.",
+                    videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/redwoods.mp4",
+                    symbol: "photo.badge.checkmark",
+                  },
+                  {
+                    title: "3D",
+                    description: "Stitch's VPL natively supports 3D — a long-requested feature in the design community.",
+                    videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/earth.mp4",
+                    symbol: "cube.fill",
                   },
                 ]}
                 delay={200}

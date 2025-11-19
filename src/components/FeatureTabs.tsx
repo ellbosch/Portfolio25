@@ -1,14 +1,25 @@
-import { useState, useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import type { FC } from 'react';
 import DeviceFrame from './DeviceFrame';
 import VideoPlayer from './VideoPlayer';
 import ScrollFade from './ScrollFade';
+import { SFIcon } from '@bradleyhodges/sfsymbols-react';
+import {
+  sfArkit,
+  sfViewfinder,
+  sfTachometer,
+  sfSliderHorizontal3,
+  sfPhotoBadgeCheckmark,
+  sfCubeFill,
+  sfChevronLeft,
+  sfChevronRight,
+} from '@bradleyhodges/sfsymbols';
 
 interface TabData {
   title: string;
   description: string;
-  leftVideoUrl: string;
-  rightVideoUrl: string;
+  videoUrl: string;
+  symbol?: string;
 }
 
 interface FeatureTabsProps {
@@ -16,44 +27,43 @@ interface FeatureTabsProps {
   delay?: number;
 }
 
+// Symbol mapping helper
+const getSymbolIcon = (symbolName?: string) => {
+  const symbolMap: Record<string, any> = {
+    'arkit': sfArkit,
+    'viewfinder': sfViewfinder,
+    'tachometer': sfTachometer,
+    'slider.horizontal.3': sfSliderHorizontal3,
+    'photo.badge.checkmark': sfPhotoBadgeCheckmark,
+    'cube.fill': sfCubeFill,
+    'chevron.left': sfChevronLeft,
+    'chevron.right': sfChevronRight,
+  };
+  return symbolName ? symbolMap[symbolName] : null;
+};
+
 const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
-  const [activeTab, setActiveTab] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
 
-  const scrollToTab = (index: number) => {
+  const scrollLeft = () => {
     if (carouselRef.current) {
-      const scrollWidth = carouselRef.current.scrollWidth;
-      const targetScroll = (scrollWidth / tabs.length) * index;
-      carouselRef.current.scrollTo({
-        left: targetScroll,
+      const scrollAmount = carouselRef.current.clientWidth * 0.4;
+      carouselRef.current.scrollBy({
+        left: -scrollAmount,
         behavior: 'smooth',
       });
     }
   };
 
-  const handleScroll = () => {
+  const scrollRight = () => {
     if (carouselRef.current) {
-      const scrollLeft = carouselRef.current.scrollLeft;
-      const containerWidth = carouselRef.current.clientWidth;
-      const itemWidth = carouselRef.current.scrollWidth / tabs.length;
-
-      // Calculate which item is most visible (using 60% threshold past left edge)
-      const thresholdPosition = scrollLeft + containerWidth * 0.6;
-      const newIndex = Math.floor(thresholdPosition / itemWidth);
-
-      // Clamp to valid range
-      const clampedIndex = Math.max(0, Math.min(tabs.length - 1, newIndex));
-      setActiveTab(clampedIndex);
+      const scrollAmount = carouselRef.current.clientWidth * 0.4;
+      carouselRef.current.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth',
+      });
     }
   };
-
-  useEffect(() => {
-    const carousel = carouselRef.current;
-    if (carousel) {
-      carousel.addEventListener('scroll', handleScroll);
-      return () => carousel.removeEventListener('scroll', handleScroll);
-    }
-  }, []);
 
   return (
     <ScrollFade delay={delay}>
@@ -62,7 +72,7 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
           {/* Carousel Container - Continuous scroll */}
           <div
             ref={carouselRef}
-            className="overflow-x-scroll overflow-y-hidden scroll-smooth flex h-[600px] md:h-[500px] -mx-4 lg:w-screen lg:relative lg:left-1/2 lg:right-1/2 lg:-ml-[50vw] lg:-mr-[50vw] pl-4 pr-4 md:pl-18 md:pr-18 lg:pl-[calc((100vw-1280px)/2+2rem)]"
+            className="overflow-x-scroll overflow-y-hidden scroll-smooth flex -mx-4 lg:w-screen lg:relative lg:left-1/2 lg:right-1/2 lg:-ml-[50vw] lg:-mr-[50vw] pl-4 pr-4 md:pl-18 md:pr-18 lg:pl-[max(2rem,calc((100vw-1280px)/2+2rem))] lg:pr-[max(2rem,calc((100vw-1280px)/2+2rem))]"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             <style>{`
@@ -73,65 +83,65 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
             {tabs.map((tab, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 h-full flex"
+                className="flex-shrink-0 flex flex-col pr-8"
               >
-                {/* Two Side-by-Side iPad Videos */}
-                <div className="flex gap-4 pr-4">
-                  <div className="flex items-center w-[45vw] max-w-[712px]">
-                    <DeviceFrame>
-                      <VideoPlayer
-                        videoUrl={tab.leftVideoUrl}
-                        autoplay={true}
-                        loop={true}
-                        muted={true}
+                {/* Single iPad Video */}
+                <div className="flex items-center w-[45vw] max-w-[712px]">
+                  <DeviceFrame>
+                    <VideoPlayer
+                      videoUrl={tab.videoUrl}
+                      autoplay={true}
+                      loop={true}
+                      muted={true}
+                    />
+                  </DeviceFrame>
+                </div>
+                {/* Header and Description below video */}
+                <div className="mt-8 w-[45vw] max-w-[712px] text-center px-4">
+                  <h3 className="text-3xl md:text-4xl font-bold mb-3 text-gray-900 dark:text-white flex items-center justify-center gap-3">
+                    {tab.symbol && getSymbolIcon(tab.symbol) && (
+                      <SFIcon
+                        icon={getSymbolIcon(tab.symbol)!}
+                        size={40}
+                        className="text-gray-900 dark:text-white"
                       />
-                    </DeviceFrame>
-                  </div>
-                  <div className="flex items-center w-[45vw] max-w-[712px]">
-                    <DeviceFrame>
-                      <VideoPlayer
-                        videoUrl={tab.rightVideoUrl}
-                        autoplay={true}
-                        loop={true}
-                        muted={true}
-                      />
-                    </DeviceFrame>
-                  </div>
+                    )}
+                    {tab.title}
+                  </h3>
+                  <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300">
+                    {tab.description}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Title and Description - Fixed height */}
-          <div className="text-center h-32 flex flex-col justify-center">
-            <h3 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
-              {tabs[activeTab].title}
-            </h3>
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              {tabs[activeTab].description}
-            </p>
+          {/* Navigation Buttons */}
+          <div className="flex justify-end gap-3">
+            <button
+              onClick={scrollLeft}
+              className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              aria-label="Scroll left"
+            >
+              <SFIcon
+                icon={sfChevronLeft}
+                size={24}
+                className="text-gray-900 dark:text-white"
+              />
+            </button>
+            <button
+              onClick={scrollRight}
+              className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              aria-label="Scroll right"
+            >
+              <SFIcon
+                icon={sfChevronRight}
+                size={24}
+                className="text-gray-900 dark:text-white"
+              />
+            </button>
           </div>
 
-          {/* Navigation Links - Horizontal stack */}
-          <nav className="flex gap-4 overflow-x-auto pb-2 justify-center">
-            {tabs.map((tab, index) => (
-              <button
-                key={index}
-                onClick={() => scrollToTab(index)}
-                className={`
-                  px-6 py-3 text-center whitespace-nowrap
-                  transition-colors duration-300 rounded-lg
-                  ${
-                    index === activeTab
-                      ? 'text-gray-900 dark:text-white font-semibold bg-gray-100 dark:bg-gray-800'
-                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800/50'
-                  }
-                `}
-              >
-                <span className="text-xl md:text-2xl">{tab.title}</span>
-              </button>
-            ))}
-          </nav>
         </div>
       </div>
     </ScrollFade>
