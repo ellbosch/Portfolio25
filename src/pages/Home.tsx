@@ -16,7 +16,7 @@ import lobeHeader from '../assets/lobe-header.jpg';
 import lobeDesktop from '../assets/lobe-desktop.jpg';
 import lobeTrain from '../assets/lobe-train.mp4';
 import { SFIcon } from '@bradleyhodges/sfsymbols-react';
-import { sfGlobe, sfBrandGithub, sfWandAndSparkles, sfSliderHorizontal3 } from '@bradleyhodges/sfsymbols';
+import { sfGlobe, sfBrandGithub, sfWandAndSparkles, sfSliderHorizontal3, sfBrandLinkedin, sfEnvelope } from '@bradleyhodges/sfsymbols';
 
 const Home = () => {
   const isMobile = useMediaQuery('(max-width: 768px)');
@@ -256,7 +256,7 @@ const Home = () => {
             </div>
 
             {/* Lobe Images */}
-            <div className="mb-20">
+            <div>
               <ScrollFade delay={200}>
                 <div className="overflow-hidden shadow-2xl">
                   <img
@@ -286,30 +286,33 @@ const Home = () => {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-20 px-4 bg-white dark:bg-gray-900">
+        <section id="contact" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold mb-8 text-gray-900 dark:text-white">Get In Touch</h2>
-            <div className="flex justify-center gap-6 flex-wrap">
-              <a
-                href="https://github.com/ellbosch"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-300 transition-colors"
-              >
-                GitHub
-              </a>
+            <div className="flex justify-center gap-4 flex-wrap">
               <a
                 href="https://www.linkedin.com/in/elliotboschwitz/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                className="flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium"
               >
+                <SFIcon icon={sfBrandLinkedin} size={20} />
                 LinkedIn
               </a>
               <a
-                href="mailto:your.email@example.com"
-                className="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                href="https://github.com/ellbosch"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium"
               >
+                <SFIcon icon={sfBrandGithub} size={20} />
+                GitHub
+              </a>
+              <a
+                href="mailto:your.email@example.com"
+                className="flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium"
+              >
+                <SFIcon icon={sfEnvelope} size={20} />
                 Email
               </a>
             </div>
