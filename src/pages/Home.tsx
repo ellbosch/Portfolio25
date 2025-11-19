@@ -94,7 +94,7 @@ const Home = () => {
                     title: "Powerful Rendering Engine",
                     description: "Stitch maintains 120 FPS regardless of graph complexity, simulating the performance of a full-scale app.",
                     videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/humane.mp4",
-                    symbol: "bolt.fill",
+                    symbol: "tachometer",
                   },
                   {
                     title: "Zero-Tradeoff Prototyping",

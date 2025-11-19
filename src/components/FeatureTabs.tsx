@@ -7,7 +7,7 @@ import { SFIcon } from '@bradleyhodges/sfsymbols-react';
 import {
   sfArkit,
   sfViewfinder,
-  sfBoltFill,
+  sfTachometer,
   sfSliderHorizontal3,
   sfPhotoBadgeCheckmark,
   sfCubeFill,
@@ -32,7 +32,7 @@ const getSymbolIcon = (symbolName?: string) => {
   const symbolMap: Record<string, any> = {
     'arkit': sfArkit,
     'viewfinder': sfViewfinder,
-    'bolt.fill': sfBoltFill,
+    'tachometer': sfTachometer,
     'slider.horizontal.3': sfSliderHorizontal3,
     'photo.badge.checkmark': sfPhotoBadgeCheckmark,
     'cube.fill': sfCubeFill,
