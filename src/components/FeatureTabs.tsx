@@ -95,16 +95,16 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
                   </DeviceFrame>
                 </div>
                 {/* Header and Description below video */}
-                <div className="mt-8 w-[45vw] max-w-[712px] text-center px-4">
-                  <h3 className="text-2xl md:text-4xl font-bold mb-3 text-gray-900 dark:text-white flex items-center justify-center gap-3">
-                    {tab.symbol && getSymbolIcon(tab.symbol) && (
+                <div className="mt-4 md:mt-8 w-[45vw] max-w-[712px] text-center px-2 md:px-4">
+                  <h3 className="text-2xl md:text-4xl font-bold mb-3 text-gray-900 dark:text-white flex items-start justify-center gap-2 md:gap-3">
+                    {/* {tab.symbol && getSymbolIcon(tab.symbol) && (
                       <SFIcon
                         icon={getSymbolIcon(tab.symbol)!}
-                        size={40}
-                        className="text-gray-900 dark:text-white"
+                        size={32}
+                        className="text-gray-900 dark:text-white flex-shrink-0 md:mt-1"
                       />
-                    )}
-                    {tab.title}
+                    )} */}
+                    <span>{tab.title}</span>
                   </h3>
                   <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300">
                     {tab.description}
