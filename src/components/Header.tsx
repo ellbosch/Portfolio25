@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { SFIcon } from '@bradleyhodges/sfsymbols-react';
 import { sfBrandGithub, sfBrandLinkedin, sfTextDocument, sfEnvelope } from '@bradleyhodges/sfsymbols';
 
@@ -48,13 +49,13 @@ const Header = () => {
               <SFIcon icon={sfEnvelope} size={20} />
               <span className="hidden md:inline">Email</span>
             </a>
-            <a
-              href="/resume"
+            <Link
+              to="/resume"
               className="flex items-center gap-2 px-3 py-2.5 md:px-5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium"
             >
               <SFIcon icon={sfTextDocument} size={20} />
               <span className="hidden md:inline">Resume</span>
-            </a>
+            </Link>
           </div>
         </div>
       </nav>
