@@ -250,7 +250,7 @@ const Home = () => {
               </ScrollFade>
               <ScrollFade delay={400}>
                 <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed max-w-3xl mx-auto">
-                  Machine learning made easy. Train custom models without writing code.
+                  Lobe is a free, easy-to-use desktop application that empowers anyone to train custom machine learning models without writing a single line of code.
                 </p>
               </ScrollFade>
             </div>
@@ -280,11 +280,6 @@ const Home = () => {
                     />
                   </div>
                 </div>
-              </ScrollFade>
-              <ScrollFade delay={400}>
-                <p className="text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center mt-12">
-                  Lobe is a free, easy-to-use desktop application that empowers anyone to train custom machine learning models without writing a single line of code.
-                </p>
               </ScrollFade>
             </div>
           </div>
