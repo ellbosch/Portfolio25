@@ -121,7 +121,7 @@ const Home = () => {
                   },
                   {
                     title: "Object Detection",
-                    description: "Prototype sophisticated object-detection scenarios — all with no code.",
+                    description: "Prototype sophisticated object-detection scenarios, all with no code.",
                     videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/object-detection.mp4",
                     symbol: "viewfinder",
                   },
@@ -145,7 +145,7 @@ const Home = () => {
                   },
                   {
                     title: "3D",
-                    description: "Stitch's VPL natively supports 3D — a long-requested feature in the design community.",
+                    description: "Stitch's VPL natively supports 3D, a long-requested feature in the design community.",
                     videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/earth.mp4",
                     symbol: "cube.fill",
                   },
@@ -205,7 +205,7 @@ const Home = () => {
                     &nbsp;Robust Editing Tools
                   </h3>
                   <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed">
-                    Use the assistant to refine any element of your screenplay—from character descriptions and environments to camera angles and shot composition.
+                    Use the assistant to refine any element of your screenplay, from character descriptions and environments to camera angles and shot composition.
                   </p>
                 </div>
               </div>
@@ -268,11 +268,11 @@ const Home = () => {
             {/* Lobe Images */}
             <div>
               <ScrollFade delay={200}>
-                <div className="overflow-hidden shadow-2xl">
+                <div className="overflow-hidden shadow-2xl rounded-[20px]">
                   <img
                     src={lobeHeader}
                     alt="Lobe Header"
-                    className="w-full h-auto rounded-t-[20px]"
+                    className="w-full h-auto"
                   />
                   <div className="border-t-2 border-gray-200 dark:border-gray-700"></div>
                   <img
@@ -281,14 +281,12 @@ const Home = () => {
                     className="w-full h-auto"
                   />
                   <div className="border-t-2 border-gray-200 dark:border-gray-700"></div>
-                  <div className="rounded-b-[20px] overflow-hidden">
                     <VideoPlayer
                       videoUrl={lobeTrain}
                       autoplay={true}
                       loop={true}
                       muted={true}
                     />
-                  </div>
                 </div>
               </ScrollFade>
             </div>
