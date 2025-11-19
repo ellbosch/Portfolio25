@@ -17,7 +17,7 @@ import lobeHeader from '../assets/lobe-header.jpg';
 import lobeDesktop from '../assets/lobe-desktop.jpg';
 import lobeTrain from '../assets/lobe-train.mp4';
 import { SFIcon } from '@bradleyhodges/sfsymbols-react';
-import { sfGlobe, sfBrandGithub, sfWandAndSparkles, sfSliderHorizontal3, sfBrandLinkedin, sfEnvelope, sfPersonTextRectangleFill } from '@bradleyhodges/sfsymbols';
+import { sfGlobe, sfBrandGithub, sfWandAndSparkles, sfSliderHorizontal3, sfBrandLinkedin, sfEnvelope, sfTextDocument } from '@bradleyhodges/sfsymbols';
 
 const Home = () => {
   const isMobile = useMediaQuery('(max-width: 768px)');
@@ -364,7 +364,7 @@ const Home = () => {
                 href="/resume"
                 className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium w-full md:w-auto"
               >
-                <SFIcon icon={sfPersonTextRectangleFill} size={20} />
+                <SFIcon icon={sfTextDocument} size={20} />
                 Resume
               </a>
             </div>

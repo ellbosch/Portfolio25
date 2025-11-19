@@ -1,6 +1,6 @@
 import React from 'react';
 import { SFIcon } from '@bradleyhodges/sfsymbols-react';
-import { sfBrandGithub, sfBrandLinkedin, sfPersonTextRectangleFill, sfEnvelope } from '@bradleyhodges/sfsymbols';
+import { sfBrandGithub, sfBrandLinkedin, sfTextDocument, sfEnvelope } from '@bradleyhodges/sfsymbols';
 
 const Header = () => {
   // Email obfuscation - split into parts to avoid scraping
@@ -52,7 +52,7 @@ const Header = () => {
               href="/resume"
               className="flex items-center gap-2 px-3 py-2.5 md:px-5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium"
             >
-              <SFIcon icon={sfPersonTextRectangleFill} size={20} />
+              <SFIcon icon={sfTextDocument} size={20} />
               <span className="hidden md:inline">Resume</span>
             </a>
           </div>
