@@ -29,6 +29,7 @@ const Home = () => {
   // Modal state management
   const [isStitchModalOpen, setIsStitchModalOpen] = useState(false);
   const [isLobeModalOpen, setIsLobeModalOpen] = useState(false);
+  const [isMssqlCliModalOpen, setIsMssqlCliModalOpen] = useState(false);
 
   // Email obfuscation - split into parts to avoid scraping
   const handleEmailClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -362,7 +363,7 @@ const Home = () => {
               </ScrollFade>
               <ScrollFade delay={300}>
                 <div className="flex justify-center">
-                  <ExperienceButton onClick={() => {}}>
+                  <ExperienceButton onClick={() => setIsMssqlCliModalOpen(true)}>
                     Software Engineer
                   </ExperienceButton>
                 </div>
@@ -519,6 +520,17 @@ const Home = () => {
               Led team effort to improve code reliability. Built automated code coverage reporting and bug categorization to help engineers identify vulnerabilities before merging code.
             </li>
           </ul>
+        </div>
+      </Modal>
+
+      {/* mssql-cli Modal */}
+      <Modal
+        isOpen={isMssqlCliModalOpen}
+        onClose={() => setIsMssqlCliModalOpen(false)}
+        title="mssql-cli: Software Engineer"
+      >
+        <div className="space-y-6 text-left">
+          Led development work for the GA launch of mssql-cli, an interactive command-line utility for SQL Server built in Python. Managed distributions across macOS, Linux, and Windows by introducing automation using Docker. Improved pipeline pass rate from 50% to 97% while increasing code coverage by 4%.
         </div>
       </Modal>
     </div>
