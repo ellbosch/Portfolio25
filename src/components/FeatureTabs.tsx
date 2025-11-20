@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import type { FC } from 'react';
 import DeviceFrame from './DeviceFrame';
 import VideoPlayer from './VideoPlayer';
@@ -43,6 +43,44 @@ const getSymbolIcon = (symbolName?: string) => {
 
 const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
   const carouselRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkScrollPosition = useCallback(() => {
+    if (!carouselRef.current) return;
+
+    const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
+
+    // Check if we can scroll left (not at the start)
+    setCanScrollLeft(scrollLeft > 1);
+
+    // Check if we can scroll right (not at the end)
+    // Adding a small tolerance (1px) to handle floating point precision
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 1);
+  }, []);
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    // Check initial scroll position
+    checkScrollPosition();
+
+    // Add scroll event listener
+    carousel.addEventListener('scroll', checkScrollPosition);
+
+    // Add resize event listener to handle window resizing
+    window.addEventListener('resize', checkScrollPosition);
+
+    // Recheck after a short delay to account for content loading
+    const timeoutId = setTimeout(checkScrollPosition, 100);
+
+    return () => {
+      carousel.removeEventListener('scroll', checkScrollPosition);
+      window.removeEventListener('resize', checkScrollPosition);
+      clearTimeout(timeoutId);
+    };
+  }, [tabs, checkScrollPosition]);
 
   const scrollLeft = () => {
     if (carouselRef.current) {
@@ -127,7 +165,12 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
           <div className="flex justify-center md:justify-end gap-3">
             <button
               onClick={scrollLeft}
-              className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              disabled={!canScrollLeft}
+              className={`p-3 rounded-full transition-all duration-200 ${
+                canScrollLeft
+                  ? 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer opacity-100'
+                  : 'bg-gray-100 dark:bg-gray-800 cursor-not-allowed opacity-30'
+              }`}
               aria-label="Scroll left"
             >
               <SFIcon
@@ -138,7 +181,12 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
             </button>
             <button
               onClick={scrollRight}
-              className="p-3 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              disabled={!canScrollRight}
+              className={`p-3 rounded-full transition-all duration-200 ${
+                canScrollRight
+                  ? 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer opacity-100'
+                  : 'bg-gray-100 dark:bg-gray-800 cursor-not-allowed opacity-30'
+              }`}
               aria-label="Scroll right"
             >
               <SFIcon
