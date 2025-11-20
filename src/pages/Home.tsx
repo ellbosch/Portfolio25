@@ -46,7 +46,7 @@ const Home = () => {
         <Hero />
 
         {/* Projects Demo Section */}
-        <section id="about" className="py-12 md:py-20 px-4 bg-gray-50 dark:bg-gray-800 overflow-x-hidden">
+        <section id="about" className="py-20 px-4 bg-gray-50 dark:bg-gray-800 overflow-x-hidden">
           <div className="max-w-7xl mx-auto">
             <div className="mt-6 md:mt-12 text-center">
               <ScrollRotatingFrame>
