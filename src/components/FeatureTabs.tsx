@@ -18,6 +18,7 @@ interface TabData {
   title: string;
   description: string;
   videoUrl: string;
+  posterUrl?: string;
   symbol?: string;
 }
 
@@ -128,6 +129,7 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
                   <DeviceFrame>
                     <VideoPlayer
                       videoUrl={tab.videoUrl}
+                      posterUrl={tab.posterUrl}
                       autoplay={true}
                       loop={true}
                       muted={true}

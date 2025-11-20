@@ -20,6 +20,19 @@ import lobeDesktop from '../assets/lobe-desktop.jpg';
 import lobeTrain from '../assets/lobe-train.mp4';
 import mssqlCliGif from '../assets/mssql-cli-autocomplete.gif';
 import resumePDF from '../assets/resume.pdf';
+
+// Video thumbnails
+import stitchDemoThumb from '../assets/thumbnails/stitch-demo.jpg';
+import stitchAiRectsThumb from '../assets/thumbnails/stitch_ai_rects.jpg';
+import arThumb from '../assets/thumbnails/AR.jpg';
+import objectDetectionThumb from '../assets/thumbnails/object-detection.jpg';
+import humaneThumb from '../assets/thumbnails/humane.jpg';
+import monthlyStaysThumb from '../assets/thumbnails/monthly-stays.jpg';
+import redwoodsThumb from '../assets/thumbnails/redwoods.jpg';
+import earthThumb from '../assets/thumbnails/earth.jpg';
+import vellumFeedThumb from '../assets/thumbnails/vellum-feed-2.jpg';
+import vellumEditThumb from '../assets/thumbnails/vellum-edit-downscaled.jpg';
+import lobeTrainThumb from '../assets/thumbnails/lobe-train.jpg';
 import { SFIcon } from '@bradleyhodges/sfsymbols-react';
 import { sfGlobe, sfBrandGithub, sfWandAndSparkles, sfSliderHorizontal3, sfBrandLinkedin, sfEnvelope, sfTextDocument } from '@bradleyhodges/sfsymbols';
 
@@ -53,6 +66,7 @@ const Home = () => {
                 <DeviceFrame>
                   <VideoPlayer
                     videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/stitch-demo.mp4"
+                    posterUrl={stitchDemoThumb}
                     autoplay={true}
                     loop={true}
                     muted={true}
@@ -114,6 +128,7 @@ const Home = () => {
                 <div className="rounded-[20px] overflow-hidden">
                   <VideoPlayer
                     videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/stitch_ai_rects.mp4"
+                    posterUrl={stitchAiRectsThumb}
                     autoplay={true}
                     loop={true}
                     muted={true}
@@ -133,36 +148,42 @@ const Home = () => {
                     title: "AR",
                     description: "Rapid AR prototyping in minutes instead of hours.",
                     videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/AR.mp4",
+                    posterUrl: arThumb,
                     symbol: "arkit",
                   },
                   {
                     title: "Object Detection",
                     description: "Prototype sophisticated object-detection scenarios, all with no code.",
                     videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/object-detection.mp4",
+                    posterUrl: objectDetectionThumb,
                     symbol: "viewfinder",
                   },
                   {
                     title: "Powerful Rendering Engine",
                     description: "120 FPS regardless of graph complexity, simulating full-scale app performance.",
                     videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/humane.mp4",
+                    posterUrl: humaneThumb,
                     symbol: "tachometer",
                   },
                   {
                     title: "Zero-Tradeoff Prototyping",
                     description: "Stitch empowered Airbnb's design team to prototype behavior-rich UI, including haptic interactions.",
                     videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/monthly-stays.mp4",
+                    posterUrl: monthlyStaysThumb,
                     symbol: "slider.horizontal.3",
                   },
                   {
                     title: "Image Classification",
                     description: "Machine-learning prototyping is always at your fingertips.",
                     videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/redwoods.mp4",
+                    posterUrl: redwoodsThumb,
                     symbol: "photo.badge.checkmark",
                   },
                   {
                     title: "3D",
                     description: "Stitch's VPL natively supports 3D, a long-requested feature in the design community.",
                     videoUrl: "https://portfolio25-videos.s3.us-west-1.amazonaws.com/earth.mp4",
+                    posterUrl: earthThumb,
                     symbol: "cube.fill",
                   },
                 ]}
@@ -204,6 +225,7 @@ const Home = () => {
                   <IPhoneFrame>
                     <VideoPlayer
                       videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-feed-2.mp4"
+                      posterUrl={vellumFeedThumb}
                       autoplay={true}
                       loop={true}
                       muted={true}
@@ -264,6 +286,7 @@ const Home = () => {
                   <IPhoneFrame>
                     <VideoPlayer
                       videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-edit-downscaled.mov"
+                      posterUrl={vellumEditThumb}
                       autoplay={true}
                       loop={true}
                       muted={true}
@@ -352,6 +375,7 @@ const Home = () => {
                   <div className="-mx-4 md:mx-0">
                     <VideoPlayer
                       videoUrl={lobeTrain}
+                      posterUrl={lobeTrainThumb}
                       autoplay={true}
                       loop={true}
                       muted={true}
