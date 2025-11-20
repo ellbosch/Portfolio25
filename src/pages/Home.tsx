@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
-import ProjectCard from '../components/ProjectCard';
 import VideoPlayer from '../components/VideoPlayer';
 import DeviceFrame from '../components/DeviceFrame';
 import IPhoneFrame from '../components/iPhoneFrame';
@@ -389,7 +388,7 @@ const Home = () => {
             </div>
 
             {/* Terminal Demo */}
-            <div>
+            <div className="max-w-4xl mx-auto">
               <ScrollFade delay={200}>
                 <TerminalFrame>
                   <img
