@@ -288,6 +288,23 @@ const Home = () => {
                 )}
               </div>
             </div>
+
+            {/* Beta Testing Notice */}
+            <div className="text-center mb-20 max-w-3xl mx-auto">
+              <div className="bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-700 rounded-2xl px-2 py-5 md:px-8 md:py-6">
+                <p className="text-l md:text-2xl text-gray-700 dark:text-gray-200 font-bold">
+                  Vellum is currently in private beta testing.</p>
+                <p className="text-l md:text-2xl text-gray-700 dark:text-gray-200 font-bold underline">
+                  <a
+                    href="#"
+                    onClick={handleEmailClick}
+                    className="text-blue-600 dark:text-blue-400 hover:underline"
+                  >
+                    Reach out to Elliot for TestFlight access.
+                  </a>
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
