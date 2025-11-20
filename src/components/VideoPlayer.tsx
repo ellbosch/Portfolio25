@@ -11,6 +11,7 @@ interface VideoPlayerProps {
   muted?: boolean;
   lazy?: boolean;
   rootMargin?: string;
+  debug?: boolean; // Debug mode: never load videos, always show thumbnails
 }
 
 const VideoPlayer = ({
@@ -21,6 +22,7 @@ const VideoPlayer = ({
   muted = false,
   lazy = true,
   rootMargin = '200px',
+  debug = false,
 }: VideoPlayerProps) => {
   const videoRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<any>(null);
@@ -28,6 +30,7 @@ const VideoPlayer = ({
   const [isInView, setIsInView] = useState(!lazy);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const [manualLoadTriggered, setManualLoadTriggered] = useState(false);
 
   // Intersection Observer for lazy loading
   useEffect(() => {
@@ -55,9 +58,10 @@ const VideoPlayer = ({
     };
   }, [lazy, rootMargin]);
 
-  // Initialize Video.js player when in view
+  // Initialize Video.js player when in view (or when manually triggered in debug mode)
   useEffect(() => {
     if (!isInView || !videoRef.current) return;
+    if (debug && !manualLoadTriggered) return;
 
     // Make sure Video.js player is only initialized once
     if (!playerRef.current) {
@@ -121,7 +125,7 @@ const VideoPlayer = ({
         player.poster(posterUrl);
       }
     }
-  }, [isInView, videoUrl, posterUrl, autoplay, loop, muted]);
+  }, [isInView, videoUrl, posterUrl, autoplay, loop, muted, debug, manualLoadTriggered]);
 
   // Dispose the Video.js player when the component unmounts
   useEffect(() => {
@@ -141,19 +145,30 @@ const VideoPlayer = ({
       data-vjs-player
       className="relative max-h-full overflow-hidden bg-gray-100 dark:bg-gray-900"
     >
-      {/* Poster Image Placeholder (shown before video loads) */}
-      {!isInView && posterUrl && (
-        <div className="w-full h-full">
+      {/* Poster Image Placeholder (shown before video loads or in debug mode) */}
+      {(!isInView || (debug && !manualLoadTriggered)) && posterUrl && (
+        <div
+          className="w-full h-full"
+          onClick={debug ? () => setManualLoadTriggered(true) : undefined}
+          style={debug ? { cursor: 'pointer' } : undefined}
+        >
           <img
             src={posterUrl}
             alt="Video thumbnail"
             className="w-full h-full object-cover"
           />
+          {debug && (
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="bg-black/50 text-white px-4 py-2 rounded-lg text-sm">
+                Click to load video
+              </div>
+            </div>
+          )}
         </div>
       )}
 
       {/* Video Player */}
-      {isInView && (
+      {isInView && (!debug || manualLoadTriggered) && (
         <div ref={videoRef} className="w-full h-full" />
       )}
 
