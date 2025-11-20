@@ -70,6 +70,7 @@ const Home = () => {
                     autoplay={true}
                     loop={true}
                     muted={true}
+                    lazy={false}
                   />
                 </DeviceFrame>
               </ScrollRotatingFrame>

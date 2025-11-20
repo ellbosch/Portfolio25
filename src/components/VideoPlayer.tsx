@@ -26,18 +26,30 @@ const VideoPlayer = ({
   const playerRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(!lazy);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
   // Intersection Observer for lazy loading
   useEffect(() => {
-    if (!lazy || !containerRef.current) return;
+    if (!lazy || !containerRef.current) {
+      // If not lazy, show thumbnail first, then start loading after 1 second
+      setIsInView(true);
+      const timer = setTimeout(() => {
+        setShouldLoadVideo(true);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsInView(true);
+            // Wait 1 second before starting video load
+            setTimeout(() => {
+              setShouldLoadVideo(true);
+            }, 1000);
             observer.disconnect();
           }
         });
@@ -55,9 +67,9 @@ const VideoPlayer = ({
     };
   }, [lazy, rootMargin]);
 
-  // Initialize Video.js player when in view
+  // Initialize Video.js player when in view and after delay
   useEffect(() => {
-    if (!isInView || !videoRef.current) return;
+    if (!shouldLoadVideo || !videoRef.current) return;
 
     // Make sure Video.js player is only initialized once
     if (!playerRef.current) {
@@ -121,7 +133,7 @@ const VideoPlayer = ({
         player.poster(posterUrl);
       }
     }
-  }, [isInView, videoUrl, posterUrl, autoplay, loop, muted]);
+  }, [shouldLoadVideo, videoUrl, posterUrl, autoplay, loop, muted]);
 
   // Dispose the Video.js player when the component unmounts
   useEffect(() => {
@@ -135,33 +147,46 @@ const VideoPlayer = ({
     };
   }, []);
 
+  const showThumbnail = !shouldLoadVideo || isLoading;
+  const showVideo = shouldLoadVideo && !isLoading;
+
   return (
     <div
       ref={containerRef}
       data-vjs-player
       className="relative max-h-full overflow-hidden bg-gray-100 dark:bg-gray-900"
     >
-      {/* Poster Image Placeholder (shown before video loads) */}
-      {!isInView && posterUrl && (
-        <div className="w-full h-full">
+      {/* Poster Image Placeholder - fades out when video is ready */}
+      {posterUrl && (
+        <div
+          className="absolute inset-0 w-full h-full transition-opacity duration-1000"
+          style={{
+            opacity: showThumbnail ? 1 : 0,
+            pointerEvents: showThumbnail ? 'auto' : 'none',
+          }}
+        >
           <img
             src={posterUrl}
             alt="Video thumbnail"
             className="w-full h-full object-cover"
+            loading="eager"
           />
+          {/* Loading Indicator over thumbnail */}
+          {shouldLoadVideo && isLoading && (
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <LoadingIndicator size={48} color="white" />
+            </div>
+          )}
         </div>
       )}
 
-      {/* Video Player */}
-      {isInView && (
-        <div ref={videoRef} className="w-full h-full" />
-      )}
-
-      {/* Loading Indicator - appears above poster/video with no background */}
-      {isInView && isLoading && !hasError && posterUrl && (
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <LoadingIndicator size={48} color="white" />
-        </div>
+      {/* Video Player - fades in when ready */}
+      {shouldLoadVideo && (
+        <div
+          ref={videoRef}
+          className="w-full h-full transition-opacity duration-1000"
+          style={{ opacity: showVideo ? 1 : 0 }}
+        />
       )}
 
       {/* Error State */}
