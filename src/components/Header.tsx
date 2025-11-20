@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { SFIcon } from '@bradleyhodges/sfsymbols-react';
 import { sfBrandGithub, sfBrandLinkedin, sfTextDocument, sfEnvelope } from '@bradleyhodges/sfsymbols';
+import resumePDF from '../assets/resume.pdf';
 
 const Header = () => {
   // Email obfuscation - split into parts to avoid scraping
@@ -49,13 +49,15 @@ const Header = () => {
               <SFIcon icon={sfEnvelope} size={20} />
               <span className="hidden md:inline">Email</span>
             </a>
-            <Link
-              to="/resume"
+            <a
+              href={resumePDF}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 px-3 py-2.5 md:px-5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium"
             >
               <SFIcon icon={sfTextDocument} size={20} />
               <span className="hidden md:inline">Resume</span>
-            </Link>
+            </a>
           </div>
         </div>
       </nav>
