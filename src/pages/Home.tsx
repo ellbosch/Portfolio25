@@ -32,7 +32,6 @@ import redwoodsThumb from '../assets/thumbnails/redwoods.jpg';
 import earthThumb from '../assets/thumbnails/earth.jpg';
 import vellumFeedThumb from '../assets/thumbnails/vellum-feed-2.jpg';
 import vellumEditThumb from '../assets/thumbnails/vellum-edit-downscaled.jpg';
-import lobeTrainThumb from '../assets/thumbnails/lobe-train.jpg';
 import { SFIcon } from '@bradleyhodges/sfsymbols-react';
 import { sfGlobe, sfBrandGithub, sfWandAndSparkles, sfSliderHorizontal3, sfBrandLinkedin, sfEnvelope, sfTextDocument } from '@bradleyhodges/sfsymbols';
 
@@ -374,12 +373,13 @@ const Home = () => {
                   />
                   <div className="border-t-2 border-gray-200 dark:border-gray-700"></div>
                   <div className="-mx-4 md:mx-0">
-                    <VideoPlayer
-                      videoUrl={lobeTrain}
-                      posterUrl={lobeTrainThumb}
-                      autoplay={true}
-                      loop={true}
-                      muted={true}
+                    <video
+                      src={lobeTrain}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-auto"
                     />
                   </div>
                   <div className="border-t-2 border-gray-200 dark:border-gray-700"></div>
