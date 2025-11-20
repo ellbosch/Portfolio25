@@ -115,9 +115,9 @@ generate_thumbnail "$VIDEO_PATH" "stitch-demo" "ipad-narrow"
 VIDEO_PATH=$(download_video "https://portfolio25-videos.s3.us-west-1.amazonaws.com/stitch_ai_rects.mp4" "stitch_ai_rects.mp4")
 generate_thumbnail "$VIDEO_PATH" "stitch_ai_rects" "desktop"
 
-# AR (iPad - 1080p)
+# AR (iPad narrow - 1545x1080)
 VIDEO_PATH=$(download_video "https://portfolio25-videos.s3.us-west-1.amazonaws.com/AR.mp4" "AR.mp4")
-generate_thumbnail "$VIDEO_PATH" "AR" "ipad"
+generate_thumbnail "$VIDEO_PATH" "AR" "ipad-narrow"
 
 # Object Detection (iPad - 1080p)
 VIDEO_PATH=$(download_video "https://portfolio25-videos.s3.us-west-1.amazonaws.com/object-detection.mp4" "object-detection.mp4")
