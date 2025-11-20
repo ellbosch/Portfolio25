@@ -159,7 +159,7 @@ const VideoPlayer = ({
       {/* Poster Image Placeholder - fades out when video is ready */}
       {posterUrl && (
         <div
-          className="absolute inset-0 w-full h-full transition-opacity duration-1000"
+          className="absolute transition-opacity duration-1000"
           style={{
             opacity: showThumbnail ? 1 : 0,
             pointerEvents: showThumbnail ? 'auto' : 'none',
