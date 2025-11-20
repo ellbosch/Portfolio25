@@ -11,6 +11,7 @@ import PaddingParallax from '../components/PaddingParallax';
 import FeatureTabs from '../components/FeatureTabs';
 import Modal from '../components/Modal';
 import ExperienceButton from '../components/ExperienceButton';
+import TerminalFrame from '../components/TerminalFrame';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import stitchIcon from '../assets/stitch-icon.png';
 import vellumIcon from '../assets/vellum-icon.png';
@@ -18,6 +19,7 @@ import lobeIcon from '../assets/lobe-icon.png';
 import lobeHeader from '../assets/lobe-header.jpg';
 import lobeDesktop from '../assets/lobe-desktop.jpg';
 import lobeTrain from '../assets/lobe-train.mp4';
+import mssqlCliGif from '../assets/mssql-cli-autocomplete.gif';
 import resumePDF from '../assets/resume.pdf';
 import { SFIcon } from '@bradleyhodges/sfsymbols-react';
 import { sfGlobe, sfBrandGithub, sfWandAndSparkles, sfSliderHorizontal3, sfBrandLinkedin, sfEnvelope, sfTextDocument } from '@bradleyhodges/sfsymbols';
@@ -350,8 +352,59 @@ const Home = () => {
           </div>
         </section>
 
+        {/* mssql-cli Section */}
+        <section id="mssql-cli" className="bg-white dark:bg-gray-900 py-12 md:py-20 px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12 md:mb-20">
+              <ScrollFade delay={200}>
+                <h2 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-4 md:mb-6 font-mono">
+                  mssql-cli
+                </h2>
+              </ScrollFade>
+              <ScrollFade delay={300}>
+                <div className="flex justify-center">
+                  <ExperienceButton onClick={() => {}}>
+                    Software Engineer
+                  </ExperienceButton>
+                </div>
+              </ScrollFade>
+              <ScrollFade delay={400}>
+                <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed max-w-3xl mx-auto">
+                  A cross-platform command-line interface for SQL Server with IntelliSense, syntax highlighting, and multi-line editing.
+                </p>
+              </ScrollFade>
+              <ScrollFade delay={500}>
+                <div className="flex items-center justify-center gap-4 mt-6">
+                  <a
+                    href="https://github.com/dbcli/mssql-cli"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium"
+                  >
+                    <SFIcon icon={sfBrandGithub} size={20} />
+                    GitHub
+                  </a>
+                </div>
+              </ScrollFade>
+            </div>
+
+            {/* Terminal Demo */}
+            <div>
+              <ScrollFade delay={200}>
+                <TerminalFrame>
+                  <img
+                    src={mssqlCliGif}
+                    alt="mssql-cli autocomplete demo"
+                    className="w-full h-auto"
+                  />
+                </TerminalFrame>
+              </ScrollFade>
+            </div>
+          </div>
+        </section>
+
         {/* Contact Section */}
-        <section id="contact" className="py-12 md:py-20 px-4 bg-white dark:bg-gray-900">
+        <section id="contact" className="py-12 md:py-20 px-4 bg-gray-50 dark:bg-gray-800">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white">Get In Touch</h2>
             <div className="flex flex-col md:flex-row justify-center items-center gap-4 max-w-[200px] md:max-w-none mx-auto">
