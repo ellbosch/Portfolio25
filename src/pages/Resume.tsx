@@ -7,16 +7,35 @@ import { sfTextDocument } from '@bradleyhodges/sfsymbols';
 export default function Resume() {
   const [verified, setVerified] = useState(false);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
+  const [captchaError, setCaptchaError] = useState(false);
+  const [captchaExpired, setCaptchaExpired] = useState(false);
 
-  // Cloudflare Turnstile test site key (for development)
-  // For production, get your own key from: https://dash.cloudflare.com/
-  const TURNSTILE_SITE_KEY = '1x00000000000000000000AA';
+  // Cloudflare Turnstile site keys
+  // Use testing key for localhost, production key for deployed site
+  const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  const TURNSTILE_SITE_KEY = isLocalhost
+    ? '1x00000000000000000000AA' // Testing key for localhost
+    : '0x4AAAAAACB5wZZBEC-BEapo'; // Production key for elliotboschwitz.com
 
   const handleCaptchaSuccess = (token: string) => {
     console.log('CAPTCHA verified:', token);
     setVerified(true);
+    setCaptchaError(false);
+    setCaptchaExpired(false);
     // Obfuscated PDF loading - only load after verification
     loadPDF();
+  };
+
+  const handleCaptchaError = () => {
+    console.error('CAPTCHA verification failed');
+    setCaptchaError(true);
+    setVerified(false);
+  };
+
+  const handleCaptchaExpire = () => {
+    console.warn('CAPTCHA expired');
+    setCaptchaExpired(true);
+    setVerified(false);
   };
 
   const loadPDF = async () => {
@@ -71,15 +90,40 @@ export default function Resume() {
             </p>
 
             {/* Cloudflare Turnstile CAPTCHA */}
-            <div className="flex justify-center mb-6">
+            <div className="flex flex-col items-center mb-6">
               <Turnstile
                 siteKey={TURNSTILE_SITE_KEY}
                 onSuccess={handleCaptchaSuccess}
+                onError={handleCaptchaError}
+                onExpire={handleCaptchaExpire}
                 options={{
                   theme: 'auto',
                   size: 'normal',
                 }}
               />
+
+              {/* Error Messages */}
+              {captchaError && (
+                <div className="mt-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl w-full">
+                  <p className="text-red-800 dark:text-red-200 font-medium">
+                    ❌ Verification Failed
+                  </p>
+                  <p className="text-red-600 dark:text-red-300 text-sm mt-1">
+                    CAPTCHA verification failed. Please refresh the page and try again.
+                  </p>
+                </div>
+              )}
+
+              {captchaExpired && !captchaError && (
+                <div className="mt-4 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-xl w-full">
+                  <p className="text-yellow-800 dark:text-yellow-200 font-medium">
+                    ⏱️ Verification Expired
+                  </p>
+                  <p className="text-yellow-600 dark:text-yellow-300 text-sm mt-1">
+                    Your CAPTCHA expired. Please complete the verification again.
+                  </p>
+                </div>
+              )}
             </div>
 
             <Link
