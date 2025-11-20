@@ -10,6 +10,7 @@ import ScrollFade from '../components/ScrollFade';
 import PaddingParallax from '../components/PaddingParallax';
 import FeatureTabs from '../components/FeatureTabs';
 import Modal from '../components/Modal';
+import ExperienceButton from '../components/ExperienceButton';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import stitchIcon from '../assets/stitch-icon.png';
 import vellumIcon from '../assets/vellum-icon.png';
@@ -72,12 +73,9 @@ const Home = () => {
                 </div>
               </ScrollFade>
               <ScrollFade delay={300}>
-                <button
-                  onClick={() => setIsStitchModalOpen(true)}
-                  className="text-xl md:text-2xl text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors underline decoration-2 underline-offset-4 mb-4"
-                >
-                  Co-Founder, Lead Engineering Architect - Full Experience Details
-                </button>
+                <ExperienceButton onClick={() => setIsStitchModalOpen(true)}>
+                  Co-Founder, Lead Engineering Architect
+                </ExperienceButton>
               </ScrollFade>
               <ScrollFade delay={400}>
                 <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center">
@@ -307,12 +305,9 @@ const Home = () => {
                 </div>
               </ScrollFade>
               <ScrollFade delay={300}>
-                <button
-                  onClick={() => setIsLobeModalOpen(true)}
-                  className="text-xl md:text-2xl text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors underline decoration-2 underline-offset-4 mb-4"
-                >
-                  Software Engineer 2 - Full Experience Details
-                </button>
+                <ExperienceButton onClick={() => setIsLobeModalOpen(true)}>
+                  Software Engineer 2
+                </ExperienceButton>
               </ScrollFade>
               <ScrollFade delay={400}>
                 <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed max-w-3xl mx-auto">
