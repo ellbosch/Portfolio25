@@ -154,7 +154,7 @@ const VideoPlayer = ({
     <div
       ref={containerRef}
       data-vjs-player
-      className="relative w-full h-full overflow-hidden bg-gray-100 dark:bg-gray-900"
+      className="relative w-full h-full overflow-hidden"
     >
       {/* Poster Image Placeholder - fades out when video is ready */}
       {posterUrl && (
