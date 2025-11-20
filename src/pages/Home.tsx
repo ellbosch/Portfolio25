@@ -73,9 +73,11 @@ const Home = () => {
                 </div>
               </ScrollFade>
               <ScrollFade delay={300}>
-                <ExperienceButton onClick={() => setIsStitchModalOpen(true)}>
-                  Co-Founder, Lead Engineering Architect
-                </ExperienceButton>
+                <div className="flex justify-center">
+                  <ExperienceButton onClick={() => setIsStitchModalOpen(true)}>
+                    Co-Founder, Lead Engineering Architect
+                  </ExperienceButton>
+                </div>
               </ScrollFade>
               <ScrollFade delay={400}>
                 <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center">
@@ -305,9 +307,11 @@ const Home = () => {
                 </div>
               </ScrollFade>
               <ScrollFade delay={300}>
-                <ExperienceButton onClick={() => setIsLobeModalOpen(true)}>
-                  Software Engineer 2
-                </ExperienceButton>
+                <div className="flex justify-center">
+                  <ExperienceButton onClick={() => setIsLobeModalOpen(true)}>
+                    Software Engineer 2
+                  </ExperienceButton>
+                </div>
               </ScrollFade>
               <ScrollFade delay={400}>
                 <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed max-w-3xl mx-auto">
