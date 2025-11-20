@@ -1,5 +1,7 @@
 import meImage from '../assets/me.png';
+import meImageWebP from '../assets/me.webp';
 import stitchIcon from '../assets/stitch-icon.png';
+import stitchIconWebP from '../assets/stitch-icon.webp';
 import msftIcon from '../assets/msft-icon.png';
 import { SFIcon } from '@bradleyhodges/sfsymbols-react';
 import { sfBriefcaseFill } from '@bradleyhodges/sfsymbols';
@@ -13,7 +15,12 @@ const Hero = () => {
 
   const highlights = [
     {
-      icon: <img src={stitchIcon} alt="Stitch" className="w-6 h-6 grayscale rounded-lg" />,
+      icon: (
+        <picture>
+          <source srcSet={stitchIconWebP} type="image/webp" />
+          <img src={stitchIcon} alt="Stitch" className="w-6 h-6 grayscale rounded-lg" />
+        </picture>
+      ),
       text: 'Lead iOS Engineering Architect at Stitch',
       delay: '1000ms'
     },
@@ -52,11 +59,14 @@ const Hero = () => {
           Hi 👋, I'm Elliot
         </h1>
         <div className="flex flex-col md:flex-row items-center gap-12">
-          <img
-            src={meImage}
-            alt="Profile"
-            className="w-64 h-64 rounded-full object-cover shadow-lg"
-          />
+          <picture>
+            <source srcSet={meImageWebP} type="image/webp" />
+            <img
+              src={meImage}
+              alt="Profile"
+              className="w-64 h-64 rounded-full object-cover shadow-lg"
+            />
+          </picture>
           <div className="flex-1 space-y-4">
             <h2
               className="text-xl md:text-3xl font-semibold text-gray-900 dark:text-white mb-6 animate-fade-in"

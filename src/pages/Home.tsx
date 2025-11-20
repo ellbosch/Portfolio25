@@ -13,7 +13,9 @@ import ExperienceButton from '../components/ExperienceButton';
 import TerminalFrame from '../components/TerminalFrame';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import stitchIcon from '../assets/stitch-icon.png';
+import stitchIconWebP from '../assets/stitch-icon.webp';
 import vellumIcon from '../assets/vellum-icon.png';
+import vellumIconWebP from '../assets/vellum-icon.webp';
 import lobeIcon from '../assets/lobe-icon.png';
 import lobeHeader from '../assets/lobe-header.jpg';
 import lobeDesktop from '../assets/lobe-desktop.jpg';
@@ -77,14 +79,17 @@ const Home = () => {
             <div className="mt-6 md:mt-8 max-w-3xl mx-auto">
               <ScrollFade delay={200}>
                 <div className="flex items-center justify-center gap-4 md:gap-6 mb-4 md:mb-6">
-                  <img
-                    src={stitchIcon}
-                    alt="Stitch Icon"
-                    className="w-24 h-24 md:w-32 md:h-32 rounded-[22%] shadow-lg"
-                    style={{
-                      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
-                    }}
-                  />
+                  <picture>
+                    <source srcSet={stitchIconWebP} type="image/webp" />
+                    <img
+                      src={stitchIcon}
+                      alt="Stitch Icon"
+                      className="w-24 h-24 md:w-32 md:h-32 rounded-[22%] shadow-lg"
+                      style={{
+                        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
+                      }}
+                    />
+                  </picture>
                   <h2 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white">Stitch</h2>
                 </div>
               </ScrollFade>
@@ -124,18 +129,16 @@ const Home = () => {
               </ScrollFade>
             </div>
             <div className="mt-16 md:mt-36 mx-auto">
-              <ScrollFade delay={600}>
-                <div className="rounded-[20px] overflow-hidden">
-                  <VideoPlayer
-                    videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/stitch_ai_rects.mp4"
-                    posterUrl={stitchAiRectsThumb}
-                    autoplay={true}
-                    loop={true}
-                    muted={true}
-                    lazy={false}
-                  />
-                </div>
-              </ScrollFade>
+              <div className="rounded-[20px] overflow-hidden">
+                <VideoPlayer
+                  videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/stitch_ai_rects.mp4"
+                  posterUrl={stitchAiRectsThumb}
+                  autoplay={true}
+                  loop={true}
+                  muted={true}
+                  lazy={false}
+                />
+              </div>
               <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center mt-4 mb-8 max-w-3xl mx-auto">
                 While most vibe-coding solutions focus solely on code, Stitch combines vibe coding with a familiar, node-based visual programming language. Making advanced interactions fast, intuitive, and accessible.
               </p>
@@ -200,14 +203,17 @@ const Home = () => {
             <div className="text-center">
               <ScrollFade delay={200}>
                 <div className="flex items-center justify-center gap-4 md:gap-6 mb-4 md:mb-6">
-                  <img
-                    src={vellumIcon}
-                    alt="Vellum Icon"
-                    className="w-24 h-24 md:w-32 md:h-32 rounded-[22%] shadow-lg"
-                    style={{
-                      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
-                    }}
-                  />
+                  <picture>
+                    <source srcSet={vellumIconWebP} type="image/webp" />
+                    <img
+                      src={vellumIcon}
+                      alt="Vellum Icon"
+                      className="w-24 h-24 md:w-32 md:h-32 rounded-[22%] shadow-lg"
+                      style={{
+                        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
+                      }}
+                    />
+                  </picture>
                   <h2 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white">Vellum</h2>
                 </div>
               </ScrollFade>
