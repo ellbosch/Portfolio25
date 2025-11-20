@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import ProjectCard from '../components/ProjectCard';
@@ -9,6 +9,7 @@ import ScrollRotatingFrame from '../components/ScrollRotatingFrame';
 import ScrollFade from '../components/ScrollFade';
 import PaddingParallax from '../components/PaddingParallax';
 import FeatureTabs from '../components/FeatureTabs';
+import Modal from '../components/Modal';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import stitchIcon from '../assets/stitch-icon.png';
 import vellumIcon from '../assets/vellum-icon.png';
@@ -22,6 +23,10 @@ import { sfGlobe, sfBrandGithub, sfWandAndSparkles, sfSliderHorizontal3, sfBrand
 
 const Home = () => {
   const isMobile = useMediaQuery('(max-width: 768px)');
+
+  // Modal state management
+  const [isStitchModalOpen, setIsStitchModalOpen] = useState(false);
+  const [isLobeModalOpen, setIsLobeModalOpen] = useState(false);
 
   // Email obfuscation - split into parts to avoid scraping
   const handleEmailClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -65,6 +70,14 @@ const Home = () => {
                   />
                   <h2 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white">Stitch</h2>
                 </div>
+              </ScrollFade>
+              <ScrollFade delay={300}>
+                <button
+                  onClick={() => setIsStitchModalOpen(true)}
+                  className="text-xl md:text-2xl text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors underline decoration-2 underline-offset-4 mb-4"
+                >
+                  Co-Founder, Lead Engineering Architect - Full Experience Details
+                </button>
               </ScrollFade>
               <ScrollFade delay={400}>
                 <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed text-center">
@@ -293,6 +306,14 @@ const Home = () => {
                   <h2 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white">Lobe</h2>
                 </div>
               </ScrollFade>
+              <ScrollFade delay={300}>
+                <button
+                  onClick={() => setIsLobeModalOpen(true)}
+                  className="text-xl md:text-2xl text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors underline decoration-2 underline-offset-4 mb-4"
+                >
+                  Software Engineer 2 - Full Experience Details
+                </button>
+              </ScrollFade>
               <ScrollFade delay={400}>
                 <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed max-w-3xl mx-auto">
                   Lobe is a free, easy-to-use desktop application that empowers anyone to train custom machine learning models without writing a single line of code.
@@ -374,6 +395,81 @@ const Home = () => {
           </div>
         </section>
       </main>
+
+      {/* Stitch Modal */}
+      <Modal
+        isOpen={isStitchModalOpen}
+        onClose={() => setIsStitchModalOpen(false)}
+        title="Stitch: Co-Founder, Lead Engineering Architect"
+      >
+        <div className="space-y-6 text-left">
+          <div>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+              Platform Architecture
+            </h3>
+            <ul className="list-disc list-outside ml-6 space-y-2 text-gray-700 dark:text-gray-300">
+              <li>
+                Architected in native Swift the visual programming language (VPL) powering Stitch, supporting hundreds of modular nodes. Managed a 3 person dev team.
+              </li>
+              <li>
+                Built a unified front-end media pipeline for audio, video, microphone, camera, image, and AR in a single extensible framework, delivering real-time performance with strong memory and thread safety.
+              </li>
+              <li>
+                Designed a document migration system that preserved user data over dozens of major schema changes.
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+              Real-Time Graph Engines
+            </h3>
+            <ul className="list-disc list-outside ml-6 space-y-2 text-gray-700 dark:text-gray-300">
+              <li>
+                Designed and implemented the first AR and 3D prototyping system in a design tool, enabling users to simulate and manipulate environments in seconds instead of hours.
+              </li>
+              <li>
+                Developed graph evaluation algorithms and optimized node-queuing system supporting cyclic and infinite loops while maintaining 120 FPS, critical for real-time simulation and media workflows.
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+              AI & Product Leadership
+            </h3>
+            <ul className="list-disc list-outside ml-6 space-y-2 text-gray-700 dark:text-gray-300">
+              <li>
+                Led the company's shift to an AI-first product, owning a 3-month roadmap that shipped the first LLM integrated directly into a VPL environment, dramatically increasing designers' prototyping speed.
+              </li>
+              <li>
+                Drove customer outreach and community programs; turned user feedback into roadmap priorities that became our AI pivot.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </Modal>
+
+      {/* Lobe Modal */}
+      <Modal
+        isOpen={isLobeModalOpen}
+        onClose={() => setIsLobeModalOpen(false)}
+        title="Lobe: Software Engineer 2"
+      >
+        <div className="space-y-6 text-left">
+          <ul className="list-disc list-outside ml-6 space-y-2 text-gray-700 dark:text-gray-300">
+            <li>
+              Developed front-end experiences for Lobe, a no-code machine learning app. Contributed to Lobe's Electron app, iOS app, and website for public preview release. Tech stack included TypeScript, Node.js, React, Redux, Python, HTML, and CSS.
+            </li>
+            <li>
+              Developed iOS app to help Lobe's customers quickly adopt product into Swift codebases. Created additional example code in Python, Swift, and TypeScript for developers to easily leverage Lobe's API.
+            </li>
+            <li>
+              Led team effort to improve code reliability. Built automated code coverage reporting and bug categorization to help engineers identify vulnerabilities before merging code.
+            </li>
+          </ul>
+        </div>
+      </Modal>
     </div>
   );
 };
