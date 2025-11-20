@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import VideoPlayer from '../components/VideoPlayer';
@@ -21,7 +22,6 @@ import lobeHeader from '../assets/lobe-header.jpg';
 import lobeDesktop from '../assets/lobe-desktop.jpg';
 import lobeTrain from '../assets/lobe-train.mp4';
 import mssqlCliGif from '../assets/mssql-cli-autocomplete.gif';
-import resumePDF from '../assets/resume.pdf';
 
 // Video thumbnails
 import stitchDemoThumb from '../assets/thumbnails/stitch-demo.jpg';
@@ -483,15 +483,13 @@ const Home = () => {
                 <SFIcon icon={sfEnvelope} size={20} />
                 Email
               </a>
-              <a
-                href={resumePDF}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to="/resume"
                 className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium w-full md:w-auto"
               >
                 <SFIcon icon={sfTextDocument} size={20} />
                 Resume
-              </a>
+              </Link>
             </div>
           </div>
         </section>

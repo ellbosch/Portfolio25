@@ -1,39 +1,79 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import { Turnstile } from '@marsidev/react-turnstile';
+import { Turnstile } from '@marsidev/react-turnstile';
 import { SFIcon } from '@bradleyhodges/sfsymbols-react';
-import { sfTextDocument } from '@bradleyhodges/sfsymbols';
+import { sfTextDocument, sfCheckmarkCircle, sfExclamationmarkCircle } from '@bradleyhodges/sfsymbols';
+
+interface VerifyResponse {
+  success: boolean;
+  resumeUrl?: string;
+  expiresIn?: number;
+  error?: string;
+}
+
+type VerificationState = 'idle' | 'verifying' | 'verified' | 'error';
 
 export default function Resume() {
-  const [pdfUrl, setPdfUrl] = useState<string | null>(null);
+  const [verificationState, setVerificationState] = useState<VerificationState>('idle');
+  const [resumeUrl, setResumeUrl] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string>('');
+  const [isDownloading, setIsDownloading] = useState(false);
 
-  // Load and open PDF immediately on page load
-  useEffect(() => {
-    const openPDF = async () => {
-      try {
-        // Dynamic import to load PDF
-        const pdfModule = await import('../assets/resume.pdf');
-        const pdfPath = pdfModule.default;
-        setPdfUrl(pdfPath);
+  const turnstileSiteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY || '1x00000000000000000000AA';
+  const apiEndpoint = import.meta.env.VITE_API_ENDPOINT;
 
-        // Open PDF in new tab with native browser viewer
-        window.open(pdfPath, '_blank');
-      } catch (err) {
-        console.error('Error loading PDF:', err);
+  const handleTurnstileSuccess = async (token: string) => {
+    if (!apiEndpoint) {
+      setVerificationState('error');
+      setErrorMessage('API endpoint not configured. Please contact the site administrator.');
+      return;
+    }
+
+    setVerificationState('verifying');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch(apiEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ token }),
+      });
+
+      const data: VerifyResponse = await response.json();
+
+      if (response.ok && data.success && data.resumeUrl) {
+        setResumeUrl(data.resumeUrl);
+        setVerificationState('verified');
+
+        // Auto-open resume in new tab after verification
+        window.open(data.resumeUrl, '_blank');
+      } else {
+        setVerificationState('error');
+        setErrorMessage(data.error || 'Verification failed. Please try again.');
       }
-    };
+    } catch (err) {
+      console.error('Error verifying Turnstile token:', err);
+      setVerificationState('error');
+      setErrorMessage('Network error. Please check your connection and try again.');
+    }
+  };
 
-    openPDF();
-  }, []);
+  const handleTurnstileError = () => {
+    setVerificationState('error');
+    setErrorMessage('Verification widget failed to load. Please refresh the page.');
+  };
 
   const handleDownload = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
 
-    if (!pdfUrl) return;
+    if (!resumeUrl) return;
+
+    setIsDownloading(true);
 
     try {
-      // Download PDF
-      const response = await fetch(pdfUrl);
+      const response = await fetch(resumeUrl);
       const blob = await response.blob();
       const blobUrl = URL.createObjectURL(blob);
 
@@ -48,7 +88,124 @@ export default function Resume() {
       setTimeout(() => URL.revokeObjectURL(blobUrl), 100);
     } catch (err) {
       console.error('Error downloading PDF:', err);
-      alert('Failed to download resume. Please try again.');
+      setErrorMessage('Failed to download resume. Please try again.');
+    } finally {
+      setIsDownloading(false);
+    }
+  };
+
+  const renderContent = () => {
+    switch (verificationState) {
+      case 'idle':
+        return (
+          <>
+            <div className="w-20 h-20 bg-gray-900 dark:bg-white rounded-full flex items-center justify-center mx-auto mb-6">
+              <SFIcon icon={sfTextDocument} size={40} className="text-white dark:text-gray-900" />
+            </div>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+              Access Resume
+            </h1>
+            <p className="text-gray-600 dark:text-gray-400 mb-8">
+              Please verify you're human to view and download the resume.
+            </p>
+
+            <div className="flex justify-center mb-6">
+              <Turnstile
+                siteKey={turnstileSiteKey}
+                onSuccess={handleTurnstileSuccess}
+                onError={handleTurnstileError}
+                options={{
+                  theme: 'auto',
+                  size: 'normal',
+                }}
+              />
+            </div>
+          </>
+        );
+
+      case 'verifying':
+        return (
+          <>
+            <div className="w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
+              <SFIcon icon={sfTextDocument} size={40} className="text-white" />
+            </div>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+              Verifying...
+            </h1>
+            <p className="text-gray-600 dark:text-gray-400 mb-8">
+              Please wait while we verify your request.
+            </p>
+          </>
+        );
+
+      case 'verified':
+        return (
+          <>
+            <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+              <SFIcon icon={sfCheckmarkCircle} size={40} className="text-white" />
+            </div>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+              Resume Access Granted
+            </h1>
+            <p className="text-gray-600 dark:text-gray-400 mb-8">
+              Your resume has opened in a new tab. If it didn't open automatically, use the buttons below.
+            </p>
+
+            <div className="flex flex-col gap-3">
+              {resumeUrl && (
+                <>
+                  <a
+                    href={resumeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium"
+                  >
+                    <SFIcon icon={sfTextDocument} size={20} />
+                    Open Resume
+                  </a>
+
+                  <a
+                    href="#"
+                    onClick={handleDownload}
+                    className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors font-medium disabled:opacity-50"
+                  >
+                    <SFIcon icon={sfTextDocument} size={20} />
+                    {isDownloading ? 'Downloading...' : 'Download Resume'}
+                  </a>
+                </>
+              )}
+
+              <p className="text-sm text-gray-500 dark:text-gray-500 mt-2">
+                Link expires in 5 minutes for security.
+              </p>
+            </div>
+          </>
+        );
+
+      case 'error':
+        return (
+          <>
+            <div className="w-20 h-20 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-6">
+              <SFIcon icon={sfExclamationmarkCircle} size={40} className="text-white" />
+            </div>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+              Verification Failed
+            </h1>
+            <p className="text-gray-600 dark:text-gray-400 mb-6">
+              {errorMessage || 'Something went wrong. Please try again.'}
+            </p>
+
+            <button
+              onClick={() => {
+                setVerificationState('idle');
+                setErrorMessage('');
+              }}
+              className="px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium"
+            >
+              Try Again
+            </button>
+          </>
+        );
     }
   };
 
@@ -56,38 +213,7 @@ export default function Resume() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex items-center justify-center px-4">
       <div className="max-w-md w-full text-center">
         <div className="bg-white dark:bg-gray-900 rounded-3xl p-8 shadow-lg">
-          <div className="w-20 h-20 bg-gray-900 dark:bg-white rounded-full flex items-center justify-center mx-auto mb-6">
-            <SFIcon icon={sfTextDocument} size={40} className="text-white dark:text-gray-900" />
-          </div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
-            Resume
-          </h1>
-          <p className="text-gray-600 dark:text-gray-400 mb-8">
-            Your resume has opened in a new tab. If it didn't open automatically, use the button below.
-          </p>
-
-          <div className="flex flex-col gap-3">
-            {pdfUrl && (
-              <a
-                href={pdfUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium"
-              >
-                <SFIcon icon={sfTextDocument} size={20} />
-                Open Resume
-              </a>
-            )}
-
-            <a
-              href="#"
-              onClick={handleDownload}
-              className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors font-medium"
-            >
-              <SFIcon icon={sfTextDocument} size={20} />
-              Download Resume
-            </a>
-          </div>
+          {renderContent()}
 
           <Link
             to="/"
@@ -100,17 +226,3 @@ export default function Resume() {
     </div>
   );
 }
-
-/*
- * CAPTCHA CODE - PRESERVED FOR FUTURE BACKEND IMPLEMENTATION
- *
- * To re-enable CAPTCHA protection:
- * 1. Uncomment Turnstile import
- * 2. Add verification state back
- * 3. Replace useEffect with CAPTCHA verification flow
- * 4. Implement backend token validation
- *
- * Cloudflare Turnstile site keys:
- * - Testing (localhost): '1x00000000000000000000AA'
- * - Production: '0x4AAAAAACB5wZZBEC-BEapo' (elliotboschwitz.com)
- */

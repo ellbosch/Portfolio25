@@ -1,4 +1,11 @@
 version: 1
+backend:
+  phases:
+    build:
+      commands:
+        - cd amplify/backend/function/verifyTurnstile
+        - npm ci
+        - npm run build
 frontend:
   phases:
     preBuild:
@@ -16,3 +23,4 @@ frontend:
   cache:
     paths:
       - node_modules/**/*
+      - amplify/backend/function/verifyTurnstile/node_modules/**/*

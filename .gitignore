@@ -25,3 +25,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Resume - stored privately in S3, not in git
+src/assets/resume.pdf
+
+# Lambda build output
+amplify/backend/function/*/dist/
+amplify/backend/function/*/node_modules/
