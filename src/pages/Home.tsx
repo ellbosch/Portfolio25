@@ -203,7 +203,7 @@ const Home = () => {
                 <PaddingParallax reverse={true} disabled={isMobile}>
                   <IPhoneFrame>
                     <VideoPlayer
-                      videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-feed-downscaled.mov"
+                      videoUrl="https://portfolio25-videos.s3.us-west-1.amazonaws.com/vellum-feed-2.mp4"
                       autoplay={true}
                       loop={true}
                       muted={true}
