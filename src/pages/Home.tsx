@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
-import ProjectCard from '../components/ProjectCard';
 import VideoPlayer from '../components/VideoPlayer';
 import DeviceFrame from '../components/DeviceFrame';
 import IPhoneFrame from '../components/iPhoneFrame';
@@ -11,6 +10,7 @@ import PaddingParallax from '../components/PaddingParallax';
 import FeatureTabs from '../components/FeatureTabs';
 import Modal from '../components/Modal';
 import ExperienceButton from '../components/ExperienceButton';
+import TerminalFrame from '../components/TerminalFrame';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import stitchIcon from '../assets/stitch-icon.png';
 import vellumIcon from '../assets/vellum-icon.png';
@@ -18,6 +18,7 @@ import lobeIcon from '../assets/lobe-icon.png';
 import lobeHeader from '../assets/lobe-header.jpg';
 import lobeDesktop from '../assets/lobe-desktop.jpg';
 import lobeTrain from '../assets/lobe-train.mp4';
+import mssqlCliGif from '../assets/mssql-cli-autocomplete.gif';
 import resumePDF from '../assets/resume.pdf';
 import { SFIcon } from '@bradleyhodges/sfsymbols-react';
 import { sfGlobe, sfBrandGithub, sfWandAndSparkles, sfSliderHorizontal3, sfBrandLinkedin, sfEnvelope, sfTextDocument } from '@bradleyhodges/sfsymbols';
@@ -28,6 +29,7 @@ const Home = () => {
   // Modal state management
   const [isStitchModalOpen, setIsStitchModalOpen] = useState(false);
   const [isLobeModalOpen, setIsLobeModalOpen] = useState(false);
+  const [isMssqlCliModalOpen, setIsMssqlCliModalOpen] = useState(false);
 
   // Email obfuscation - split into parts to avoid scraping
   const handleEmailClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -44,7 +46,7 @@ const Home = () => {
         <Hero />
 
         {/* Projects Demo Section */}
-        <section id="about" className="py-12 md:py-20 px-4 bg-gray-50 dark:bg-gray-800 overflow-x-hidden">
+        <section id="about" className="py-20 px-4 bg-gray-50 dark:bg-gray-800 overflow-x-hidden">
           <div className="max-w-7xl mx-auto">
             <div className="mt-6 md:mt-12 text-center">
               <ScrollRotatingFrame>
@@ -286,6 +288,23 @@ const Home = () => {
                 )}
               </div>
             </div>
+
+            {/* Beta Testing Notice */}
+            <div className="text-center mb-20 max-w-3xl mx-auto">
+              <div className="bg-blue-50 dark:bg-blue-900/20 border-2 border-blue-200 dark:border-blue-700 rounded-2xl px-2 py-5 md:px-8 md:py-6">
+                <p className="text-l md:text-2xl text-gray-700 dark:text-gray-200 font-bold">
+                  Vellum is currently in private beta testing.</p>
+                <p className="text-l md:text-2xl text-gray-700 dark:text-gray-200 font-bold underline">
+                  <a
+                    href="#"
+                    onClick={handleEmailClick}
+                    className="text-blue-600 dark:text-blue-400 hover:underline"
+                  >
+                    Reach out to Elliot for TestFlight access.
+                  </a>
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -350,8 +369,59 @@ const Home = () => {
           </div>
         </section>
 
+        {/* mssql-cli Section */}
+        <section id="mssql-cli" className="bg-white dark:bg-gray-900 py-12 md:py-20 px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12 md:mb-20">
+              <ScrollFade delay={200}>
+                <h2 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-4 md:mb-6 font-mono">
+                  mssql-cli
+                </h2>
+              </ScrollFade>
+              <ScrollFade delay={300}>
+                <div className="flex justify-center">
+                  <ExperienceButton onClick={() => setIsMssqlCliModalOpen(true)}>
+                    Software Engineer
+                  </ExperienceButton>
+                </div>
+              </ScrollFade>
+              <ScrollFade delay={400}>
+                <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed max-w-3xl mx-auto">
+                  A cross-platform command-line interface for SQL Server with IntelliSense, syntax highlighting, and multi-line editing.
+                </p>
+              </ScrollFade>
+              <ScrollFade delay={500}>
+                <div className="flex items-center justify-center gap-4 mt-6">
+                  <a
+                    href="https://github.com/dbcli/mssql-cli"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full hover:bg-gray-700 dark:hover:bg-gray-100 transition-colors font-medium"
+                  >
+                    <SFIcon icon={sfBrandGithub} size={20} />
+                    GitHub
+                  </a>
+                </div>
+              </ScrollFade>
+            </div>
+
+            {/* Terminal Demo */}
+            <div className="max-w-4xl mx-auto">
+              <ScrollFade delay={200}>
+                <TerminalFrame>
+                  <img
+                    src={mssqlCliGif}
+                    alt="mssql-cli autocomplete demo"
+                    className="w-full h-auto"
+                  />
+                </TerminalFrame>
+              </ScrollFade>
+            </div>
+          </div>
+        </section>
+
         {/* Contact Section */}
-        <section id="contact" className="py-12 md:py-20 px-4 bg-white dark:bg-gray-900">
+        <section id="contact" className="py-12 md:py-20 px-4 bg-gray-50 dark:bg-gray-800">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white">Get In Touch</h2>
             <div className="flex flex-col md:flex-row justify-center items-center gap-4 max-w-[200px] md:max-w-none mx-auto">
@@ -467,6 +537,17 @@ const Home = () => {
               Led team effort to improve code reliability. Built automated code coverage reporting and bug categorization to help engineers identify vulnerabilities before merging code.
             </li>
           </ul>
+        </div>
+      </Modal>
+
+      {/* mssql-cli Modal */}
+      <Modal
+        isOpen={isMssqlCliModalOpen}
+        onClose={() => setIsMssqlCliModalOpen(false)}
+        title="mssql-cli: Software Engineer"
+      >
+        <div className="space-y-6 text-left">
+          Led development work for the GA launch of mssql-cli, an interactive command-line utility for SQL Server built in Python. Managed distributions across macOS, Linux, and Windows by introducing automation using Docker. Improved pipeline pass rate from 50% to 97% while increasing code coverage by 4%.
         </div>
       </Modal>
     </div>
