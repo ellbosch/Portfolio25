@@ -157,9 +157,9 @@ const VideoPlayer = ({
         <div ref={videoRef} className="w-full h-full" />
       )}
 
-      {/* Loading Indicator */}
-      {isInView && isLoading && !hasError && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/10 dark:bg-black/30 backdrop-blur-sm transition-opacity duration-300">
+      {/* Loading Indicator - appears above poster/video with no background */}
+      {isInView && isLoading && !hasError && posterUrl && (
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <LoadingIndicator size={48} color="white" />
         </div>
       )}
