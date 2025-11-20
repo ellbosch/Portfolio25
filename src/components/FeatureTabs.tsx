@@ -133,6 +133,7 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
                       autoplay={true}
                       loop={true}
                       muted={true}
+                      lazy={false}
                     />
                   </DeviceFrame>
                 </div>
