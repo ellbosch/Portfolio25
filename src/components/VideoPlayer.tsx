@@ -154,7 +154,7 @@ const VideoPlayer = ({
     <div
       ref={containerRef}
       data-vjs-player
-      className="relative max-h-full overflow-hidden bg-gray-100 dark:bg-gray-900"
+      className="relative w-full h-full overflow-hidden bg-gray-100 dark:bg-gray-900"
     >
       {/* Poster Image Placeholder - fades out when video is ready */}
       {posterUrl && (
@@ -163,6 +163,7 @@ const VideoPlayer = ({
           style={{
             opacity: showThumbnail ? 1 : 0,
             pointerEvents: showThumbnail ? 'auto' : 'none',
+            zIndex: 1,
           }}
         >
           <img
@@ -185,7 +186,10 @@ const VideoPlayer = ({
         <div
           ref={videoRef}
           className="w-full h-full transition-opacity duration-1000"
-          style={{ opacity: showVideo ? 1 : 0 }}
+          style={{
+            opacity: showVideo ? 1 : 0,
+            visibility: showVideo ? 'visible' : 'hidden',
+          }}
         />
       )}
 
