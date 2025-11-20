@@ -25,7 +25,6 @@ interface TabData {
 interface FeatureTabsProps {
   tabs: TabData[];
   delay?: number;
-  debug?: boolean;
 }
 
 // Symbol mapping helper
@@ -43,7 +42,7 @@ const getSymbolIcon = (symbolName?: string) => {
   return symbolName ? symbolMap[symbolName] : null;
 };
 
-const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0, debug = false }) => {
+const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0 }) => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -134,7 +133,6 @@ const FeatureTabs: FC<FeatureTabsProps> = ({ tabs, delay = 0, debug = false }) =
                       autoplay={true}
                       loop={true}
                       muted={true}
-                      debug={debug}
                     />
                   </DeviceFrame>
                 </div>

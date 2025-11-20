@@ -70,7 +70,6 @@ const Home = () => {
                     autoplay={true}
                     loop={true}
                     muted={true}
-                    debug={true}
                   />
                 </DeviceFrame>
               </ScrollRotatingFrame>
@@ -133,7 +132,6 @@ const Home = () => {
                     autoplay={true}
                     loop={true}
                     muted={true}
-                    debug={true}
                   />
                 </div>
               </ScrollFade>
@@ -190,7 +188,6 @@ const Home = () => {
                   },
                 ]}
                 delay={200}
-                debug={true}
               />
             </div>
           </div>
