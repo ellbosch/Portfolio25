@@ -20,7 +20,7 @@ const VideoPlayer = ({
   loop = false,
   muted = false,
   lazy = true,
-  rootMargin = '200px',
+  rootMargin = '1500px',
 }: VideoPlayerProps) => {
   const videoRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<any>(null);
@@ -33,11 +33,11 @@ const VideoPlayer = ({
   // Intersection Observer for lazy loading
   useEffect(() => {
     if (!lazy || !containerRef.current) {
-      // If not lazy, show thumbnail first, then start loading after 1 second
+      // If not lazy, show thumbnail first, then start loading immediately
       setIsInView(true);
       const timer = setTimeout(() => {
         setShouldLoadVideo(true);
-      }, 1000);
+      }, 100);
       return () => clearTimeout(timer);
     }
 
@@ -46,10 +46,8 @@ const VideoPlayer = ({
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsInView(true);
-            // Wait 1 second before starting video load
-            setTimeout(() => {
-              setShouldLoadVideo(true);
-            }, 1000);
+            // Start video load immediately when in root margin
+            setShouldLoadVideo(true);
             observer.disconnect();
           }
         });
