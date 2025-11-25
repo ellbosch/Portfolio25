@@ -76,7 +76,7 @@ const Hero = () => {
                 animationFillMode: 'forwards'
               }}
             >
-              iOS and AI Experiences Engineer
+              iOS, Full Stack, & AI Engineer
             </h2>
             {highlights.map((item, index) => (
               <div
